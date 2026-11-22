@@ -143,7 +143,8 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
   3. `npx hyperframes inspect --json` → 오류 0. 배경 빛 무늬의 `panel_out_of_canvas` 정보는 의도된 것이다.
   4. `npx hyperframes snapshot --at <장면마다 한 시각>` → `.hyperframes/artifacts/snapshots/`의 contact-sheet를 직접 본다(한글, 자막 띄어쓰기, 효과 위치).
   5. `npx hyperframes render --output ../renders/final.mp4 --fps 30 --quality high --strict`(첫 편 1분 37초)
-- 글꼴은 `@font-face`로 파일을 선언해야 렌더에 쓰인다(안 하면 lint 오류). 틀이 리눅스는 Noto Sans CJK KR, 맥은 Apple SD Gothic Neo를 찾아 쓴다(맥은 미검증). 못 찾으면 `--font-regular`, `--font-bold`로 지정한다.
+- 글꼴은 `@font-face`로 파일을 선언해야 렌더에 쓰인다(안 하면 lint 오류). 틀이 리눅스는 Noto Sans CJK KR, 맥은 Apple SD Gothic Neo(`/System/Library/Fonts/AppleSDGothicNeo.ttc`, 2026-11-22 맥미니 확인, 렌더 23초)를 찾아 쓴다. 못 찾으면 `--font-regular`, `--font-bold`로 지정한다. 글꼴에 따라 글자 폭이 달라 줄바꿈 위치가 바뀔 수 있으니 snapshot에서 확인한다.
+- 자막에서 강조되는 낱말은 길이에 맞춰 1.03~1.08배로 커진다(`caption_pop_scale`). 긴 낱말이 1.08배로 커지면 옆 빈칸을 덮어 띄어쓰기가 사라져 보여서 2026-11-22에 고쳤다. 틀 테스트: `python -m pytest tests/test_frame2_hyperframes.py`.
 - 첫 편 실측: 평균 음량 -17.4dB(1번은 -20.5dB). 6절 음량 기준을 똑같이 적용한다.
 
 ### 6. 확인과 정리 — 확인 ③
@@ -162,7 +163,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 
 ### 8. 쇼핑 커넥트 링크
 
-- 링크는 사용자가 네이버 브랜드 커넥트에서 발급해 붙여 준다(로그인이 필요해 클라우드 세션에서는 발급할 수 없다). 맥미니에서 Claude in Chrome이 켜진 세션이라면 그 브라우저로 발급을 도울 수 있는지 먼저 확인한다(미확인).
+- 링크는 사용자가 네이버 브랜드 커넥트에서 발급해 붙여 준다(로그인이 필요해 클라우드 세션에서는 발급할 수 없다). 맥미니의 Claude in Chrome으로도 발급할 수 없다(2026-11-22 확인: 브랜드 커넥트 사이트가 브라우저 도구에서 열리지 않는다). 추천 상품의 링크를 받지 못하면 사용자가 이미 가진 링크의 상품(대안)으로 바꿀지 묻는다.
 - naver.me 링크는 `brandconnect.naver.com/affiliates/...?channelProductNo=<상품번호>`로 연결된다. 상품 페이지는 로그인 화면으로 막혀 상품명을 확인하지 못할 수 있다. 그때는 캡션에 상품명을 단정하지 않고 사용자가 부른 이름을 쓴다.
 - 캡션 속 링크는 인스타그램에서 눌리지 않는다. 같은 링크를 프로필 링크에도 걸어 달라고 알린다(Windsor.ai로 프로필은 못 고친다).
 
@@ -194,5 +195,5 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 ## 아직 확인하지 않은 부분
 
 - 클라우드 세션에서 `make_narration.py`가 음성 모델을 내려받는지(huggingface.co 접속) → 다음 클라우드 영상에서 확인한다. 맥미니에서는 2026-11-22에 확인했다(모델이 이미 받아져 있던 상태).
-- 2번 틀은 클라우드(리눅스)에서만 시험했다. 맥미니에서의 글꼴 경로·렌더 시간은 미확인.
+- 1번 틀(Remotion)은 맥미니에 설치만 했고 렌더는 아직 돌려 보지 않았다. 2번 틀은 클라우드와 맥미니 양쪽에서 확인했다(2026-11-22).
 - 문장 안 어절 자막 타이밍은 추정치다(문장 경계는 실측). 음성 인식 도구가 생기면 단어 단위로 맞춘다.
