@@ -1,0 +1,469 @@
+{
+ "renderer_family": "explainer-teacher",
+ "cuts": [
+  {
+   "id": "c1",
+   "type": "hero_title",
+   "source": "",
+   "text": "효능보다 먼저 볼 건 설탕",
+   "heroSubtitle": "겨울 대추차",
+   "hf": {
+    "emphasis": "설탕"
+   },
+   "in_seconds": 0.0,
+   "out_seconds": 3.581
+  },
+  {
+   "id": "c2",
+   "type": "callout",
+   "callout_type": "warning",
+   "source": "",
+   "title": "흔한 오해",
+   "text": "따뜻한 차니까 하루 몇 잔쯤은 괜찮다?",
+   "hf": {
+    "fx": "strike",
+    "stamp": "오해",
+    "lines": [
+     "따뜻한 차니까",
+     "하루 몇 잔쯤은 괜찮다?"
+    ]
+   },
+   "in_seconds": 3.581,
+   "out_seconds": 7.78
+  },
+  {
+   "id": "c3",
+   "type": "stat_card",
+   "source": "",
+   "stat": "10g",
+   "subtitle": "대추차 스틱 한 봉 당류 · 담터 대추차 15g 표시 기준",
+   "in_seconds": 7.78,
+   "out_seconds": 12.579
+  },
+  {
+   "id": "c4",
+   "type": "stat_card",
+   "source": "",
+   "stat": "50g 미만",
+   "subtitle": "세계보건기구 하루 권고 · 유리당 총열량 10% 미만(2,000kcal 기준)",
+   "in_seconds": 12.579,
+   "out_seconds": 16.713
+  },
+  {
+   "id": "c5",
+   "type": "stat_card",
+   "source": "",
+   "stat": "30g",
+   "subtitle": "대추차 세 잔 · 하루 권고의 절반을 넘음",
+   "in_seconds": 16.713,
+   "out_seconds": 18.937
+  },
+  {
+   "id": "c6",
+   "type": "callout",
+   "callout_type": "warning",
+   "source": "",
+   "title": "65℃ 넘는 뜨거운 음료",
+   "text": "국제암연구기관 2A군, 식도암 발암 추정 요인",
+   "hf": {
+    "fx": "thermo"
+   },
+   "in_seconds": 18.937,
+   "out_seconds": 26.123
+  },
+  {
+   "id": "c7",
+   "type": "stat_card",
+   "source": "",
+   "stat": "1잔",
+   "subtitle": "하루, 식후에",
+   "hf": {
+    "tag": "기억하세요 ①"
+   },
+   "in_seconds": 26.123,
+   "out_seconds": 30.238
+  },
+  {
+   "id": "c8",
+   "type": "text_card",
+   "source": "",
+   "text": "설탕 없이, 직접 끓여서",
+   "hf": {
+    "tag": "기억하세요 ②"
+   },
+   "in_seconds": 30.238,
+   "out_seconds": 32.464
+  },
+  {
+   "id": "c9",
+   "type": "text_card",
+   "source": "",
+   "text": "뜨거우면, 한 김 식혀서",
+   "hf": {
+    "tag": "기억하세요 ③"
+   },
+   "in_seconds": 32.464,
+   "out_seconds": 34.254
+  },
+  {
+   "id": "c10",
+   "type": "callout",
+   "callout_type": "info",
+   "source": "",
+   "title": "자세한 건 설명란 링크에서",
+   "text": "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 당뇨 등 지병이 있으면 의사와 상담하세요.",
+   "fontSize": 40,
+   "titleFontSize": 56,
+   "in_seconds": 34.254,
+   "out_seconds": 40.608
+  }
+ ],
+ "captions": [
+  {
+   "word": "겨울",
+   "startMs": 300,
+   "endMs": 598
+  },
+  {
+   "word": "대추차,",
+   "startMs": 598,
+   "endMs": 1194
+  },
+  {
+   "word": "효능보다",
+   "startMs": 1194,
+   "endMs": 1791
+  },
+  {
+   "word": "먼저",
+   "startMs": 1791,
+   "endMs": 2089
+  },
+  {
+   "word": "볼",
+   "startMs": 2089,
+   "endMs": 2238
+  },
+  {
+   "word": "건",
+   "startMs": 2238,
+   "endMs": 2387
+  },
+  {
+   "word": "설탕입니다.",
+   "startMs": 2387,
+   "endMs": 3281
+  },
+  {
+   "word": "따뜻한",
+   "startMs": 3881,
+   "endMs": 4406
+  },
+  {
+   "word": "차니까",
+   "startMs": 4406,
+   "endMs": 4931
+  },
+  {
+   "word": "하루",
+   "startMs": 4931,
+   "endMs": 5281
+  },
+  {
+   "word": "몇",
+   "startMs": 5281,
+   "endMs": 5456
+  },
+  {
+   "word": "잔쯤은",
+   "startMs": 5456,
+   "endMs": 5980
+  },
+  {
+   "word": "괜찮다고",
+   "startMs": 5980,
+   "endMs": 6680
+  },
+  {
+   "word": "생각하시죠?",
+   "startMs": 6680,
+   "endMs": 7730
+  },
+  {
+   "word": "시판",
+   "startMs": 7730,
+   "endMs": 8080
+  },
+  {
+   "word": "대추차",
+   "startMs": 8080,
+   "endMs": 8605
+  },
+  {
+   "word": "스틱",
+   "startMs": 8605,
+   "endMs": 8955
+  },
+  {
+   "word": "한",
+   "startMs": 8955,
+   "endMs": 9130
+  },
+  {
+   "word": "봉에는",
+   "startMs": 9130,
+   "endMs": 9655
+  },
+  {
+   "word": "당류가",
+   "startMs": 9655,
+   "endMs": 10180
+  },
+  {
+   "word": "10그램쯤",
+   "startMs": 10180,
+   "endMs": 11054
+  },
+  {
+   "word": "들어",
+   "startMs": 11054,
+   "endMs": 11404
+  },
+  {
+   "word": "있습니다.",
+   "startMs": 11404,
+   "endMs": 12279
+  },
+  {
+   "word": "세계보건기구가",
+   "startMs": 12879,
+   "endMs": 14031
+  },
+  {
+   "word": "권하는",
+   "startMs": 14031,
+   "endMs": 14524
+  },
+  {
+   "word": "하루",
+   "startMs": 14524,
+   "endMs": 14853
+  },
+  {
+   "word": "기준이",
+   "startMs": 14853,
+   "endMs": 15347
+  },
+  {
+   "word": "50그램",
+   "startMs": 15347,
+   "endMs": 16005
+  },
+  {
+   "word": "미만이니",
+   "startMs": 16005,
+   "endMs": 16663
+  },
+  {
+   "word": "세",
+   "startMs": 16663,
+   "endMs": 16827
+  },
+  {
+   "word": "잔이면",
+   "startMs": 16827,
+   "endMs": 17321
+  },
+  {
+   "word": "절반을",
+   "startMs": 17321,
+   "endMs": 17814
+  },
+  {
+   "word": "넘깁니다.",
+   "startMs": 17814,
+   "endMs": 18637
+  },
+  {
+   "word": "또",
+   "startMs": 19237,
+   "endMs": 19406
+  },
+  {
+   "word": "65도가",
+   "startMs": 19406,
+   "endMs": 20081
+  },
+  {
+   "word": "넘는",
+   "startMs": 20081,
+   "endMs": 20419
+  },
+  {
+   "word": "뜨거운",
+   "startMs": 20419,
+   "endMs": 20926
+  },
+  {
+   "word": "음료는",
+   "startMs": 20926,
+   "endMs": 21432
+  },
+  {
+   "word": "국제암연구기관이",
+   "startMs": 21432,
+   "endMs": 22783
+  },
+  {
+   "word": "식도암",
+   "startMs": 22783,
+   "endMs": 23290
+  },
+  {
+   "word": "발암",
+   "startMs": 23290,
+   "endMs": 23628
+  },
+  {
+   "word": "추정",
+   "startMs": 23628,
+   "endMs": 23965
+  },
+  {
+   "word": "요인으로",
+   "startMs": 23965,
+   "endMs": 24641
+  },
+  {
+   "word": "분류했습니다.",
+   "startMs": 24641,
+   "endMs": 25823
+  },
+  {
+   "word": "그래서",
+   "startMs": 26423,
+   "endMs": 26936
+  },
+  {
+   "word": "기억하세요.",
+   "startMs": 26936,
+   "endMs": 27963
+  },
+  {
+   "word": "대추차는",
+   "startMs": 27963,
+   "endMs": 28648
+  },
+  {
+   "word": "하루",
+   "startMs": 28648,
+   "endMs": 28990
+  },
+  {
+   "word": "한",
+   "startMs": 28990,
+   "endMs": 29162
+  },
+  {
+   "word": "잔,",
+   "startMs": 29162,
+   "endMs": 29504
+  },
+  {
+   "word": "식후에.",
+   "startMs": 29504,
+   "endMs": 30188
+  },
+  {
+   "word": "가능하면",
+   "startMs": 30188,
+   "endMs": 30873
+  },
+  {
+   "word": "설탕",
+   "startMs": 30873,
+   "endMs": 31215
+  },
+  {
+   "word": "없이",
+   "startMs": 31215,
+   "endMs": 31558
+  },
+  {
+   "word": "직접",
+   "startMs": 31558,
+   "endMs": 31900
+  },
+  {
+   "word": "끓이고",
+   "startMs": 31900,
+   "endMs": 32414
+  },
+  {
+   "word": "한",
+   "startMs": 32414,
+   "endMs": 32585
+  },
+  {
+   "word": "김",
+   "startMs": 32585,
+   "endMs": 32756
+  },
+  {
+   "word": "식혀서",
+   "startMs": 32756,
+   "endMs": 33269
+  },
+  {
+   "word": "드세요.",
+   "startMs": 33269,
+   "endMs": 33954
+  },
+  {
+   "word": "자세한",
+   "startMs": 34554,
+   "endMs": 34952
+  },
+  {
+   "word": "건",
+   "startMs": 34952,
+   "endMs": 35084
+  },
+  {
+   "word": "설명란",
+   "startMs": 35084,
+   "endMs": 35482
+  },
+  {
+   "word": "링크에서",
+   "startMs": 35482,
+   "endMs": 36012
+  },
+  {
+   "word": "확인하세요.",
+   "startMs": 36012,
+   "endMs": 36808
+  }
+ ],
+ "captionStyle": {
+  "wordsPerPage": 3,
+  "fontSize": 64,
+  "bottomOffset": 260
+ },
+ "captionProps": {
+  "fontFamily": "Noto Sans CJK KR, Apple SD Gothic Neo, sans-serif",
+  "wordSeparator": " "
+ },
+ "audio": {
+  "narration": {
+   "src": "~/Downloads/reels/OpenMontage/projects/jujube-tea-sugar-shorts/assets/audio/narration_norm.wav",
+   "volume": 1.0
+  },
+  "music": {
+   "src": "~/Downloads/reels/OpenMontage/projects/jujube-tea-sugar-shorts/assets/music/bgm.mp3",
+   "volume": 0.07,
+   "fadeInSeconds": 1.5,
+   "fadeOutSeconds": 2.5
+  }
+ }
+}
