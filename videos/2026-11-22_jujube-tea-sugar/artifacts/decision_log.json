@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "project_id": "jujube-tea-sugar-shorts",
+  "decisions": [
+    {
+      "decision_id": "d1",
+      "stage": "proposal",
+      "category": "render_runtime_selection",
+      "subject": "렌더 틀",
+      "options_considered": [
+        {
+          "option_id": "remotion",
+          "label": "1번 프레임 Remotion",
+          "score": 0.3,
+          "reason": "기본 틀",
+          "rejected_because": "사용자가 2번 프레임 지정"
+        },
+        {
+          "option_id": "hyperframes",
+          "label": "2번 프레임 HyperFrames (templates/frame2_hyperframes.py)",
+          "score": 0.9,
+          "reason": "사용자 지정 2번 프레임"
+        }
+      ],
+      "selected": "hyperframes",
+      "reason": "사용자 지정 2번 프레임(2026-11-22)",
+      "user_visible": true,
+      "user_approved": true
+    },
+    {
+      "decision_id": "d2",
+      "stage": "research",
+      "category": "visual_accuracy_check",
+      "subject": "한 봉 당류 수치",
+      "options_considered": [
+        {
+          "option_id": "blog_15g",
+          "label": "블로그 '15g 안팎'",
+          "score": 0.2,
+          "reason": "사용자 블로그",
+          "rejected_because": "대표 제품(담터 15g) 표시는 10g"
+        },
+        {
+          "option_id": "label_10g",
+          "label": "제품 표시 10g",
+          "score": 0.8,
+          "reason": "2차 사이트 3곳 일치(제조사 원문 미확인)"
+        }
+      ],
+      "selected": "label_10g",
+      "reason": "확인된 값 사용, 미확인 표시",
+      "user_visible": true,
+      "user_approved": false
+    }
+  ]
+}
