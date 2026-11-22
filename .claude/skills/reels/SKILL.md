@@ -1,10 +1,10 @@
 ---
 name: reels
-description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 맥미니 localhost:7790 "남성1"(M1) 음성 → 사용자가 지정한 틀로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
+description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 저장소 스크립트로 "남성1"(M1) 음성 직접 생성(Supertonic 3, 맥미니·클라우드 공통) → 사용자가 지정한 틀로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
 argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 ---
 
-# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v4, 2026-11-22: 1번·2번 프레임 추가)
+# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v5, 2026-11-22: 음성을 저장소 스크립트로 직접 생성)
 
 ## 이미 확정된 것 (매번 다시 묻지 않는다)
 
@@ -20,7 +20,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
   - 둘 다 1080x1920 세로, 한글 자막을 화면에 굽는다. 대본·음성·음악·자막·광고 표기는 같고 화면 움직임만 다르다.
   - 지정이 없으면 대본 확인 ① 때 한 번 묻는다. 임의로 고르지 않는다.
 - **음악:** Pixabay 무료 음악 (상업 사용 가능, 출처 표기 불필요)
-- **음성:** 맥미니 `localhost:7790` 음성 서버, "남성1"(파일명 접미사 `M1`). 음성은 스킬이 직접 만든다. 사용자에게 따로 만들어 올리라고 하지 않는다(사용자가 불편하다고 명시함).
+- **음성:** Supertonic 3 "남성1"(파일명 접미사 `M1`). 이 스킬의 `templates/make_narration.py`로 직접 만든다. 맥미니 음성 프로그램(`localhost:7790`)과 같은 모델·목소리이고 서버 없이 돌아가므로, 맥미니든 클라우드든 한 세션에서 끝까지 만든다. 음성 때문에 맥미니로 넘기지 않는다(2026-11-22 사용자 지정). 사용자에게 따로 만들어 올리라고 하지 않는다(사용자가 불편하다고 명시함).
 - **대본 형식:** 아래 "A형식" 고정. 콘셉트 3안을 제안하지 않는다.
 - **사용자 확인을 받는 곳:** ① 대본 초안 ② 윤문 결과 ③ 완성 영상 ④ 추천 상품 ⑤ 게시 캡션. 그 밖의 OpenMontage 승인 단계(제안서·장면 계획 등)는 위 기본값으로 사용자가 미리 승인한 것으로 기록한다.
 
@@ -60,7 +60,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 5. 사전 점검: `.venv/bin/python -c "from tools.tool_registry import registry; import json; registry.discover(); print(json.dumps(registry.provider_menu_summary()['composition_runtimes']))"`
    - 1번이면 `remotion`이 `false`일 때 멈추고 알린다.
    - 2번이면 `hyperframes`가 `true`인지 보고, `npx hyperframes doctor --json`에서 Node.js·FFmpeg·Chrome 항목이 `ok`인지 확인한다. 글꼴 처리에 `pip install fonttools brotli`가 필요하다.
-6. 음성 서버 확인: `curl -s -o /dev/null -w "%{http_code}" http://localhost:7790/`. 응답이 없으면 사용자에게 음성 프로그램을 켜 달라고 한다.
+6. 음성 준비(OpenMontage 폴더에서): `.venv/bin/python -m pip install -r ../.claude/skills/reels/templates/requirements-voice.txt`. 음성 모델(약 385MB)은 4절에서 처음 음성을 만들 때 내려받는다. 맥미니 음성 프로그램(7790)은 켜져 있지 않아도 된다.
 7. 프로젝트 생성: `init_project('<id>', title='<한글 제목>', pipeline_type='animated-explainer')`. 중간 산출물은 `OpenMontage/projects/<id>/`, 최종 정리는 `REELS/videos/`.
 
 ### 1. 조사 (research)
@@ -86,11 +86,19 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 
 ### 4. 음성 (직접 생성)
 
-- `localhost:7790`을 호출해 문장마다 "남성1"(M1) 음성을 만든다. 파일은 `projects/<id>/assets/audio/`.
-- **API는 아직 확인 전이다.** 처음 쓸 때 `curl -s localhost:7790/`, `/docs`, `/openapi.json` 등으로 엔드포인트와 M1 지정 방법을 확인하고, 이 절에 정확한 호출법을 적어 넣자고 사용자에게 제안한다. 추측으로 호출하지 않는다.
-- 클라우드 세션에서 작업 중이면: 맥미니의 이 폴더가 Remote Control로 연결돼 있을 때만 맥미니에서 호출할 수 있다. 연결이 안 되면 무엇이 막혔는지 알리고, 사용자에게 맥미니에서 이 폴더로 작업하자고 제안한다.
-- 한 파일로 받았다면 `ffmpeg silencedetect=noise=-35dB:d=0.35`로 1.3초 이상 무음을 찾아 문장 경계를 잡는다.
-- 문장 사이 무음은 0.6초로 줄이고(앞 0.3초, 끝 0.8초, 각 문장 앞뒤 0.08초 여유), `loudnorm=I=-16:TP=-1.5:LRA=11`로 음량을 맞춘다. 문장별 시작·끝 시각을 `narration_timings.json`으로 저장한다.
+- 저장소의 스크립트 하나로 만든다. 맥미니와 클라우드에서 명령이 같다(2026-11-22 사용자 지정: 음성 때문에 맥미니로 넘기지 않는다):
+  ```bash
+  cd <REELS>/OpenMontage
+  .venv/bin/python ../.claude/skills/reels/templates/make_narration.py projects/<id> --script <확정 대본 script.txt>
+  ```
+- 대본은 한 줄에 한 문장이고, 한 줄이 음성 한 구간이 된다. 결과는 `projects/<id>/assets/audio/`에 생긴다: 줄별 원본 `s1_M1.wav`…, 간격과 음량을 맞춘 `narration_norm.wav`, 문장별 시작·끝 `narration_timings.json`(`total`, `sections[s1..]`).
+- 스크립트가 하는 일: Supertonic 3 "남성1"(M1), 속도 1.05·품질 8·줄 안 쉼 0.3초(맥미니 음성 프로그램 화면의 기본값)로 줄마다 음성을 만든다 → 말소리 앞뒤 무음을 자르고(여유 0.08초) 앞 0.3초, 문장 사이 0.6초, 끝 0.8초로 놓는다 → `loudnorm=I=-16:TP=-1.5:LRA=11`로 음량을 맞춘다.
+- 첫 실행 때 모델(약 385MB)을 huggingface.co(`Supertone/supertonic-3`)에서 `~/.cache/supertonic3`로 내려받는다. 모델은 파일 하나가 245MB라 깃허브 저장소에 넣지 않았다. 내려받기가 막히면 스크립트가 이유를 알려 주니, 다른 목소리로 바꾸지 말고 "막혔을 때"대로 알린다.
+- 숨이 차게 들리는 줄이 있으면 대본 줄을 고쳐 스크립트를 다시 돌리고 사용자에게 알린다(전체가 10초 남짓이라 한 줄만 따로 만들 필요가 없다).
+- 맥미니 확인(2026-11-22): 같은 대본으로 맥미니 음성 프로그램(`localhost:7790`)과 줄별 길이가 샘플 수까지 같았다. 파형은 만들 때마다 조금씩 달라 똑같지는 않다. 대추차 대본 6줄에 12초, 결과 음량 -16.6 LUFS.
+- 참고(스킬은 쓰지 않는다) — 맥미니 음성 프로그램 호출법: `POST http://localhost:7790/api/tts`에 JSON `{"text", "voice": "M1", "lang": "ko", "speed": 1.05, "steps": 8, "pause": 0.3, "format": "wav"}` → `{"file", "seconds", ...}`, 파일은 `GET /audio/<file>`.
+- 사용자가 음성 파일을 직접 준 경우에만: 한 파일이면 `ffmpeg silencedetect=noise=-35dB:d=0.35`로 1.3초 이상 무음을 찾아 문장 경계를 잡고, 위와 같은 간격·음량으로 맞춘다.
+- 스크립트 테스트: 저장소 최상위에서 `OpenMontage/.venv/bin/python -m pytest tests`(모델 없이 돈다. `pip install pytest`가 필요하다).
 
 ### 5. 장면·소재·편집·합성
 
@@ -185,6 +193,6 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 
 ## 아직 확인하지 않은 부분
 
-- 맥미니 `localhost:7790` 음성 서버의 API와 "남성1"(M1) 지정 방법 → 다음 영상에서 확인하고 4절을 갱신한다.
+- 클라우드 세션에서 `make_narration.py`가 음성 모델을 내려받는지(huggingface.co 접속) → 다음 클라우드 영상에서 확인한다. 맥미니에서는 2026-11-22에 확인했다(모델이 이미 받아져 있던 상태).
 - 2번 틀은 클라우드(리눅스)에서만 시험했다. 맥미니에서의 글꼴 경로·렌더 시간은 미확인.
 - 문장 안 어절 자막 타이밍은 추정치다(문장 경계는 실측). 음성 인식 도구가 생기면 단어 단위로 맞춘다.

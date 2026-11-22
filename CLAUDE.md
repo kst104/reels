@@ -6,7 +6,7 @@
 - 제작은 `reels` 스킬(`.claude/skills/reels/SKILL.md`)을 따른다. 사용자가 주제만 말하면 이 스킬로 진행한다.
 - 렌더 틀은 영상마다 사용자가 지정한다: **1번 = Remotion**, **2번 = HyperFrames** (2026-11-22 확정). 지정이 없으면 대본 확인 때 묻는다.
 - OpenMontage는 이 폴더 안 `OpenMontage/`에 설치해 쓴다. 영상 하나가 끝나면 결과를 `videos/YYYY-MM-DD_<주제>/`에 정리한다 (mp4, script.txt, sources.md, audio/, artifacts/).
-- 음성은 이 컴퓨터(맥미니)의 `localhost:7790` 음성 서버, "남성1"(M1) 목소리로 직접 만든다. 사용자에게 음성 파일을 따로 만들어 올리라고 하지 않는다.
+- 음성은 저장소의 `.claude/skills/reels/templates/make_narration.py`로 직접 만든다. 맥미니 음성 프로그램(`localhost:7790`)과 같은 Supertonic 3 "남성1"(M1) 목소리이고 서버 없이 돌아가므로, 맥미니든 클라우드든 한 세션에서 끝까지 만든다. 음성 때문에 맥미니로 넘기지 않는다(2026-11-22 사용자 지정). 사용자에게 음성 파일을 따로 만들어 올리라고 하지 않는다.
 - 이 폴더의 `CLAUDE.md`와 스킬은 사용자 허락 없이 고치지 않는다. 스킬을 고칠 만한 점을 발견하면 제안만 한다.
 
 ## 연결된 곳 (2026-11-22 고정)
