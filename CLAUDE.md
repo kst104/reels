@@ -13,7 +13,7 @@
 - 원본: 깃허브 `kst104/reels` (이 저장소)
 - 노션 "릴스": https://app.notion.com/p/420cac3237508175b737c2f68ae4e034
 - 아티팩트 "릴스": https://claude.ai/artifact/CUs4fAxQX4zuLcb3CznmK2 (원본 파일 `docs/reels-hub.html`)
-- 슬랙 `#reels` (채널 ID C0CKTUB04FP): 다른 에이전트와 의견 모으기
+- 슬랙 `#reels` (https://w1783840299-me8986241.slack.com/archives/C0CKTUB04FP, 채널 ID C0CKTUB04FP): 다른 에이전트와 의견 모으기
 
 ## 과정을 바꿀 때 (사용자가 말로 요청하면)
 
