@@ -1,0 +1,177 @@
+{
+  "version": "1.0",
+  "concept_options": [
+    {
+      "id": "A",
+      "title": "온도보다 무서운 건 시간",
+      "hook": "겨울 목욕, 온도보다 무서운 건 시간입니다.",
+      "narrative_structure": "myth_busting",
+      "visual_approach": "욕조 물 온도계와 타이머 게이지가 차오르며 경고색으로 바뀌는 모션그래픽, 따뜻한 주황에서 차가운 파랑으로 넘어가는 팔레트, 큰 한글 자막",
+      "target_duration_seconds": 45,
+      "target_platform": "youtube",
+      "why_this_works": "기존 쇼츠는 온도 차(히트쇼크)만 다루지만 일본 소비자청은 장시간 입욕의 체온 상승·의식장애도 원인으로 꼽고 2026 리뷰는 히트쇼크 과대 강조를 지적한다"
+    },
+    {
+      "id": "B",
+      "title": "욕조가 길보다 위험한 계절",
+      "hook": "일본 노인은 길보다 욕조에서 3배 더 많이 숨집니다.",
+      "narrative_structure": "data_narrative",
+      "visual_approach": "숫자가 올라가는 통계 카드(6,541 대 2,116, 약 95%, 12·1월 집중) 위주, 어두운 남색 배경에 경고 주황",
+      "target_duration_seconds": 50,
+      "target_platform": "youtube",
+      "why_this_works": "2023년 일본 65세 이상 욕조 사망 6,541명 대 교통사고 2,116명이라는 공식 통계가 강한 반전을 준다(일본 자료임을 명시해야 함)"
+    },
+    {
+      "id": "C",
+      "title": "몸 안은 혈관, 몸 밖은 피부",
+      "hook": "뜨거운 물에 오래 있으면 두 군데가 동시에 상합니다.",
+      "narrative_structure": "comparison",
+      "visual_approach": "화면을 둘로 나눠 왼쪽은 혈관·혈압 그래프, 오른쪽은 피부 수분이 빠져나가는 도식, 끝에 둘을 한 줄 수칙으로 합침",
+      "target_duration_seconds": 50,
+      "target_platform": "youtube",
+      "why_this_works": "혈관(실신)과 피부(건조)를 함께 다룬 국내 쇼츠가 드물고, 피부 쪽은 보습제처럼 링크를 붙일 상품과 자연스럽게 이어진다"
+    }
+  ],
+  "selected_concept": {
+    "concept_id": "A",
+    "rationale": "사용자 선택(A안), reels 스킬로 A형식 고정"
+  },
+  "production_plan": {
+    "pipeline": "animated-explainer",
+    "renderer_family": "explainer-teacher",
+    "delivery_promise": {
+      "promise_type": "teacher_explainer",
+      "motion_required": false,
+      "tone_mode": "차분하지만 단호한 경고",
+      "quality_floor": "presentable"
+    },
+    "music_source": {
+      "source_type": "bring_your_own",
+      "provider": "pixabay_music",
+      "mood_direction": "차분한 앰비언트 피아노, 내레이션 아래 작게",
+      "estimated_cost_usd": 0.0
+    },
+    "stages": [
+      {
+        "stage": "research",
+        "tools": [
+          {
+            "tool_name": "firecrawl_search",
+            "role": "웹 조사",
+            "available": true,
+            "estimated_cost_usd": 0.0
+          }
+        ],
+        "approach": "완료: 1차 출처 위주 조사"
+      },
+      {
+        "stage": "proposal",
+        "tools": [],
+        "approach": "콘셉트 3안, 렌더링 엔진, 음악, 비용 승인"
+      },
+      {
+        "stage": "script",
+        "tools": [
+          {
+            "tool_name": "humanize-korean",
+            "role": "대본 윤문(im-not-ai)",
+            "available": true,
+            "estimated_cost_usd": 0.0
+          }
+        ],
+        "approach": "문장 단위 한국어 대본, 사용자 검토 후 윤문"
+      },
+      {
+        "stage": "scene_plan",
+        "tools": [],
+        "approach": "6~8개 장면, 텍스트·통계·비교 카드"
+      },
+      {
+        "stage": "assets",
+        "tools": [
+          {
+            "tool_name": "user_tts_7790",
+            "role": "내레이션(남성1)",
+            "available": true,
+            "provider": "사용자 맥미니 localhost:7790",
+            "estimated_cost_usd": 0.0
+          }
+        ],
+        "approach": "사용자 지정 음성으로 내레이션 생성, 이미지 생성 없음"
+      },
+      {
+        "stage": "edit",
+        "tools": [],
+        "approach": "내레이션 길이에 맞춰 장면 타이밍"
+      },
+      {
+        "stage": "compose",
+        "tools": [
+          {
+            "tool_name": "video_compose",
+            "role": "1080x1920 세로 렌더, 한글 자막 굽기",
+            "available": true,
+            "estimated_cost_usd": 0.0
+          }
+        ],
+        "approach": "승인된 렌더링 엔진으로 로컬 렌더"
+      },
+      {
+        "stage": "publish",
+        "tools": [],
+        "approach": "mp4와 출처 목록 전달, 업로드는 범위 밖"
+      }
+    ],
+    "quality_tradeoffs": [
+      {
+        "tradeoff": "이미지·영상 생성 API 없음",
+        "recommendation": "글자·도형·그래프 모션그래픽으로 제작(무료)"
+      },
+      {
+        "tradeoff": "배경음악",
+        "recommendation": "Pixabay 무료 음악(상업 사용 가능, 출처 표기 불필요) 사용, 사용자 승인"
+      }
+    ],
+    "alternative_paths": [
+      {
+        "description": "현재 경로: 모션그래픽 + 사용자 음성, 음악 없음",
+        "total_cost_usd": 0.0,
+        "quality_level": "free"
+      },
+      {
+        "description": "무료 음악 추가: Pixabay 접속 허용 승인 필요",
+        "total_cost_usd": 0.0,
+        "quality_level": "free"
+      },
+      {
+        "description": "이미지 생성 API 키를 넣어 일러스트 장면 추가(키 발급·요금은 제공사 기준)",
+        "total_cost_usd": 0.2,
+        "quality_level": "standard"
+      }
+    ],
+    "render_runtime": "remotion",
+    "composition_mode": "templated",
+    "playbook": "custom"
+  },
+  "cost_estimate": {
+    "total_estimated_usd": 0.0,
+    "line_items": [
+      {
+        "tool": "user_tts_7790",
+        "operation": "내레이션 생성(사용자 맥미니)",
+        "estimated_usd": 0.0
+      },
+      {
+        "tool": "video_compose",
+        "operation": "로컬 렌더링",
+        "estimated_usd": 0.0
+      }
+    ],
+    "budget_verdict": "within_budget"
+  },
+  "approval": {
+    "status": "approved",
+    "user_notes": "reels 스킬 상시 승인(2026-11-22): A안, Remotion, 기본 틀, Pixabay 음악",
+    "approved_budget_usd": 0.0
+  }
+}

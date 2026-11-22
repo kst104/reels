@@ -1,0 +1,145 @@
+{
+  "version": "1.0",
+  "project_id": "winter-hot-bath-shorts",
+  "decisions": [
+    {
+      "decision_id": "d1",
+      "stage": "proposal",
+      "category": "concept_selection",
+      "subject": "Video concept",
+      "options_considered": [
+        {
+          "option_id": "A",
+          "label": "온도보다 무서운 건 시간",
+          "score": 0.9,
+          "reason": "기존 영상과 가장 다름"
+        },
+        {
+          "option_id": "B",
+          "label": "욕조가 길보다 위험한 계절",
+          "score": 0.7,
+          "reason": "통계 반전",
+          "rejected_because": "사용자가 A 선택"
+        },
+        {
+          "option_id": "C",
+          "label": "몸 안은 혈관, 몸 밖은 피부",
+          "score": 0.7,
+          "reason": "상품 연결 쉬움",
+          "rejected_because": "사용자가 A 선택"
+        }
+      ],
+      "selected": "A",
+      "reason": "사용자 선택, reels 스킬에서 A형식 고정",
+      "user_visible": true,
+      "user_approved": true
+    },
+    {
+      "decision_id": "d2",
+      "stage": "proposal",
+      "category": "render_runtime_selection",
+      "subject": "Render runtime",
+      "options_considered": [
+        {
+          "option_id": "remotion",
+          "label": "Remotion",
+          "score": 0.9,
+          "reason": "숫자 카드·자막(CJK) 기능 보유"
+        },
+        {
+          "option_id": "hyperframes",
+          "label": "HyperFrames",
+          "score": 0.6,
+          "reason": "맞춤 HTML 모션에 강함",
+          "rejected_because": "사용자 확정 기본값(reels 스킬): Remotion"
+        },
+        {
+          "option_id": "ffmpeg",
+          "label": "FFmpeg",
+          "score": 0.2,
+          "reason": "정지 이미지 팬·줌만 가능",
+          "rejected_because": "모션그래픽 불가"
+        }
+      ],
+      "selected": "remotion",
+      "reason": "사용자 선택: 자막 중요",
+      "user_visible": true,
+      "user_approved": true
+    },
+    {
+      "decision_id": "d3",
+      "stage": "proposal",
+      "category": "composition_mode",
+      "subject": "Composition authoring mode",
+      "options_considered": [
+        {
+          "option_id": "templated",
+          "label": "기본 틀",
+          "score": 0.8,
+          "reason": "빠르고 안정적"
+        },
+        {
+          "option_id": "atelier",
+          "label": "맞춤 제작",
+          "score": 0.6,
+          "reason": "독특하지만 시간 많이 듦",
+          "rejected_because": "사용자가 기본 틀 선택"
+        }
+      ],
+      "selected": "templated",
+      "reason": "사용자 선택",
+      "user_visible": true,
+      "user_approved": true
+    },
+    {
+      "decision_id": "d4",
+      "stage": "proposal",
+      "category": "music_source",
+      "subject": "Background music",
+      "options_considered": [
+        {
+          "option_id": "pixabay",
+          "label": "Pixabay 무료 음악",
+          "score": 0.8,
+          "reason": "무료·상업 사용 가능"
+        },
+        {
+          "option_id": "none",
+          "label": "음악 없음",
+          "score": 0.5,
+          "reason": "가장 단순",
+          "rejected_because": "사용자가 Pixabay 선택"
+        }
+      ],
+      "selected": "pixabay",
+      "reason": "사용자 선택, 접속 허용 승인 완료",
+      "user_visible": true,
+      "user_approved": true
+    },
+    {
+      "decision_id": "d5",
+      "stage": "proposal",
+      "category": "voice_selection",
+      "subject": "Narration TTS provider",
+      "options_considered": [
+        {
+          "option_id": "user_tts_7790",
+          "label": "맥미니 localhost:7790 남성1",
+          "score": 0.9,
+          "reason": "사용자 지정 목소리"
+        },
+        {
+          "option_id": "piper",
+          "label": "Piper 로컬 TTS",
+          "score": 0.2,
+          "reason": "설치돼 있으나 한국어 음성 미확인",
+          "rejected_because": "사용자 지정 목소리 우선"
+        }
+      ],
+      "selected": "user_tts_7790",
+      "reason": "사용자 지정",
+      "user_visible": true,
+      "user_approved": true
+    }
+  ]
+}

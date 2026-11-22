@@ -1,0 +1,198 @@
+<title>릴스</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 한 줄 읽기 폭. 연결된 곳 4칸 → A형식 초 단위 타임라인 → 제작 순서 7단계 → 바꾸는 방법 → 규칙 → 영상 목록. 색은 첫 영상의 남색·주황에서 가져옴. */
+:root {
+  --bg: #F3F5F7;
+  --surface: #FFFFFF;
+  --ink: #0F1B26;
+  --muted: #586472;
+  --line: #D8DEE4;
+  --accent: #C2551A;
+  --accent-soft: #FBE8DC;
+  --warn: #B9363B;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1B26; --surface: #162533; --ink: #EEF2F5; --muted: #95A3B1; --line: #263646;
+    --accent: #FF8A3D; --accent-soft: #2E2418; --warn: #FF6B6E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1B26; --surface: #162533; --ink: #EEF2F5; --muted: #95A3B1; --line: #263646;
+  --accent: #FF8A3D; --accent-soft: #2E2418; --warn: #FF6B6E; color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body);
+  font-size: 16px; line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+h1, h2, h3 { margin: 0; line-height: 1.3; text-wrap: balance; }
+h1 { font-size: 2.25rem; font-weight: 700; }
+h2 { font-size: 1.3rem; font-weight: 700; }
+h3 { font-size: 1rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { color: var(--muted); max-width: 62ch; }
+section { display: flex; flex-direction: column; gap: 14px; }
+
+/* 연결된 곳 */
+.hub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.node { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.node.source { border-color: var(--accent); }
+.node .role { font-size: 0.85rem; color: var(--muted); }
+.node .where { font-family: var(--font-mono); font-size: 0.82rem; overflow-wrap: anywhere; }
+.tag { display: inline-block; font-size: 0.72rem; font-weight: 500; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); width: fit-content; }
+@media (max-width: 520px) { .hub { grid-template-columns: minmax(0, 1fr); } }
+
+/* A형식 타임라인 */
+.timeline { display: flex; height: 38px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.seg { display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 500; color: var(--ink); background: var(--surface); border-right: 1px solid var(--line); min-width: 0; white-space: nowrap; overflow: hidden; }
+.seg:last-child { border-right: 0; }
+.seg.hook { background: var(--accent); color: var(--bg); }
+.seg.end { background: var(--accent-soft); color: var(--accent); }
+.ticks { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.legend { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 6px 14px; font-size: 0.92rem; }
+.legend dt { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.legend dd { margin: 0; }
+
+/* 제작 순서 */
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 2px 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--font-mono); font-size: 1.15rem; color: var(--accent); line-height: 1.4; grid-row: span 2; }
+.steps .what { font-weight: 700; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.steps .how { color: var(--muted); font-size: 0.93rem; }
+.check { font-size: 0.72rem; font-weight: 500; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); }
+
+/* 바꾸는 방법 */
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.flow div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px; font-size: 0.9rem; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.flow b { font-size: 0.95rem; }
+@media (max-width: 620px) { .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.rules { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.quote { background: var(--accent-soft); border-radius: 6px; padding: 10px 14px; font-size: 0.92rem; }
+
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.9rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
+tbody tr:last-child td { border-bottom: 0; }
+.num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: 0.85rem; }
+.foot { font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <span class="label">reels 스킬 v2 · 2026-11-22</span>
+    <h1>릴스</h1>
+    <p class="lede">네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스를 주제 하나로 만드는 방식입니다. 원본은 깃허브에 있고, 이 페이지와 노션 문서는 원본이 바뀔 때 함께 갱신됩니다.</p>
+  </header>
+
+  <section aria-labelledby="h-hub">
+    <h2 id="h-hub">연결된 곳</h2>
+    <div class="hub">
+      <div class="node source">
+        <span class="tag">원본</span>
+        <h3>깃허브</h3>
+        <span class="role">스킬, 작업 규칙, 영상별 자료</span>
+        <a class="where" href="https://github.com/kst104/reels">github.com/kst104/reels</a>
+      </div>
+      <div class="node">
+        <h3>노션 "릴스"</h3>
+        <span class="role">읽고 고치기 쉬운 과정 문서와 영상 목록</span>
+        <a class="where" href="https://app.notion.com/p/420cac3237508175b737c2f68ae4e034">노션 페이지 열기</a>
+      </div>
+      <div class="node">
+        <h3>슬랙 #reels</h3>
+        <span class="role">다른 에이전트와 의견 모으기, 변경 알림</span>
+        <a class="where" href="https://w1783840299-me8986241.slack.com/archives/C0CKTUB04FP">#reels 채널 열기</a>
+      </div>
+      <div class="node">
+        <h3>작업 폴더</h3>
+        <span class="role">맥미니에서 실제로 만드는 곳</span>
+        <span class="where">~/Downloads/reels</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-format">
+    <h2 id="h-format">A형식 (고정)</h2>
+    <p>첫 편 실측 기준입니다. 대본 186자가 원본 음성 36.7초였고, 문장 사이를 0.6초로 줄여 영상 35.6초가 됐습니다.</p>
+    <div class="timeline" role="img" aria-label="A형식 타임라인 35.6초">
+      <div class="seg hook" style="flex:3.25">첫 문장</div>
+      <div class="seg" style="flex:9.85">오해 · 근거</div>
+      <div class="seg" style="flex:8.1">원인</div>
+      <div class="seg" style="flex:7.8">수칙</div>
+      <div class="seg end" style="flex:6.6">링크·광고 표기</div>
+    </div>
+    <div class="ticks"><span>0초</span><span>10초</span><span>20초</span><span>30초</span><span>35.6초</span></div>
+    <dl class="legend">
+      <dt>0 – 3.3초</dt><dd>오해를 깨는 한 줄. "○○보다 무서운 건 △△입니다."</dd>
+      <dt>3.3 – 13.1초</dt><dd>사람들이 흔히 믿는 것과, 그게 틀렸다는 공식 출처</dd>
+      <dt>13.1 – 21.2초</dt><dd>왜 위험한지. 출처 있는 사실 1~2개, 문장마다 마침표로 끝낸다</dd>
+      <dt>21.2 – 29.0초</dt><dd>숫자로 된 수칙 2~3개 (예: 41도 이하, 10분 이내)</dd>
+      <dt>29.0 – 35.6초</dt><dd>"자세한 건 설명란 링크에서 확인하세요." + 광고 표기 화면</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-steps">
+    <h2 id="h-steps">제작 순서</h2>
+    <ol class="steps">
+      <li><span class="n">1</span><span class="what">준비</span><span class="how">~/Downloads/reels에서 작업. OpenMontage가 없으면 설치(약 3분), 7790 음성 서버 응답 확인</span></li>
+      <li><span class="n">2</span><span class="what">조사</span><span class="how">한국 정부 → 학회·대학병원 → 해외 공식 기관·논문 순. 확인 안 되면 넣지 않거나 "미확인"</span></li>
+      <li><span class="n">3</span><span class="what">대본 <span class="check">확인 ①</span></span><span class="how">A형식으로 쓰고 문장마다 출처를 붙여 보여줌</span></li>
+      <li><span class="n">4</span><span class="what">윤문 <span class="check">확인 ②</span></span><span class="how">im-not-ai(humanize-korean). 내용·숫자·출처 표기는 그대로</span></li>
+      <li><span class="n">5</span><span class="what">음성</span><span class="how">맥미니 localhost:7790 "남성1"(M1)로 직접 생성. 문장 사이 0.6초, 음량 -16 LUFS</span></li>
+      <li><span class="n">6</span><span class="what">장면·렌더</span><span class="how">Remotion 기본 틀, 1080×1920, 한글 자막, Pixabay 음악. 마지막 화면은 광고 표기 카드</span></li>
+      <li><span class="n">7</span><span class="what">정리 <span class="check">확인 ③</span></span><span class="how">videos/날짜_주제/에 mp4, 대본, 출처, 음성, 자료 저장</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-change">
+    <h2 id="h-change">바꾸는 방법</h2>
+    <div class="flow">
+      <div><span class="label">1</span><b>말로 요청</b><span>"릴스 과정 중 ○○ 바꿔줘"</span></div>
+      <div><span class="label">2</span><b>깃허브 원본 수정</b><span>SKILL.md, CLAUDE.md</span></div>
+      <div><span class="label">3</span><b>노션·이 페이지 갱신</b><span>같은 내용으로</span></div>
+      <div><span class="label">4</span><b>슬랙에 알림</b><span>바뀐 점과 의견 요청</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-rules">
+    <h2 id="h-rules">고정 규칙</h2>
+    <ul class="rules">
+      <li>릴스 작업은 ~/Downloads/reels 폴더에서만 한다.</li>
+      <li>음성 파일을 사용자에게 따로 만들어 올리라고 하지 않는다.</li>
+      <li>출처 없는 내용은 넣지 않는다. 해외 통계는 나라를 밝힌다.</li>
+      <li>마지막 화면에 광고 표기를 넣는다.</li>
+    </ul>
+    <p class="quote">이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</p>
+  </section>
+
+  <section aria-labelledby="h-videos">
+    <h2 id="h-videos">영상 목록</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">날짜</th><th scope="col">제목</th><th scope="col">길이</th><th scope="col">자료</th></tr></thead>
+        <tbody>
+          <tr><td class="num">2026-11-22</td><td>겨울 목욕, 온도보다 무서운 건 시간</td><td class="num">35.6초</td><td><a href="https://github.com/kst104/reels">videos/2026-11-22_winter-hot-bath</a></td></tr>
+          <tr><td class="num">2026-11-20</td><td>주방 저울</td><td class="num">27초</td><td><a href="https://github.com/kst104/reels/tree/main/2026-11-20-kitchen-scale">2026-11-20-kitchen-scale</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="foot">아직 확인할 것: 7790 음성 서버 호출 방법(다음 영상에서 확인). 깃허브 저장소는 공개로 운영합니다(2026-11-22 결정).</p>
+</div>

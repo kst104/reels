@@ -1,0 +1,89 @@
+{
+ "version": "1.0",
+ "renderer_family": "explainer-teacher",
+ "render_runtime": "remotion",
+ "composition_mode": "templated",
+ "cuts": [
+  {
+   "id": "c1",
+   "source": "remotion:hero_title",
+   "in_seconds": 0.0,
+   "out_seconds": 3.25,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c2",
+   "source": "remotion:callout",
+   "in_seconds": 3.25,
+   "out_seconds": 7.2,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c3",
+   "source": "remotion:callout",
+   "in_seconds": 7.2,
+   "out_seconds": 10.2,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c4",
+   "source": "remotion:stat_card",
+   "in_seconds": 10.2,
+   "out_seconds": 13.1,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c5",
+   "source": "remotion:callout",
+   "in_seconds": 13.1,
+   "out_seconds": 16.8,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c6",
+   "source": "remotion:callout",
+   "in_seconds": 16.8,
+   "out_seconds": 21.2,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c7",
+   "source": "remotion:stat_card",
+   "in_seconds": 21.2,
+   "out_seconds": 24.6,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c8",
+   "source": "remotion:stat_card",
+   "in_seconds": 24.6,
+   "out_seconds": 26.6,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c9",
+   "source": "remotion:text_card",
+   "in_seconds": 26.6,
+   "out_seconds": 29.0,
+   "backgroundColor": "#0F1B26"
+  },
+  {
+   "id": "c10",
+   "source": "remotion:callout",
+   "in_seconds": 29.0,
+   "out_seconds": 34.5,
+   "backgroundColor": "#0F1B26"
+  }
+ ],
+ "subtitles": {
+  "enabled": true,
+  "style": "word-by-word",
+  "font": "Noto Sans CJK KR"
+ },
+ "metadata": {
+  "composition_props": "projects/winter-hot-bath-shorts/artifacts/composition.json",
+  "profile": "tiktok",
+  "caption_timing": "문장 구간은 실측 무음 기준, 문장 안 어절은 글자 수 비례 추정",
+  "revision": "v2: 마지막 장면 광고 표기 노출, 근거 없는 퍼센트 막대 제거, 글씨 확대, 내레이션 -16 LUFS"
+ }
+}
