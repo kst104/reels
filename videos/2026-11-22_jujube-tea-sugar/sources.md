@@ -17,4 +17,11 @@
 - 광고 표기 문구: 2차 자료 기준. 네이버 공식 안내를 확인할 것
 
 ## 음악
-아직 없음. 맥미니 세션에서 Pixabay로 받는다(원본 파일은 저장소에 넣지 않는다).
+Pixabay "Ambient Piano" (leberch), 검색어 "calm ambient piano" — Pixabay Content License (상업 사용 가능, 출처 표기 불필요). 음악 파일은 저장소에 넣지 않았다.
+
+## 제작 기록 (맥미니, 2026-11-22)
+- 음성: 맥미니 localhost:7790 `POST /api/tts` {"voice":"M1","lang":"ko","speed":1.05,"steps":8,"pause":0.3,"format":"wav"} → `GET /audio/<file>`. 문장 6개를 따로 만들어 앞뒤 무음을 자르고 앞 0.3초·문장 사이 0.6초·끝 0.8초로 이음, loudnorm(-16 LUFS). 내레이션 37.6초 (`artifacts/build_narration.py`)
+- 영상: `jujube-tea-sugar_final.mp4` 1080x1920, 30fps, 40.6초(끝 화면 3초 포함), 평균 음량 -17.5dB
+- 자막 수정(같은 날 재렌더): 강조되는 낱말이 1.08배로 커지면서 옆 빈칸을 덮어 "음료는국제암연구기관이"·"요인으로분류했습니다."·"생각하시죠?시판"처럼 붙어 보였다. 이 영상의 `artifacts/hyperframes/index.html`에서만 긴 낱말의 확대율을 줄였다(8자 1.03배 ~ 3자 이하 1.08배 그대로, 43개 낱말은 변화 없음). 틀(`frame2_hyperframes.py`)은 고치지 않았다 — 수정 제안 중. 재렌더 뒤 lint·validate·inspect 오류 0, 장면 10개와 자막 전후 비교를 직접 확인
+- 렌더: 2번 프레임(HyperFrames CLI 0.9.80, GSAP 3.15.0). lint 오류 0(구조 권장 경고만), validate·inspect 오류 0(배경 빛 무늬 panel_out_of_canvas는 의도). 렌더 28.4초
+- 글꼴: Noto Sans CJK KR(SIL OFL 1.1)을 쓰인 글자만 남겨 woff2로 사용. 맥의 Apple SD Gothic Neo는 Aside 샌드박스에서 읽을 수 없어 쓰지 않음. 글꼴 파일은 저장소에 넣지 않았다.
