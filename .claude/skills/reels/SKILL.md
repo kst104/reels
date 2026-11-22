@@ -1,10 +1,10 @@
 ---
 name: reels
-description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 맥미니 localhost:7790 "남성1"(M1) 음성 → Remotion 기본 틀 렌더(1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
-argument-hint: "[영상 주제] (선택: 붙일 상품)"
+description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 맥미니 localhost:7790 "남성1"(M1) 음성 → 사용자가 지정한 틀로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
+argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 ---
 
-# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v2, 2026-11-22)
+# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v4, 2026-11-22: 1번·2번 프레임 추가)
 
 ## 이미 확정된 것 (매번 다시 묻지 않는다)
 
@@ -14,13 +14,17 @@ argument-hint: "[영상 주제] (선택: 붙일 상품)"
 - **Why:** 네이버 쇼핑 커넥트용 영상을 매번 같은 방식으로 빠르게 만들기 위해서
 - **완료 기준:** 사용자 목소리가 들어간 세로 mp4 1개 + 대본에 쓴 정보의 출처 목록, `REELS/videos/YYYY-MM-DD_<주제>/`에 정리
 - **도구:** OpenMontage (github.com/OpenMontageInc/OpenMontage), 파이프라인 `animated-explainer`, `REELS/OpenMontage/`에 설치
-- **렌더링:** Remotion, 기본 틀(templated), 1080x1920 세로(`profile: tiktok`), 한글 자막을 화면에 굽는다
+- **프레임(렌더링 틀):** 사용자가 영상마다 지정한다(2026-11-22 확정).
+  - **1번 = Remotion 기본 틀**(OpenMontage `remotion_render`, templated)
+  - **2번 = HyperFrames 틀**(이 스킬의 `templates/frame2_hyperframes.py`)
+  - 둘 다 1080x1920 세로, 한글 자막을 화면에 굽는다. 대본·음성·음악·자막·광고 표기는 같고 화면 움직임만 다르다.
+  - 지정이 없으면 대본 확인 ① 때 한 번 묻는다. 임의로 고르지 않는다.
 - **음악:** Pixabay 무료 음악 (상업 사용 가능, 출처 표기 불필요)
 - **음성:** 맥미니 `localhost:7790` 음성 서버, "남성1"(파일명 접미사 `M1`). 음성은 스킬이 직접 만든다. 사용자에게 따로 만들어 올리라고 하지 않는다(사용자가 불편하다고 명시함).
 - **대본 형식:** 아래 "A형식" 고정. 콘셉트 3안을 제안하지 않는다.
-- **사용자 확인을 받는 곳:** ① 대본 초안 ② 윤문 결과 ③ 완성 영상. 그 밖의 OpenMontage 승인 단계(제안서·장면 계획 등)는 위 기본값으로 사용자가 미리 승인한 것으로 기록한다.
+- **사용자 확인을 받는 곳:** ① 대본 초안 ② 윤문 결과 ③ 완성 영상 ④ 추천 상품 ⑤ 게시 캡션. 그 밖의 OpenMontage 승인 단계(제안서·장면 계획 등)는 위 기본값으로 사용자가 미리 승인한 것으로 기록한다.
 
-받아야 하는 입력은 **주제**뿐이다. 붙일 상품이 정해져 있으면 함께 받고, 없으면 영상 끝은 "설명란 링크 확인"으로 둔다.
+받아야 하는 입력은 **주제**와 **프레임 번호(1번/2번)**다. 붙일 상품이 정해져 있으면 함께 받고, 없으면 영상 끝은 "설명란 링크 확인"으로 둔다.
 
 ## A형식 (고정)
 
@@ -53,7 +57,9 @@ argument-hint: "[영상 주제] (선택: 붙일 상품)"
    필요: Node.js 22 이상, ffmpeg, Python 3, git.
 3. OpenMontage의 `CLAUDE.md`가 `AGENT_GUIDE.md`를 먼저 읽으라고 요구한다. 읽고 따르되, 이 스킬의 확정 기본값과 충돌하는 부분(콘셉트 3안, 렌더링 엔진 재선택, 단계별 승인)은 사용자의 확정 결정을 따르고 decision_log에 남긴다.
 4. im-not-ai(`humanize-korean` 스킬)가 있는지 확인한다. 없으면 사용자에게 알리고 윤문 단계를 진행하지 않는다.
-5. 사전 점검: `.venv/bin/python -c "from tools.tool_registry import registry; import json; registry.discover(); print(json.dumps(registry.provider_menu_summary()['composition_runtimes']))"` → `remotion`이 `false`면 멈추고 알린다.
+5. 사전 점검: `.venv/bin/python -c "from tools.tool_registry import registry; import json; registry.discover(); print(json.dumps(registry.provider_menu_summary()['composition_runtimes']))"`
+   - 1번이면 `remotion`이 `false`일 때 멈추고 알린다.
+   - 2번이면 `hyperframes`가 `true`인지 보고, `npx hyperframes doctor --json`에서 Node.js·FFmpeg·Chrome 항목이 `ok`인지 확인한다. 글꼴 처리에 `pip install fonttools brotli`가 필요하다.
 6. 음성 서버 확인: `curl -s -o /dev/null -w "%{http_code}" http://localhost:7790/`. 응답이 없으면 사용자에게 음성 프로그램을 켜 달라고 한다.
 7. 프로젝트 생성: `init_project('<id>', title='<한글 제목>', pipeline_type='animated-explainer')`. 중간 산출물은 `OpenMontage/projects/<id>/`, 최종 정리는 `REELS/videos/`.
 
@@ -67,8 +73,8 @@ argument-hint: "[영상 주제] (선택: 붙일 상품)"
 ### 2. 제안 (proposal) — 자동 승인
 
 - 콘셉트는 A형식 1안. 스키마가 3안을 요구하면 같은 형식의 첫 문장 변형으로 채우고 1안을 선택한다.
-- `render_runtime: remotion`, `composition_mode: templated`, `renderer_family: explainer-teacher`, `music_source.source_type: bring_your_own`(provider `pixabay_music`).
-- decision_log: Remotion과 HyperFrames를 모두 `options_considered`에 넣고 HyperFrames는 "사용자 확정 기본값(reels 스킬)"으로 rejected.
+- `render_runtime`: 1번이면 `remotion`, 2번이면 `hyperframes`. `composition_mode: templated`, `renderer_family: explainer-teacher`, `music_source.source_type: bring_your_own`(provider `pixabay_music`).
+- decision_log `render_runtime_selection`: Remotion과 HyperFrames를 모두 `options_considered`에 넣고, 고른 쪽은 "사용자 지정 N번 프레임"으로 적는다.
 - `approval.status: "approved"`, `user_notes: "reels 스킬 상시 승인(2026-11-22)"`.
 
 ### 3. 대본 (script) — 확인 ①②
@@ -102,17 +108,63 @@ argument-hint: "[영상 주제] (선택: 붙일 상품)"
 - 자막: `captions`에 어절 단위 `{word, startMs, endMs}`. 문장 구간은 실측 시각, 문장 안 어절은 글자 수 비례로 나눈다. `captionStyle: {wordsPerPage: 3, fontSize: 64, bottomOffset: 260}`, `captionProps: {fontFamily: "Noto Sans CJK KR, Apple SD Gothic Neo, sans-serif", wordSeparator: " "}`.
 - 마지막 장면은 내레이션이 끝난 뒤 약 3초 더 보여 준다.
 - 렌더 전 `CompositionValidator`가 `valid: True`여야 한다.
+
+#### 5-1. 1번 프레임(Remotion) 렌더
+
 - 렌더: `video_compose.execute({'operation':'remotion_render','composition_data':comp,'output_path':'projects/<id>/renders/final.mp4','profile':'tiktok','proposal_packet':pp})`. 약 4~5분.
   - Remotion이 브라우저를 받으려다 `remotion.media` 접속에 실패하면, 설치된 Chrome headless shell을 `remotion_browser_executable`로 지정한다.
   - Linux 클라우드에서는 한글 글꼴이 없을 수 있다: `apt-get install -y fonts-noto-cjk`. 맥은 기본 한글 글꼴로 대체된다.
+
+#### 5-2. 2번 프레임(HyperFrames) 렌더
+
+- composition.json은 1번과 같은 형식으로 만든다(컷·자막·오디오). 2번일 때만 컷에 선택 필드 `hf`를 넣는다(1번 Remotion에는 넣지 않는다):
+
+  | 컷 | `hf` | 화면 |
+  |---|---|---|
+  | `hero_title` | `{"emphasis": "시간", "icon": "clock"}` | 강조 낱말을 크게, 그 낱말을 말할 때 튀어나옴. 시계 바늘 회전 |
+  | `callout` | `{"fx": "strike", "stamp": "오해", "lines": ["1줄", "2줄"]}` | 줄마다 취소선 + 도장 |
+  | `callout` | `{"fx": "thermo"}` / `{"fx": "arrow_down"}` | 온도계가 차오름 / 아래 화살표가 떨어짐 |
+  | `stat_card` | `{"tag": "기억하세요 ①"}` | 숫자가 0부터 올라감(`stat` 앞 숫자). subtitle의 ` · `는 줄바꿈 |
+  | `text_card` | `{"tag": "기억하세요 ③", "icon": "check"}` | 체크 표시, `, ` 뒤를 강조색 줄로 |
+
+  마지막 컷은 항상 끝 화면(title + 아래 화살표 + text 상자)으로 그린다. text에 광고 표기가 없으면 틀이 경고한다. 예시: `REELS/videos/2026-11-22_winter-hot-bath/artifacts/hyperframes/composition_hf.json`
+- 작업 폴더 만들기: `python <REELS>/.claude/skills/reels/templates/frame2_hyperframes.py projects/<id>` → `projects/<id>/hyperframes/`(index.html, 음성·음악 복사, GSAP, 쓰인 글자만 남긴 한글 글꼴 woff2).
+- 작업 폴더에서 차례로 확인한다. 앞 단계에서 오류가 나면 렌더하지 않는다:
+  1. `npx hyperframes lint --json` → 오류 0. `nested_structure_needs_subcomposition` 같은 구조 권장 경고는 무시해도 된다.
+  2. `npx hyperframes validate --json` → 오류 0
+  3. `npx hyperframes inspect --json` → 오류 0. 배경 빛 무늬의 `panel_out_of_canvas` 정보는 의도된 것이다.
+  4. `npx hyperframes snapshot --at <장면마다 한 시각>` → `.hyperframes/artifacts/snapshots/`의 contact-sheet를 직접 본다(한글, 자막 띄어쓰기, 효과 위치).
+  5. `npx hyperframes render --output ../renders/final.mp4 --fps 30 --quality high --strict`(첫 편 1분 37초)
+- 글꼴은 `@font-face`로 파일을 선언해야 렌더에 쓰인다(안 하면 lint 오류). 틀이 리눅스는 Noto Sans CJK KR, 맥은 Apple SD Gothic Neo를 찾아 쓴다(맥은 미검증). 못 찾으면 `--font-regular`, `--font-bold`로 지정한다.
+- 첫 편 실측: 평균 음량 -17.4dB(1번은 -20.5dB). 6절 음량 기준을 똑같이 적용한다.
 
 ### 6. 확인과 정리 — 확인 ③
 
 - `ffprobe`로 1080x1920·길이를 확인하고, `volumedetect` 평균이 -24dB보다 작으면 음량을 다시 맞춘다.
 - 장면마다 프레임을 한 장씩 뽑아 직접 본다: 한글 깨짐, 글자 크기, 광고 표기 노출 여부.
-- `REELS/videos/YYYY-MM-DD_<주제>/`에 정리: `<주제>_final.mp4`, `script.txt`, `sources.md`(문장별 출처·미확인·음악 라이선스), `audio/`(원본·편집 음성, 음악, timings), `artifacts/`(json 전부).
+- `REELS/videos/YYYY-MM-DD_<주제>/`에 정리(프레임과 상관없이 같은 이름): `<주제>_final.mp4`, `script.txt`, `sources.md`(문장별 출처·미확인·음악 라이선스), `audio/`(원본·편집 음성, 음악, timings), `artifacts/`(json 전부, 2번이면 `artifacts/hyperframes/`에 index.html과 composition_hf.json). `sources.md`에 쓴 프레임(1번/2번)을 적는다. 2번의 글꼴 파일은 저장소에 넣지 않는다.
 - 사용자에게 mp4와 출처를 보여주고 확인받는다.
 - OpenMontage 저장소에 변경이 남지 않았는지 `git status`로 확인한다(`projects/`는 git에서 무시된다).
+
+### 7. 상품 추천 — 확인 ④ (2026-11-22 추가)
+
+- 영상 내용과 가장 맞으면서 최근 1주 가장 많이 팔린 상품을 찾는다.
+- 자료: 네이버+ 스토어 베스트 구매 순위(네이버플러스 스토어 구매 데이터 기반). 주소 형식 `https://snxbest.naver.com/product/best/buy?categoryId=<대분류ID>&sortType=PRODUCT_BUY&periodType=WEEKLY&ageType=ALL` (디지털/가전 = 50000003). 목록은 화면에서 그려지므로 `firecrawl_scrape`의 query(freeform)로 목록을 받고, 고를 후보의 상품명·가격은 directQuote로 원문 확인한다. 순위 숫자는 요약 추출값이라 "약"으로 말한다.
+- 추천할 때 근거(카테고리, 주간, 기준일, 순위)와 대안 1개를 함께 보여준다. 쇼핑 커넥트 등록 여부와 수수료율은 브랜드 커넥트에 로그인해야 보이므로 "미확인"으로 적는다.
+
+### 8. 쇼핑 커넥트 링크
+
+- 링크는 사용자가 네이버 브랜드 커넥트에서 발급해 붙여 준다(로그인이 필요해 클라우드 세션에서는 발급할 수 없다). 맥미니에서 Claude in Chrome이 켜진 세션이라면 그 브라우저로 발급을 도울 수 있는지 먼저 확인한다(미확인).
+- naver.me 링크는 `brandconnect.naver.com/affiliates/...?channelProductNo=<상품번호>`로 연결된다. 상품 페이지는 로그인 화면으로 막혀 상품명을 확인하지 못할 수 있다. 그때는 캡션에 상품명을 단정하지 않고 사용자가 부른 이름을 쓴다.
+- 캡션 속 링크는 인스타그램에서 눌리지 않는다. 같은 링크를 프로필 링크에도 걸어 달라고 알린다(Windsor.ai로 프로필은 못 고친다).
+
+### 9. 인스타그램 게시 — 확인 ⑤
+
+- mp4를 먼저 깃허브 `main`에 올린다. 영상 주소는 `https://raw.githubusercontent.com/kst104/reels/main/videos/<폴더>/<파일>.mp4`(공개 저장소).
+- 캡션 틀: 첫 문장 → 원인 2줄 → 수칙 → "<용도> <상품 호칭>: <링크>" → 출처 → 의료 안내 → 광고 표기 → 해시태그 5개.
+- 사용자가 캡션을 확인하면 Windsor.ai `instagram` 커넥터의 `create_video_post`로 게시한다(계정 kst1_04, `thumb_offset: 1500`, `share_to_feed: true`).
+- 게시 뒤 `get_data`(fields: media_id, media_permalink, media_product_type, timestamp, date_preset `last_1dT`)로 주소를 확인한다. Windsor.ai 체험(TRIAL) 요금제에서는 `force_refresh`를 쓸 수 없다.
+- 영상 폴더에 `caption.md`(게시 주소, 상품 링크, 추천 근거, 캡션)를 남기고, 노션·아티팩트 영상 목록에 게시 링크를 적고, 슬랙 `#reels`에 알린다.
 
 ## 연결된 곳과 갱신 규칙
 
@@ -128,9 +180,11 @@ argument-hint: "[영상 주제] (선택: 붙일 상품)"
 
 - 건강·의학 주제는 진단·치료를 대신하지 않는다는 뜻이 드러나게 쓰고, 과장하지 않는다.
 - Remotion은 회사 규모에 따라 유료 라이선스가 필요할 수 있다. 개인 사용이 아니게 되면 remotion.dev/license를 확인한다.
+- HyperFrames는 Apache 2.0이다.
 - OpenMontage의 라이선스는 AGPL-3.0이다. 코드를 고쳐 배포하거나 서비스로 제공할 계획이 생기면 라이선스 조건을 따로 확인한다.
 
 ## 아직 확인하지 않은 부분
 
 - 맥미니 `localhost:7790` 음성 서버의 API와 "남성1"(M1) 지정 방법 → 다음 영상에서 확인하고 4절을 갱신한다.
+- 2번 틀은 클라우드(리눅스)에서만 시험했다. 맥미니에서의 글꼴 경로·렌더 시간은 미확인.
 - 문장 안 어절 자막 타이밍은 추정치다(문장 경계는 실측). 음성 인식 도구가 생기면 단어 단위로 맞춘다.

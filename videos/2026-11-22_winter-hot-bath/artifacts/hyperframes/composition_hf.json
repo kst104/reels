@@ -1,0 +1,494 @@
+{
+ "renderer_family": "explainer-teacher",
+ "cuts": [
+  {
+   "id": "c1",
+   "source": "",
+   "type": "hero_title",
+   "in_seconds": 0.0,
+   "out_seconds": 3.25,
+   "text": "온도보다 무서운 건 시간",
+   "heroSubtitle": "겨울 목욕",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "hf": {
+    "emphasis": "시간",
+    "icon": "clock"
+   }
+  },
+  {
+   "id": "c2",
+   "source": "",
+   "type": "callout",
+   "in_seconds": 3.25,
+   "out_seconds": 7.2,
+   "callout_type": "warning",
+   "title": "흔한 오해",
+   "text": "뜨거운 물에 오래 담가야 피로가 풀린다?",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "fontSize": 58,
+   "titleFontSize": 46,
+   "hf": {
+    "fx": "strike",
+    "stamp": "오해",
+    "lines": [
+     "뜨거운 물에 오래 담가야",
+     "피로가 풀린다?"
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "source": "",
+   "type": "callout",
+   "in_seconds": 7.2,
+   "out_seconds": 10.2,
+   "callout_type": "info",
+   "title": "일본 소비자청",
+   "text": "뜨거운 탕에 오래 있는 것, 겨울 욕조 사고의 원인",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "fontSize": 58,
+   "titleFontSize": 46
+  },
+  {
+   "id": "c4",
+   "source": "",
+   "type": "stat_card",
+   "in_seconds": 10.2,
+   "out_seconds": 13.1,
+   "stat": "7,776명",
+   "subtitle": "2024년 일본 욕조 익사자 · 65세 이상 약 95%",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D"
+  },
+  {
+   "id": "c5",
+   "source": "",
+   "type": "callout",
+   "in_seconds": 13.1,
+   "out_seconds": 16.8,
+   "title": "오래 있을수록",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF5A5F",
+   "callout_type": "warning",
+   "text": "체온이 올라 의식이 흐려질 수 있습니다",
+   "fontSize": 58,
+   "titleFontSize": 46,
+   "hf": {
+    "fx": "thermo"
+   }
+  },
+  {
+   "id": "c6",
+   "source": "",
+   "type": "callout",
+   "in_seconds": 16.8,
+   "out_seconds": 21.2,
+   "callout_type": "warning",
+   "title": "일어설 때",
+   "text": "혈압이 뚝 떨어져 쓰러질 수 있습니다",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF5A5F",
+   "fontSize": 58,
+   "titleFontSize": 46,
+   "hf": {
+    "fx": "arrow_down"
+   }
+  },
+  {
+   "id": "c7",
+   "source": "",
+   "type": "stat_card",
+   "in_seconds": 21.2,
+   "out_seconds": 24.6,
+   "stat": "41℃ 이하",
+   "subtitle": "물 온도",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "hf": {
+    "tag": "기억하세요 ①"
+   }
+  },
+  {
+   "id": "c8",
+   "source": "",
+   "type": "stat_card",
+   "in_seconds": 24.6,
+   "out_seconds": 26.6,
+   "stat": "10분 이내",
+   "subtitle": "담그는 시간",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "hf": {
+    "tag": "기억하세요 ②"
+   }
+  },
+  {
+   "id": "c9",
+   "source": "",
+   "type": "text_card",
+   "in_seconds": 26.6,
+   "out_seconds": 29.0,
+   "text": "들어가기 전, 욕실부터 데우기",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "hf": {
+    "tag": "기억하세요 ③"
+   }
+  },
+  {
+   "id": "c10",
+   "source": "",
+   "type": "callout",
+   "in_seconds": 29.0,
+   "out_seconds": 34.5,
+   "text": "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 지병이 있거나 고령이면 의사와 상담하세요.",
+   "backgroundColor": "#0F1B26",
+   "color": "#F4F7FA",
+   "accentColor": "#FF8A3D",
+   "callout_type": "info",
+   "title": "자세한 건 설명란 링크에서",
+   "fontSize": 40,
+   "titleFontSize": 56
+  }
+ ],
+ "captions": [
+  {
+   "word": "겨울",
+   "startMs": 300,
+   "endMs": 579
+  },
+  {
+   "word": "목욕,",
+   "startMs": 579,
+   "endMs": 997
+  },
+  {
+   "word": "온도보다",
+   "startMs": 997,
+   "endMs": 1556
+  },
+  {
+   "word": "무서운",
+   "startMs": 1556,
+   "endMs": 1974
+  },
+  {
+   "word": "건",
+   "startMs": 1974,
+   "endMs": 2114
+  },
+  {
+   "word": "시간입니다.",
+   "startMs": 2114,
+   "endMs": 2952
+  },
+  {
+   "word": "뜨거운",
+   "startMs": 3552,
+   "endMs": 4047
+  },
+  {
+   "word": "물에",
+   "startMs": 4047,
+   "endMs": 4377
+  },
+  {
+   "word": "오래",
+   "startMs": 4377,
+   "endMs": 4707
+  },
+  {
+   "word": "담가야",
+   "startMs": 4707,
+   "endMs": 5202
+  },
+  {
+   "word": "피로가",
+   "startMs": 5202,
+   "endMs": 5698
+  },
+  {
+   "word": "풀린다고",
+   "startMs": 5698,
+   "endMs": 6358
+  },
+  {
+   "word": "생각하시죠?",
+   "startMs": 6358,
+   "endMs": 7349
+  },
+  {
+   "word": "일본",
+   "startMs": 7349,
+   "endMs": 7679
+  },
+  {
+   "word": "소비자청은",
+   "startMs": 7679,
+   "endMs": 8504
+  },
+  {
+   "word": "뜨거운",
+   "startMs": 8504,
+   "endMs": 8999
+  },
+  {
+   "word": "탕에",
+   "startMs": 8999,
+   "endMs": 9330
+  },
+  {
+   "word": "오래",
+   "startMs": 9330,
+   "endMs": 9660
+  },
+  {
+   "word": "있는",
+   "startMs": 9660,
+   "endMs": 9990
+  },
+  {
+   "word": "것을",
+   "startMs": 9990,
+   "endMs": 10320
+  },
+  {
+   "word": "겨울",
+   "startMs": 10320,
+   "endMs": 10650
+  },
+  {
+   "word": "욕조",
+   "startMs": 10650,
+   "endMs": 10981
+  },
+  {
+   "word": "사고",
+   "startMs": 10981,
+   "endMs": 11311
+  },
+  {
+   "word": "원인으로",
+   "startMs": 11311,
+   "endMs": 11971
+  },
+  {
+   "word": "꼽습니다.",
+   "startMs": 11971,
+   "endMs": 12797
+  },
+  {
+   "word": "오래",
+   "startMs": 13397,
+   "endMs": 13668
+  },
+  {
+   "word": "있으면",
+   "startMs": 13668,
+   "endMs": 14076
+  },
+  {
+   "word": "체온이",
+   "startMs": 14076,
+   "endMs": 14483
+  },
+  {
+   "word": "올라가",
+   "startMs": 14483,
+   "endMs": 14891
+  },
+  {
+   "word": "의식이",
+   "startMs": 14891,
+   "endMs": 15298
+  },
+  {
+   "word": "흐려질",
+   "startMs": 15298,
+   "endMs": 15706
+  },
+  {
+   "word": "수",
+   "startMs": 15706,
+   "endMs": 15841
+  },
+  {
+   "word": "있습니다.",
+   "startMs": 15841,
+   "endMs": 16521
+  },
+  {
+   "word": "또",
+   "startMs": 17121,
+   "endMs": 17270
+  },
+  {
+   "word": "탕에서",
+   "startMs": 17270,
+   "endMs": 17719
+  },
+  {
+   "word": "일어설",
+   "startMs": 17719,
+   "endMs": 18167
+  },
+  {
+   "word": "때",
+   "startMs": 18167,
+   "endMs": 18317
+  },
+  {
+   "word": "혈압이",
+   "startMs": 18317,
+   "endMs": 18766
+  },
+  {
+   "word": "뚝",
+   "startMs": 18766,
+   "endMs": 18915
+  },
+  {
+   "word": "떨어져",
+   "startMs": 18915,
+   "endMs": 19364
+  },
+  {
+   "word": "쓰러질",
+   "startMs": 19364,
+   "endMs": 19813
+  },
+  {
+   "word": "수도",
+   "startMs": 19813,
+   "endMs": 20112
+  },
+  {
+   "word": "있습니다.",
+   "startMs": 20112,
+   "endMs": 20860
+  },
+  {
+   "word": "그래서",
+   "startMs": 21460,
+   "endMs": 21943
+  },
+  {
+   "word": "기억하세요.",
+   "startMs": 21943,
+   "endMs": 22909
+  },
+  {
+   "word": "물은",
+   "startMs": 22909,
+   "endMs": 23231
+  },
+  {
+   "word": "41도",
+   "startMs": 23231,
+   "endMs": 23714
+  },
+  {
+   "word": "이하,",
+   "startMs": 23714,
+   "endMs": 24197
+  },
+  {
+   "word": "담그는",
+   "startMs": 24197,
+   "endMs": 24680
+  },
+  {
+   "word": "시간은",
+   "startMs": 24680,
+   "endMs": 25164
+  },
+  {
+   "word": "10분",
+   "startMs": 25164,
+   "endMs": 25647
+  },
+  {
+   "word": "이내.",
+   "startMs": 25647,
+   "endMs": 26130
+  },
+  {
+   "word": "들어가기",
+   "startMs": 26130,
+   "endMs": 26774
+  },
+  {
+   "word": "전에",
+   "startMs": 26774,
+   "endMs": 27096
+  },
+  {
+   "word": "욕실부터",
+   "startMs": 27096,
+   "endMs": 27740
+  },
+  {
+   "word": "데우세요.",
+   "startMs": 27740,
+   "endMs": 28545
+  },
+  {
+   "word": "자세한",
+   "startMs": 29146,
+   "endMs": 29542
+  },
+  {
+   "word": "건",
+   "startMs": 29542,
+   "endMs": 29674
+  },
+  {
+   "word": "설명란",
+   "startMs": 29674,
+   "endMs": 30070
+  },
+  {
+   "word": "링크에서",
+   "startMs": 30070,
+   "endMs": 30598
+  },
+  {
+   "word": "확인하세요.",
+   "startMs": 30598,
+   "endMs": 31391
+  }
+ ],
+ "captionStyle": {
+  "wordsPerPage": 3,
+  "fontSize": 64,
+  "bottomOffset": 260
+ },
+ "captionProps": {
+  "fontFamily": "Noto Sans CJK KR, Noto Sans KR, sans-serif",
+  "wordSeparator": " "
+ },
+ "audio": {
+  "narration": {
+   "src": "/home/user/openmontage-work/OpenMontage/projects/winter-hot-bath-shorts/assets/audio/narration_norm.wav",
+   "volume": 1.0
+  },
+  "music": {
+   "src": "/home/user/openmontage-work/OpenMontage/projects/winter-hot-bath-shorts/assets/music/bgm.mp3",
+   "volume": 0.07,
+   "fadeInSeconds": 1.5,
+   "fadeOutSeconds": 2.5
+  }
+ }
+}

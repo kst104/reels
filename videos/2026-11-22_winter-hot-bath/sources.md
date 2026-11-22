@@ -17,3 +17,9 @@
 
 ## 음악
 Pixabay "Ambient Piano" (leberch) — Pixabay Content License (상업 사용 가능, 출처 표기 불필요)
+
+## 2번 프레임 비교판 (HyperFrames, 2026-11-22)
+- 영상: `winter-hot-bath_hyperframes.mp4` (1080x1920, 30fps, 34.5초). 대본·음성·음악·컷 시간·자막·광고 표기는 Remotion판과 같고, 렌더 프레임워크와 움직임만 다르다.
+- 장면 원본: `artifacts/hyperframes/index.html` (생성 스크립트 `build_hf.py`, 글꼴 축소 스크립트 `subset_font.py`)
+- 렌더: HyperFrames CLI 0.9.80, GSAP 3.15.0 (HyperFrames 패키지 동봉본)
+- 글꼴: Noto Sans CJK KR을 쓰인 글자만 남겨 woff2로 줄여 사용 (SIL Open Font License 1.1). 글꼴 파일·음악 파일은 저장소에 넣지 않았다.
