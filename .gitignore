@@ -1,0 +1,7 @@
+# 이 폴더 안에 설치해 쓰는 도구(저장소에 넣지 않는다)
+OpenMontage/
+
+# 파이썬·테스트가 남기는 파일
+__pycache__/
+.pytest_cache/
+.coverage
