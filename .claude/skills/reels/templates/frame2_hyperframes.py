@@ -10,12 +10,21 @@ HyperFrames 작업 폴더(index.html + 음성·음악·GSAP·한글 글꼴)를 �
       [--composition <json>] [--out <작업폴더>] \
       [--font-regular <ttf/otf/ttc> --font-bold <ttf/otf/ttc>] [--gsap <gsap.min.js>]
 
+composition.json 맨 위 "hf_style" = 화면 방식 (제작 의뢰 때 사용자에게 묻는다, 기본 "text"):
+  "text"   : 글자 위주. 장면이 들어올 때만 움직인다
+  "motion" : + 떠오르는 입자 배경, 장면마다 천천히 다가가는 카메라, 그림(찻잔·막대 도표)
+  "photo"  : + 컷마다 hf.photo 사진을 어둡게 깔고 천천히 확대·이동(켄 번스)
+
 composition.json 컷마다 넣을 수 있는 선택 필드 "hf" (1번 프레임에는 넣지 않는다):
-  hero_title : {"emphasis": "시간", "icon": "clock"}      emphasis 기본값 = text의 마지막 낱말
+  hero_title : {"emphasis": "시간", "icon": "clock"|"cup"}  emphasis 기본값 = text의 마지막 낱말
   callout    : {"fx": "strike"|"thermo"|"arrow_down", "stamp": "오해", "lines": ["1줄", "2줄"]}
-  stat_card  : {"tag": "기억하세요 ①"}                    stat 앞 숫자는 0부터 올라간다
-  text_card  : {"tag": "기억하세요 ③", "icon": "check"|"none"}
-마지막 컷은 항상 끝 화면(title + 아래 화살표 + text 상자)으로 그린다. text에 광고 표기를 넣는다.
+  stat_card  : {"tag": "기억하세요 ①", "icon": "cup",        stat 앞 숫자는 0부터 올라간다
+                "gauge": {"value": 30, "max": 50, "max_label": "하루 권고 50g", "mark": 25, "mark_label": "절반"}}
+  text_card  : {"tag": "기억하세요 ③", "icon": "check"|"cup"|"none"}
+  모든 컷    : {"photo": "assets/images/c1.webp", "photo_focus": "50% 40%"}  photo 방식에서만 쓴다.
+              상대 경로는 프로젝트 폴더 기준. AI 사진이면 sources.md에 만든 도구를 적는다.
+"cup" 그림과 gauge 막대는 motion·photo 방식에서만 그린다(text 방식에서는 cup → check).
+마지막 컷은 항상 끝 화면(title + 아래 화살표 + text 상자)으로 그린다. text에 광고 표기를 넣는다. 사진은 깔지 않는다.
 
 필요: Python 3, fontTools + brotli (pip install fonttools brotli), Node 22+, FFmpeg, Chrome.
 """
@@ -66,6 +75,23 @@ def caption_pop_scale(word: str) -> float:
     return round(min(CAPTION_POP_MAX, 1 + CAPTION_POP_GROW_PX / width), 3)
 
 
+STYLES = ("text", "motion", "photo")
+CAMERA_PUSH = 1.05  # motion: 장면이 끝날 때까지 글자 묶음이 커지는 배율
+PHOTO_ZOOM = (1.02, 1.14)  # photo: 사진 확대 시작·끝 배율
+PHOTO_PAN_PX = 24  # photo: 사진이 옆으로 흐르는 거리(컷마다 방향을 바꾼다)
+PARTICLES = 16  # motion: 떠오르는 입자 수
+
+
+def photo_dest(cid: str, src: str) -> str:
+    """작업 폴더 안에서 컷 사진이 놓일 경로."""
+    return f"assets/photos/{cid}{Path(src).suffix.lower() or '.jpg'}"
+
+
+def seeded(i: int, mul: int, add: int = 0) -> float:
+    """렌더마다 같은 값이 나오는 0~1 사이 수(Math.random 대신)."""
+    return ((i * mul + add) % 100) / 100
+
+
 class Builder:
     def __init__(self, comp, timings):
         self.comp = comp
@@ -74,17 +100,94 @@ class Builder:
         self.total = max(float(c["out_seconds"]) for c in self.cuts)
         self.words = comp.get("captions", [])
         self.clips, self.tweens = [], []
+        self.style = comp.get("hf_style", "text")
+        if self.style not in STYLES:
+            raise ValueError(f"hf_style은 {', '.join(STYLES)} 중 하나여야 합니다: {self.style!r}")
+        self.motion = self.style in ("motion", "photo")
+        self.photos = 0
 
     # ------------------------------------------------------------ helpers
-    def scene(self, c, inner):
+    def scene(self, c, inner, photo=True):
         cid, s, e = c["id"], float(c["in_seconds"]), float(c["out_seconds"])
         dur = e - s - (EPS if e < self.total else 0)
+        layers = self.photo_layer(c, s, dur) if photo else ""
         self.clips.append(
             f'<section id="{cid}" class="clip scene" data-start="{f(s)}" '
-            f'data-duration="{f(dur)}" data-track-index="1">{inner}</section>')
+            f'data-duration="{f(dur)}" data-track-index="1">{layers}{inner}</section>')
+        if self.motion:
+            self.tw(f'tl.fromTo("#{cid} .stage", {{scale: 1}}, {{scale: {CAMERA_PUSH}, duration: {f(dur)}, ease: "none"}}, {f(s)});')
         if e < self.total:
             self.tw(f'tl.to("#{cid} .stage", {{opacity: 0, y: -30, duration: 0.22, ease: "power2.in"}}, {f(e - 0.24)});')
         return s, e
+
+    def photo_layer(self, c, s, dur):
+        hf, cid = c.get("hf", {}), c["id"]
+        if self.style != "photo" or not hf.get("photo"):
+            return ""
+        x0, x1 = (-PHOTO_PAN_PX, PHOTO_PAN_PX) if self.photos % 2 == 0 else (PHOTO_PAN_PX, -PHOTO_PAN_PX)
+        self.photos += 1
+        z0, z1 = PHOTO_ZOOM
+        self.tw(f'tl.from("#{cid}-photo", {{opacity: 0, duration: 0.3, ease: "power1.out"}}, {f(s)});')
+        self.tw(f'tl.fromTo("#{cid}-img", {{scale: {z0}, x: {x0}}}, {{scale: {z1}, x: {x1}, duration: {f(dur)}, ease: "none"}}, {f(s)});')
+        focus = esc(hf.get("photo_focus", "50% 50%"))
+        return (f'<div class="photo" id="{cid}-photo"><img id="{cid}-img" src="{esc(photo_dest(cid, hf["photo"]))}" '
+                f'style="object-position:{focus}" alt="" /></div><div class="shade"></div>')
+
+    def cup(self, cid, s, e):
+        """김이 오르는 찻잔 그림(motion 이상). 김 세 줄이 번갈아 피어오른다."""
+        steam = "".join(
+            f'<path id="{cid}-st{i}" d="M{x} 86 q -14 -18 0 -36 q 14 -18 0 -36" fill="none" stroke="{FG}" '
+            f'stroke-width="8" stroke-linecap="round" opacity="0" />' for i, x in enumerate((62, 90, 118)))
+        svg = (f'<svg class="cup" id="{cid}-cup" viewBox="0 0 200 220" width="230" height="253">{steam}'
+               f'<path d="M30 100 H150 V138 Q150 198 90 198 Q30 198 30 138 Z" fill="{ACCENT}" />'
+               f'<path d="M150 114 h10 a22 22 0 0 1 0 44 h-12" fill="none" stroke="{ACCENT}" stroke-width="12" />'
+               f'<rect x="12" y="204" width="176" height="12" rx="6" fill="{FG}" opacity="0.5" /></svg>')
+        self.tw(f'tl.from("#{cid}-cup", {{scale: 0.6, opacity: 0, duration: 0.45, ease: "back.out(1.8)"}}, {f(s + 0.1)});')
+        reps = max(0, int((e - s - 0.8) / 1.1) - 1)
+        for i in range(3):
+            start = s + 0.4 + 0.35 * i
+            self.tw(f'tl.set("#{cid}-st{i}", {{y: 14, opacity: 0}}, {f(s)});')
+            self.tw(f'tl.to("#{cid}-st{i}", {{keyframes: [{{y: 0, opacity: 0.85, duration: 0.5, ease: "sine.out"}}, '
+                    f'{{y: -22, opacity: 0, duration: 0.6, ease: "sine.in"}}], repeat: {reps}}}, {f(start)});')
+        return svg
+
+    def gauge(self, cid, g, s):
+        """하루 권고량 대비 막대(motion 이상). 값이 절반을 넘으면 빨간색."""
+        value, top = float(g["value"]), float(g["max"])
+        if top <= 0:
+            raise ValueError(f"{cid}: gauge.max는 0보다 커야 합니다")
+        ratio = max(0.0, min(1.0, value / top))
+        color = WARN if ratio >= 0.5 else ACCENT
+        mark = ""
+        if g.get("mark") is not None:
+            pct = max(0.0, min(100.0, float(g["mark"]) / top * 100))
+            mark = f'<div class="g-mark" style="left:{f(pct)}%"><span>{esc(g.get("mark_label", ""))}</span></div>'
+        self.tw(f'tl.from("#{cid}-gauge", {{y: 30, opacity: 0, duration: 0.4, ease: "power2.out"}}, {f(s + 0.55)});')
+        self.tw(f'tl.fromTo("#{cid}-gfill", {{scaleX: 0}}, {{scaleX: {f(ratio)}, duration: 1, ease: "power2.out"}}, {f(s + 0.75)});')
+        return (f'<div class="gauge" id="{cid}-gauge"><div class="g-track"><div class="g-fill" id="{cid}-gfill" '
+                f'style="background:{color}"></div>{mark}</div><div class="g-labels"><span>0</span>'
+                f'<span>{esc(g.get("max_label", ""))}</span></div></div>')
+
+    def particles(self):
+        """화면 아래에서 위로 천천히 떠오르는 입자(motion 이상). 사진 위, 자막 아래에 깔린다."""
+        dots = []
+        for i in range(PARTICLES):
+            size = 8 + int(seeded(i, 37, 13) * 18)
+            left = int(seeded(i, 61) * (W - size))
+            cycle = 7 + seeded(i, 23, 7) * 6
+            start_y = H * seeded(i, 41, 29)
+            first = cycle * (start_y + 60) / (H + 100)
+            dots.append(f'<i class="dot" id="dot{i}" style="left:{left}px;width:{size}px;height:{size}px;'
+                        f'opacity:{f(0.18 + seeded(i, 17, 3) * 0.2)}"></i>')
+            self.tw(f'tl.fromTo("#dot{i}", {{y: {int(start_y)}}}, {{y: -60, duration: {f(first)}, ease: "none"}}, 0);')
+            if first < self.total:
+                reps = max(0, int((self.total - first) // cycle))
+                self.tw(f'tl.fromTo("#dot{i}", {{y: {H + 40}}}, {{y: -60, duration: {f(cycle)}, ease: "none", repeat: {reps}}}, {f(first)});')
+            sway = 1.6 + seeded(i, 29, 11) * 1.4
+            self.tw(f'tl.fromTo("#dot{i}", {{x: -18}}, {{x: 18, duration: {f(sway)}, ease: "sine.inOut", yoyo: true, '
+                    f'repeat: {max(1, int(self.total // sway))}}}, 0);')
+        self.clips.append(f'<div id="fx" class="clip fx" data-start="0" data-duration="{f(self.total)}" '
+                          f'data-track-index="4">{"".join(dots)}</div>')
 
     def tw(self, t):
         self.tweens.append(t)
@@ -132,6 +235,8 @@ class Builder:
                     f'<circle cx="100" cy="100" r="88" fill="none" stroke="{ACCENT}" stroke-width="10"/>'
                     f'<rect id="{cid}-hand" x="95" y="30" width="10" height="74" rx="5" fill="{FG}"/>'
                     f'<circle cx="100" cy="100" r="9" fill="{ACCENT}"/></svg>')
+        elif hf.get("icon") == "cup" and self.motion:
+            icon = self.cup(cid, float(c["in_seconds"]), float(c["out_seconds"]))
         words = rest.split()
         spans = " ".join(f'<span class="w" id="{cid}-w{i}">{esc(w)}</span>' for i, w in enumerate(words))
         pill = f'<div class="pill" id="{cid}-pill">{esc(c["heroSubtitle"])}</div>' if c.get("heroSubtitle") else ""
@@ -139,7 +244,7 @@ class Builder:
         s, e = self.scene(c, f'<div class="stage hero">{pill}{icon}<h1 class="hero-title">{spans}</h1>{big}</div>')
         if pill:
             self.tw(f'tl.from("#{cid}-pill", {{y: -40, opacity: 0, duration: 0.45, ease: "power3.out"}}, {f(s + 0.05)});')
-        if icon:
+        if hf.get("icon") == "clock":
             self.tw(f'tl.from("#{cid}-clock", {{scale: 0.6, opacity: 0, duration: 0.5, ease: "back.out(1.8)"}}, {f(s + 0.15)});')
             self.tw(f'tl.fromTo("#{cid}-hand", {{rotation: 0}}, {{rotation: 540, duration: {f(e - s)}, ease: "none", transformOrigin: "50% 95%"}}, {f(s)});')
         for i in range(len(words)):
@@ -201,8 +306,11 @@ class Builder:
             num_html = esc(stat)
         sub_lines = re.split(r"\s*\|\s*|\s+·\s+", c.get("subtitle", "")) if c.get("subtitle") else []
         sub = "".join(f"<div>{esc(x)}</div>" for x in sub_lines)
-        s, e = self.scene(c, f'<div class="stage stat">{tag}<div class="stat-num" id="{cid}-num">{num_html}</div>'
-                             f'<div class="stat-rule" id="{cid}-rule"></div><div class="stat-sub" id="{cid}-sub">{sub}</div></div>')
+        s0, e0 = float(c["in_seconds"]), float(c["out_seconds"])
+        cup = self.cup(cid, s0, e0) if self.motion and hf.get("icon") == "cup" else ""
+        gauge = self.gauge(cid, hf["gauge"], s0) if self.motion and hf.get("gauge") else ""
+        s, e = self.scene(c, f'<div class="stage stat">{tag}{cup}<div class="stat-num" id="{cid}-num">{num_html}</div>'
+                             f'<div class="stat-rule" id="{cid}-rule"></div><div class="stat-sub" id="{cid}-sub">{sub}</div>{gauge}</div>')
         if tag:
             self.tw(f'tl.from("#{cid}-tag", {{y: -30, opacity: 0, duration: 0.35, ease: "power2.out"}}, {f(s)});')
         self.tw(f'tl.from("#{cid}-num", {{scale: 0.7, opacity: 0, duration: 0.45, ease: "back.out(1.6)"}}, {f(s + 0.05)});')
@@ -220,14 +328,19 @@ class Builder:
         parts = text.split(", ", 1)
         lines = [parts[0] + ",", parts[1]] if len(parts) == 2 else [text]
         tag = f'<div class="tag" id="{cid}-tag">{esc(hf["tag"])}</div>' if hf.get("tag") else ""
-        check = "" if hf.get("icon") == "none" else (
-            f'<div class="check" id="{cid}-check"><svg viewBox="0 0 100 100" width="150" height="150"><circle cx="50" cy="50" r="46" fill="{ACCENT}"/>'
-            f'<polyline points="28,52 44,68 74,36" fill="none" stroke="{BG}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>')
+        icon = hf.get("icon", "check")
+        if icon == "none":
+            check = ""
+        elif icon == "cup" and self.motion:
+            check = self.cup(cid, float(c["in_seconds"]), float(c["out_seconds"]))
+        else:  # text 방식의 cup은 check로 그린다
+            check = (f'<div class="check" id="{cid}-check"><svg viewBox="0 0 100 100" width="150" height="150"><circle cx="50" cy="50" r="46" fill="{ACCENT}"/>'
+                     f'<polyline points="28,52 44,68 74,36" fill="none" stroke="{BG}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>')
         ps = "".join(f'<p class="big-line{" accent" if i == len(lines) - 1 else ""}" id="{cid}-l{i}">{esc(l)}</p>' for i, l in enumerate(lines))
         s, e = self.scene(c, f'<div class="stage textcard">{tag}{check}{ps}</div>')
         if tag:
             self.tw(f'tl.from("#{cid}-tag", {{y: -30, opacity: 0, duration: 0.35, ease: "power2.out"}}, {f(s)});')
-        if check:
+        if 'class="check"' in check:
             self.tw(f'tl.from("#{cid}-check", {{scale: 0, rotation: -90, duration: 0.5, ease: "back.out(2)"}}, {f(s + 0.1)});')
         for i in range(len(lines)):
             self.tw(f'tl.from("#{cid}-l{i}", {{y: 40, opacity: 0, duration: 0.4, ease: "power3.out"}}, {f(s + 0.3 + 0.25 * i)});')
@@ -241,7 +354,7 @@ class Builder:
         s, e = self.scene(c, f'<div class="stage endcard"><p class="end-title" id="{cid}-title">{esc(title)}</p>'
                              f'<div class="end-arrow" id="{cid}-arrow"><svg viewBox="0 0 100 100" width="120" height="120">'
                              f'<polyline points="20,35 50,65 80,35" fill="none" stroke="{ACCENT}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
-                             f'<p class="disclosure" id="{cid}-disc">{esc(text)}</p></div>')
+                             f'<p class="disclosure" id="{cid}-disc">{esc(text)}</p></div>', photo=False)
         bounces = max(1, int((e - s - 1.0) // 0.9) - 1)
         self.tw(f'tl.from("#{cid}-title", {{y: 50, opacity: 0, duration: 0.5, ease: "power3.out"}}, {f(s + 0.05)});')
         self.tw(f'tl.from("#{cid}-disc", {{opacity: 0, duration: 0.6, ease: "power1.out"}}, {f(s + 0.4)});')
@@ -297,6 +410,11 @@ class Builder:
                 self.stat(c)
             else:
                 self.textcard(c)
+        if self.motion:
+            self.particles()
+        # 진행 막대는 장면(사진) 위에 그려야 가려지지 않는다
+        self.clips.append(f'<div id="hud" class="clip" data-start="0" data-duration="{f(self.total)}" data-track-index="6">'
+                          '<div class="progress"><div class="progress-fill" id="progress-fill"></div></div></div>')
         self.captions()
         music = self.comp.get("audio", {}).get("music") or {}
         vol = float(music.get("volume", 0.07))
@@ -312,8 +430,7 @@ class Builder:
                      f'tl.to("#bgm", {{volume: 0, duration: {f(fout)}, ease: "none"}}, {f(self.total - fout)});']
         tweens = head + self.tweens
         bg = (f'<div id="bg" class="clip" data-start="0" data-duration="{f(self.total)}" data-track-index="0">'
-              '<div class="bg-fill"></div><div class="glow g1" id="glow1"></div><div class="glow g2" id="glow2"></div>'
-              '<div class="progress"><div class="progress-fill" id="progress-fill"></div></div></div>')
+              '<div class="bg-fill"></div><div class="glow g1" id="glow1"></div><div class="glow g2" id="glow2"></div></div>')
         audio = (f'<audio id="nar" src="assets/narration.wav" data-start="0" data-duration="{f(self.timings["total"])}" '
                  f'data-track-index="10" data-volume="1"></audio>')
         if music:
@@ -392,6 +509,20 @@ body {{ margin:0; background:var(--bg); color:var(--fg); font-family:"HF KR",san
 .end-title {{ margin:0; font-size:84px; font-weight:900; line-height:1.3; max-width:880px; }}
 .end-arrow {{ margin:40px 0 60px; }}
 .disclosure {{ margin:0; padding:36px 44px; border-radius:24px; background:rgba(244,247,250,0.08); font-size:42px; font-weight:400; line-height:1.55; max-width:900px; color:var(--fg); }}
+.photo {{ position:absolute; inset:0; overflow:hidden; }}
+.photo img {{ display:block; width:100%; height:100%; object-fit:cover; }}
+.shade {{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,18,26,0.58) 0%, rgba(10,18,26,0.66) 50%, rgba(10,18,26,0.9) 100%); }}
+.scene .stage {{ position:relative; }}
+.photo ~ .stage {{ text-shadow:0 4px 18px rgba(0,0,0,0.6); }}
+.fx {{ pointer-events:none; }}
+.dot {{ position:absolute; top:0; border-radius:50%; background:#FFFFFF; filter:blur(2px); }}
+.cup {{ display:block; margin:0 0 40px; overflow:visible; }}
+.gauge {{ width:860px; margin-top:80px; text-shadow:none; }}
+.g-track {{ position:relative; height:44px; border-radius:22px; background:rgba(244,247,250,0.18); }}
+.g-fill {{ display:block; width:100%; height:100%; border-radius:22px; transform-origin:0% 50%; }}
+.g-mark {{ position:absolute; top:-18px; bottom:-18px; width:6px; margin-left:-3px; border-radius:3px; background:var(--fg); }}
+.g-mark span {{ position:absolute; bottom:-62px; left:50%; transform:translateX(-50%); white-space:nowrap; font-size:38px; font-weight:700; }}
+.g-labels {{ display:flex; justify-content:space-between; margin-top:18px; font-size:38px; font-weight:700; opacity:0.85; }}
 .caption {{ display:flex; align-items:flex-end; justify-content:center; padding:0 70px 260px; }}
 .cap-box {{ display:block; max-width:940px; padding:18px 34px; border-radius:22px; background:rgba(6,12,18,0.78); text-align:center; line-height:1.3; font-size:64px; font-weight:900; }}
 .cw {{ display:inline-block; font-size:64px; font-weight:900; color:var(--fg); }}
@@ -449,6 +580,27 @@ def subset_fonts(html, out_dir, reg_path, bold_path):
     return reg_path, bold_path
 
 
+def copy_photos(comp, project, ws):
+    """photo 방식이면 컷 사진을 작업 폴더 assets/photos/로 복사한다. 없는 파일은 바로 멈춘다."""
+    if comp.get("hf_style") != "photo":
+        return
+    missing = []
+    for c in comp["cuts"]:
+        src = c.get("hf", {}).get("photo")
+        if not src:
+            continue
+        path = Path(os.path.expanduser(src))
+        path = path if path.is_absolute() else project / path
+        if not path.is_file():
+            missing.append(f'{c["id"]}: {path}')
+            continue
+        dest = ws / photo_dest(c["id"], src)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(path, dest)
+    if missing:
+        sys.exit("사진 파일을 찾지 못했습니다:\n  " + "\n  ".join(missing))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("project")
@@ -465,11 +617,12 @@ def main():
     for d in ("assets", "vendor", "fonts"):
         (ws / d).mkdir(parents=True, exist_ok=True)
     nar = comp.get("audio", {}).get("narration", {}).get("src") or str(P / "assets/audio/narration_norm.wav")
-    shutil.copyfile(nar, ws / "assets/narration.wav")
+    shutil.copyfile(os.path.expanduser(nar), ws / "assets/narration.wav")  # 기록용 json은 ~/ 경로를 쓴다
     music = comp.get("audio", {}).get("music", {}).get("src")
     if music:
-        shutil.copyfile(music, ws / "assets/bgm.mp3")
+        shutil.copyfile(os.path.expanduser(music), ws / "assets/bgm.mp3")
     shutil.copyfile(find_gsap(a.gsap), ws / "vendor/gsap.min.js")
+    copy_photos(comp, P, ws)
     html = Builder(comp, timings).build()
     (ws / "index.html").write_text(html, encoding="utf-8")
     r, b = subset_fonts(html, ws / "fonts", a.font_regular, a.font_bold)

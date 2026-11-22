@@ -1,10 +1,10 @@
 ---
 name: reels
-description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 저장소 스크립트로 "남성1"(M1) 음성 직접 생성(Supertonic 3, 맥미니·클라우드 공통) → 사용자가 지정한 틀로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
-argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
+description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 저장소 스크립트로 "남성1"(M1) 음성 직접 생성(Supertonic 3, 맥미니·클라우드 공통) → 사용자가 지정한 틀과 화면 방식으로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 화면 방식 글자·움직임·사진, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
+argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] (선택: 붙일 상품)"
 ---
 
-# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v5, 2026-11-22: 음성을 저장소 스크립트로 직접 생성)
+# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v6, 2026-11-23: 화면 방식 3가지를 의뢰 때 묻는다)
 
 ## 이미 확정된 것 (매번 다시 묻지 않는다)
 
@@ -19,12 +19,17 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
   - **2번 = HyperFrames 틀**(이 스킬의 `templates/frame2_hyperframes.py`)
   - 둘 다 1080x1920 세로, 한글 자막을 화면에 굽는다. 대본·음성·음악·자막·광고 표기는 같고 화면 움직임만 다르다.
   - 지정이 없으면 대본 확인 ① 때 한 번 묻는다. 임의로 고르지 않는다.
+- **화면 방식:** 제작 의뢰를 받으면 영상마다 묻는다(2026-11-23 사용자 지정). 의뢰에 없으면 대본 확인 ① 때 프레임과 함께 묻고, 임의로 고르지 않는다.
+  - **글자** = 글자 위주. 장면이 들어올 때만 움직인다(2026-11-22까지의 방식)
+  - **움직임** = 글자 + 떠오르는 입자 배경, 장면마다 천천히 다가가는 카메라, 그림(김 나는 찻잔, 권고량 막대 도표)
+  - **사진** = 움직임 + 장면마다 사진을 어둡게 깔고 천천히 확대·이동. 사진은 AI로 만든다(5-2절)
+  - 움직임·사진은 2번 틀에만 있다. 1번(Remotion)을 고른 뒤 움직임·사진을 원하면 2번으로 바꿀지 묻는다.
 - **음악:** Pixabay 무료 음악 (상업 사용 가능, 출처 표기 불필요)
 - **음성:** Supertonic 3 "남성1"(파일명 접미사 `M1`). 이 스킬의 `templates/make_narration.py`로 직접 만든다. 맥미니 음성 프로그램(`localhost:7790`)과 같은 모델·목소리이고 서버 없이 돌아가므로, 맥미니든 클라우드든 한 세션에서 끝까지 만든다. 음성 때문에 맥미니로 넘기지 않는다(2026-11-22 사용자 지정). 사용자에게 따로 만들어 올리라고 하지 않는다(사용자가 불편하다고 명시함).
 - **대본 형식:** 아래 "A형식" 고정. 콘셉트 3안을 제안하지 않는다.
 - **사용자 확인을 받는 곳:** ① 대본 초안 ② 윤문 결과 ③ 완성 영상 ④ 추천 상품 ⑤ 게시 캡션. 그 밖의 OpenMontage 승인 단계(제안서·장면 계획 등)는 위 기본값으로 사용자가 미리 승인한 것으로 기록한다.
 
-받아야 하는 입력은 **주제**와 **프레임 번호(1번/2번)**다. 붙일 상품이 정해져 있으면 함께 받고, 없으면 영상 끝은 "설명란 링크 확인"으로 둔다.
+받아야 하는 입력은 **주제**, **프레임 번호(1번/2번)**, **화면 방식(글자/움직임/사진)**이다. 붙일 상품이 정해져 있으면 함께 받고, 없으면 영상 끝은 "설명란 링크 확인"으로 둔다.
 
 ## A형식 (고정)
 
@@ -134,8 +139,17 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
   | `callout` | `{"fx": "thermo"}` / `{"fx": "arrow_down"}` | 온도계가 차오름 / 아래 화살표가 떨어짐 |
   | `stat_card` | `{"tag": "기억하세요 ①"}` | 숫자가 0부터 올라감(`stat` 앞 숫자). subtitle의 ` · `는 줄바꿈 |
   | `text_card` | `{"tag": "기억하세요 ③", "icon": "check"}` | 체크 표시, `, ` 뒤를 강조색 줄로 |
+  | `hero_title`·`stat_card`·`text_card` | `{"icon": "cup"}` | 김이 피어오르는 찻잔 그림(움직임·사진 방식만. 글자 방식에서는 체크 표시) |
+  | `stat_card` | `{"gauge": {"value": 30, "max": 50, "max_label": "하루 권고 50g", "mark": 25, "mark_label": "절반"}}` | 기준 대비 막대가 차오름. 절반을 넘으면 빨간색(움직임·사진 방식만). 근거 있는 숫자만 쓴다 |
+  | 모든 컷 | `{"photo": "assets/images/c1.webp", "photo_focus": "50% 40%"}` | 사진을 어둡게 깔고 천천히 확대·이동(사진 방식만, 끝 화면 제외). 경로는 프로젝트 폴더 기준 |
 
-  마지막 컷은 항상 끝 화면(title + 아래 화살표 + text 상자)으로 그린다. text에 광고 표기가 없으면 틀이 경고한다. 예시: `REELS/videos/2026-11-22_winter-hot-bath/artifacts/hyperframes/composition_hf.json`
+  화면 방식은 composition.json 맨 위 `"hf_style"`에 `"text"`(글자, 기본값) / `"motion"`(움직임) / `"photo"`(사진)로 적는다.
+  마지막 컷은 항상 끝 화면(title + 아래 화살표 + text 상자)으로 그린다. text에 광고 표기가 없으면 틀이 경고한다. 예시: 글자 `REELS/videos/2026-11-22_winter-hot-bath/artifacts/hyperframes/composition_hf.json`, 사진 `REELS/videos/2026-11-22_jujube-tea-sugar/artifacts/composition_hf_photo.json`
+- 사진 방식의 사진 만들기(2026-11-23 대추차 시험본에서 확인):
+  - Hugging Face 커넥터의 `gr1_z_image_turbo_generate`(Z-Image Turbo)로 장면마다 1장, `resolution: "864x1536 ( 9:16 )"`, `random_seed: false`와 seed를 적어 다시 만들 수 있게 한다.
+  - 프롬프트는 영어로 "Realistic photograph, <장면 내용>, vertical composition, no text, no logos". 실제 상표·사람 얼굴은 넣지 않는다.
+  - 결과 webp를 `projects/<id>/assets/images/c<번호>.webp`로 복사한다. 무료 사용량이 하루 8장쯤에서 끝났다. 모자라면 다른 장면 사진을 `photo_focus`를 바꿔 다시 쓴다.
+  - 사진은 장면 내용을 돕는 그림일 뿐 근거가 아니다. 사진 속 장면을 사실처럼 말하지 않는다.
 - 작업 폴더 만들기: `python <REELS>/.claude/skills/reels/templates/frame2_hyperframes.py projects/<id>` → `projects/<id>/hyperframes/`(index.html, 음성·음악 복사, GSAP, 쓰인 글자만 남긴 한글 글꼴 woff2).
 - 작업 폴더에서 차례로 확인한다. 앞 단계에서 오류가 나면 렌더하지 않는다:
   1. `npx hyperframes lint --json` → 오류 0. `nested_structure_needs_subcomposition` 같은 구조 권장 경고는 무시해도 된다.
@@ -145,13 +159,14 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
   5. `npx hyperframes render --output ../renders/final.mp4 --fps 30 --quality high --strict`(첫 편 1분 37초)
 - 글꼴은 `@font-face`로 파일을 선언해야 렌더에 쓰인다(안 하면 lint 오류). 틀이 리눅스는 Noto Sans CJK KR, 맥은 Apple SD Gothic Neo(`/System/Library/Fonts/AppleSDGothicNeo.ttc`, 2026-11-22 맥미니 확인, 렌더 23초)를 찾아 쓴다. 못 찾으면 `--font-regular`, `--font-bold`로 지정한다. 글꼴에 따라 글자 폭이 달라 줄바꿈 위치가 바뀔 수 있으니 snapshot에서 확인한다.
 - 자막에서 강조되는 낱말은 길이에 맞춰 1.03~1.08배로 커진다(`caption_pop_scale`). 긴 낱말이 1.08배로 커지면 옆 빈칸을 덮어 띄어쓰기가 사라져 보여서 2026-11-22에 고쳤다. 틀 테스트: `python -m pytest tests/test_frame2_hyperframes.py`.
+- 사진 방식 실측(대추차 40.6초, 맥미니): 렌더 37초. 렌더 그대로는 25MB(글자 방식 8MB)라, `videos/`에 넣기 전에 `ffmpeg -i final.mp4 -c:v libx264 -preset slow -crf 23 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 128k <주제>_final.mp4`로 줄인다(7.7MB, 화질 차이 거의 없음). 크롬 업로드 도구가 한 번에 10MB까지만 올린다.
 - 첫 편 실측: 평균 음량 -17.4dB(1번은 -20.5dB). 6절 음량 기준을 똑같이 적용한다.
 
 ### 6. 확인과 정리 — 확인 ③
 
 - `ffprobe`로 1080x1920·길이를 확인하고, `volumedetect` 평균이 -24dB보다 작으면 음량을 다시 맞춘다.
 - 장면마다 프레임을 한 장씩 뽑아 직접 본다: 한글 깨짐, 글자 크기, 광고 표기 노출 여부.
-- `REELS/videos/YYYY-MM-DD_<주제>/`에 정리(프레임과 상관없이 같은 이름): `<주제>_final.mp4`, `script.txt`, `sources.md`(문장별 출처·미확인·음악 라이선스), `audio/`(원본·편집 음성, 음악, timings), `artifacts/`(json 전부, 2번이면 `artifacts/hyperframes/`에 index.html과 composition_hf.json). `sources.md`에 쓴 프레임(1번/2번)을 적는다. 2번의 글꼴 파일은 저장소에 넣지 않는다.
+- `REELS/videos/YYYY-MM-DD_<주제>/`에 정리(프레임과 상관없이 같은 이름): `<주제>_final.mp4`, `script.txt`, `sources.md`(문장별 출처·미확인·음악 라이선스), `audio/`(원본·편집 음성, 음악, timings), `artifacts/`(json 전부, 2번이면 `artifacts/hyperframes/`에 index.html과 composition_hf.json). `sources.md`에 쓴 프레임(1번/2번)과 화면 방식을 적는다. 사진 방식이면 사진을 `artifacts/images/`에 두고, `sources.md`에 AI로 만든 사진이라는 것과 도구·seed를 적는다. 2번의 글꼴 파일은 저장소에 넣지 않는다.
 - 사용자에게 mp4와 출처를 보여주고 확인받는다.
 - OpenMontage 저장소에 변경이 남지 않았는지 `git status`로 확인한다(`projects/`는 git에서 무시된다).
 
@@ -196,4 +211,5 @@ argument-hint: "[영상 주제] [1번|2번 프레임] (선택: 붙일 상품)"
 
 - 클라우드 세션에서 `make_narration.py`가 음성 모델을 내려받는지(huggingface.co 접속) → 다음 클라우드 영상에서 확인한다. 맥미니에서는 2026-11-22에 확인했다(모델이 이미 받아져 있던 상태).
 - 1번 틀(Remotion)은 맥미니에 설치만 했고 렌더는 아직 돌려 보지 않았다. 2번 틀은 클라우드와 맥미니 양쪽에서 확인했다(2026-11-22).
+- 사진 방식은 맥미니에서만 렌더해 봤다(2026-11-23). 사진 방식으로 인스타그램에 올린 적은 아직 없다. 실제 같은 AI 사진에 인스타그램 "AI 정보" 표시를 붙여야 하는지는 확인하지 않았다 → 처음 게시할 때 확인한다.
 - 문장 안 어절 자막 타이밍은 추정치다(문장 경계는 실측). 음성 인식 도구가 생기면 단어 단위로 맞춘다.
