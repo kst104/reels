@@ -37,7 +37,7 @@ FONT_CANDIDATES = [  # (regular, bold, 글꼴 이름)
     ("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
      "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc", "Noto Sans CJK KR"),
     ("/System/Library/Fonts/AppleSDGothicNeo.ttc",
-     "/System/Library/Fonts/AppleSDGothicNeo.ttc", "Apple SD Gothic Neo"),  # 맥: 미검증
+     "/System/Library/Fonts/AppleSDGothicNeo.ttc", "Apple SD Gothic Neo"),  # 맥: 2026-11-22 확인
 ]
 
 
@@ -47,6 +47,23 @@ def f(v):
 
 def esc(s):
     return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+CAPTION_POP_MAX = 1.08  # 강조되는 자막 낱말을 키우는 최대 배율
+CAPTION_POP_GROW_PX = 14  # 낱말이 커지며 양옆으로 넓어지는 폭의 합 한도(낱말 사이 빈칸 약 22px보다 작게)
+CAPTION_HANGUL_PX, CAPTION_LATIN_PX = 58, 34  # 64px 굵은 글꼴의 글자 폭(실측: 한글 8자 = 465px)
+
+
+def caption_width_px(word: str) -> int:
+    return sum(CAPTION_HANGUL_PX if ord(ch) > 0x2E80 else CAPTION_LATIN_PX for ch in word)
+
+
+def caption_pop_scale(word: str) -> float:
+    """강조 낱말 확대율. 긴 낱말은 옆 빈칸을 덮어 띄어쓰기가 사라져 보이지 않게 덜 키운다."""
+    width = caption_width_px(word)
+    if width <= 0:
+        return CAPTION_POP_MAX
+    return round(min(CAPTION_POP_MAX, 1 + CAPTION_POP_GROW_PX / width), 3)
 
 
 class Builder:
@@ -264,7 +281,7 @@ class Builder:
             self.tw(f'tl.from("#cap{pi}-box", {{y: 24, opacity: 0, duration: 0.16, ease: "power2.out"}}, {f(start)});')
             for wi, w in enumerate(page):
                 a, b = w["startMs"] / 1000, w["endMs"] / 1000
-                self.tw(f'tl.to("#cap{pi}-{wi}", {{color: "{ACCENT}", scale: 1.08, duration: 0.08}}, {f(a)});')
+                self.tw(f'tl.to("#cap{pi}-{wi}", {{color: "{ACCENT}", scale: {caption_pop_scale(w["word"])}, duration: 0.08}}, {f(a)});')
                 self.tw(f'tl.to("#cap{pi}-{wi}", {{color: "{FG}", scale: 1, duration: 0.08}}, {f(max(a + 0.09, b - 0.04))});')
 
     # ------------------------------------------------------------ assemble
