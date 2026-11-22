@@ -1,0 +1,160 @@
+{
+  "version": "1.0",
+  "topic": "겨울 대추차, 효능보다 당류를 먼저 봐야 하는 이유",
+  "research_date": "2026-11-22",
+  "research_summary": "사용자 블로그(응급질환, 2026-11-21)의 핵심은 '대추차는 효능보다 당류를 먼저 보라'. 대표 시판 스틱(담터 대추차 15g) 표시 당류는 10g(블로그의 '15g 안팎'과 다름, 2차 사이트 3곳 일치, 제조사 원문 미확인). WHO는 유리당을 총열량 10% 미만(2,000kcal 기준 50g)으로 권고. IARC는 65도 넘는 매우 뜨거운 음료를 2A군(인체 발암 추정)으로 분류(식도암). 기존 영상은 '대추 효능'이나 '당뇨 주의' 일반론이 많고 한 봉의 당류를 하루 권고량과 숫자로 비교한 것은 드묾.",
+  "landscape": {
+    "existing_content": [
+      {
+        "title": "대추차를 하루 2잔씩 마시면 생기는 놀라운 변화",
+        "url": "https://www.youtube.com/watch?v=j1EETdecD24",
+        "source": "YouTube",
+        "angle": "효능 나열",
+        "what_it_covers": "대추 효능",
+        "what_it_misses": "시판 제품의 당류"
+      },
+      {
+        "title": "대추차 효능 속고 계셨나요",
+        "url": "https://www.instagram.com/reel/DesqHY-F5Mu/",
+        "source": "Instagram Reels",
+        "angle": "혈당 주의",
+        "what_it_covers": "설탕 든 대추차와 혈당",
+        "what_it_misses": "한 봉 당류와 하루 권고량 숫자 비교"
+      },
+      {
+        "title": "진하게 우려낸 대추차, 당뇨병 환자 마시면 어떻게 될까?",
+        "url": "https://health.chosun.com/site/data/html_dir/2025/11/06/2025110603660.html",
+        "source": "헬스조선",
+        "angle": "당뇨 주의",
+        "what_it_covers": "달게 끓인 대추차의 당도",
+        "what_it_misses": "WHO 기준과 비교, 뜨거운 온도 문제"
+      }
+    ],
+    "saturated_angles": [
+      "대추 효능 나열",
+      "당뇨 환자 주의 일반론"
+    ],
+    "underserved_gaps": [
+      "스틱 한 봉 당류를 하루 권고량(50g)과 숫자로 비교",
+      "당류와 뜨거운 온도(65도)를 함께 다룸"
+    ]
+  },
+  "data_points": [
+    {
+      "claim": "담터 대추차 15g 1포 표시: 열량 60kcal, 탄수화물 14g, 당류 10g(1일 영양성분 기준치 10%)",
+      "source_url": "https://onlyknowledge.tistory.com/939",
+      "source_name": "제품 영양표시 전사(2차 사이트 3곳 일치: tistory, geniet, fatsecret), 제조사 원문 미확인",
+      "credibility": "secondary_source",
+      "surprise_factor": "notable",
+      "usable_as": "stat_card"
+    },
+    {
+      "claim": "WHO: 유리당 섭취를 총열량의 10% 미만으로, 2,000kcal 기준 약 50g(약 12티스푼)",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+      "source_name": "WHO Healthy diet fact sheet",
+      "credibility": "primary_source",
+      "surprise_factor": "notable",
+      "usable_as": "stat_card"
+    },
+    {
+      "claim": "65도 넘는 매우 뜨거운 음료를 마시는 것은 인체 발암 추정(2A군), 식도암",
+      "source_url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr244_E.pdf",
+      "source_name": "IARC 보도자료 244 (Monographs Vol.116)",
+      "credibility": "primary_source",
+      "surprise_factor": "surprising",
+      "usable_as": "callout"
+    }
+  ],
+  "audience_insights": {
+    "common_questions": [
+      "대추차는 몸에 좋은데 하루 몇 잔까지 괜찮나?",
+      "시판 대추차에 설탕이 얼마나 들었나?",
+      "당뇨가 있어도 마셔도 되나?"
+    ],
+    "misconceptions": [
+      {
+        "myth": "따뜻한 차니까 하루 몇 잔은 괜찮다",
+        "reality": "시판 스틱은 한 봉에 당류 10g 안팎, 세 잔이면 WHO 하루 권고(50g 미만)의 절반을 넘는다",
+        "source": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet"
+      }
+    ],
+    "knowledge_level": "대추차가 '몸에 좋은 전통차'라는 인식은 있으나 시판 스틱의 당류 양과 WHO 하루 권고량, 뜨거운 음료 온도 기준은 대부분 모름"
+  },
+  "angles_discovered": [
+    {
+      "name": "효능보다 설탕",
+      "hook": "겨울 대추차, 효능보다 먼저 볼 건 설탕입니다.",
+      "type": "contrarian",
+      "why_now": "겨울철 대추차 소비가 느는 시기, 사용자 블로그(2026-11-21)와 같은 메시지",
+      "grounded_in": [
+        "WHO healthy diet",
+        "제품 영양표시",
+        "IARC pr244"
+      ]
+    },
+    {
+      "name": "세 잔이면 하루 권고 절반",
+      "hook": "대추차 세 잔이면 하루 설탕 권고량의 절반을 넘깁니다.",
+      "type": "data_driven",
+      "why_now": "숫자 비교가 기존 영상에 드묾",
+      "grounded_in": [
+        "WHO healthy diet",
+        "제품 영양표시"
+      ]
+    },
+    {
+      "name": "뜨거울수록 좋다는 착각",
+      "hook": "몸을 데운다고 펄펄 끓는 차를 마시면 식도가 먼저 다칩니다.",
+      "type": "contrarian",
+      "why_now": "겨울철 뜨거운 차·국물 소비",
+      "grounded_in": [
+        "IARC pr244"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://blog.naver.com/kst104/224485952422",
+      "title": "사용자 블로그: 응급실 의사가 겨울 식탁에서 설탕부터 보는 이유(2026-11-21)",
+      "used_for": "주제·구성·권고(하루 한 잔, 무가당)",
+      "reliability": "secondary"
+    },
+    {
+      "url": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+      "title": "WHO Healthy diet",
+      "used_for": "하루 당류 권고 50g",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.iarc.who.int/wp-content/uploads/2018/07/pr244_E.pdf",
+      "title": "IARC 보도자료 244",
+      "used_for": "65도 뜨거운 음료 2A군",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.iarc.who.int/media-centre-iarc-news-drinking-very-hot-beverages/",
+      "title": "IARC fact sheet: 식도암과 매우 뜨거운 음료",
+      "used_for": "'매우 뜨거운' = 65도 초과 정의",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://onlyknowledge.tistory.com/939",
+      "title": "담터 대추차 영양정보(제품 표시 전사)",
+      "used_for": "한 봉 당류 10g",
+      "reliability": "secondary"
+    },
+    {
+      "url": "https://geniet.co.kr/calorie-calculator/food-detail/153835",
+      "title": "지니어트: 담터 대추차 영양성분",
+      "used_for": "한 봉 당류 10g 교차 확인",
+      "reliability": "secondary"
+    }
+  ],
+  "metadata": {
+    "unverified": [
+      "담터 대추차 당류 10g의 제조사 원문(2차 사이트 3곳 일치)",
+      "블로그의 '한 봉지 15g 안팎', '큰 컵 20g 이상'(대표 제품은 10g)",
+      "'하루 한 잔·식후'는 블로그 저자 권고이며 공식 기준 아님"
+    ]
+  }
+}
