@@ -1,0 +1,160 @@
+{
+  "version": "1.0",
+  "title": "겨울 목욕, 온도보다 무서운 건 시간",
+  "total_duration_seconds": 42,
+  "voice_performance": {
+    "pacing_profile": "conversational"
+  },
+  "sections": [
+    {
+      "id": "s1",
+      "label": "첫 문장",
+      "text": "겨울 목욕, 온도보다 무서운 건 시간입니다.",
+      "start_seconds": 0,
+      "end_seconds": 3,
+      "delivery_cues": {
+        "pace": "measured",
+        "energy": "단호함",
+        "emphasis_words": [
+          "시간"
+        ],
+        "pause_after_seconds": 0.5
+      },
+      "enhancement_cues": [
+        {
+          "type": "overlay",
+          "description": "큰 글자: '온도보다 무서운 건 시간' — '시간'만 주황 강조, 타이머 아이콘"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "label": "오해",
+      "text": "뜨거운 물에 오래 담가야 피로가 풀린다고 생각하시죠? 일본 소비자청은 뜨거운 탕에 오래 있는 것을 겨울 욕조 사고 원인으로 꼽습니다.",
+      "start_seconds": 3,
+      "end_seconds": 12,
+      "delivery_cues": {
+        "pace": "conversational",
+        "energy": "질문에서 경고로 전환",
+        "pause_after_seconds": 0.4
+      },
+      "enhancement_cues": [
+        {
+          "type": "overlay",
+          "description": "callout: '오래 담가야 피로가 풀린다?'에 X 표시 → '일본 소비자청: 겨울 욕조 사고 원인'"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "label": "원인 1",
+      "text": "오래 있으면 체온이 올라가 의식이 흐려질 수 있습니다.",
+      "start_seconds": 12,
+      "end_seconds": 18,
+      "delivery_cues": {
+        "pace": "measured",
+        "energy": "차분한 경고",
+        "emphasis_words": [
+          "의식"
+        ]
+      },
+      "enhancement_cues": [
+        {
+          "type": "animation",
+          "description": "체온 게이지가 차오르며 빨간색으로 변함"
+        },
+        {
+          "type": "stat_card",
+          "description": "일본 2024년 욕조 익사 7,776명 · 65세 이상 약 95% (일본 소비자청)"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "label": "원인 2",
+      "text": "또 탕에서 일어설 때 혈압이 뚝 떨어져 쓰러질 수도 있습니다.",
+      "start_seconds": 18,
+      "end_seconds": 25,
+      "delivery_cues": {
+        "pace": "measured",
+        "energy": "무게감",
+        "emphasis_words": [
+          "일어설 때"
+        ],
+        "pause_after_seconds": 0.6
+      },
+      "enhancement_cues": [
+        {
+          "type": "animation",
+          "description": "혈압 선 그래프가 일어서는 순간 급락"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "label": "수칙",
+      "text": "그래서 기억하세요. 물은 41도 이하, 담그는 시간은 10분 이내. 들어가기 전에 욕실부터 데우세요.",
+      "start_seconds": 25,
+      "end_seconds": 38,
+      "delivery_cues": {
+        "pace": "measured",
+        "energy": "또렷하게",
+        "emphasis_words": [
+          "41도",
+          "10분"
+        ],
+        "pause_after_seconds": 0.5
+      },
+      "enhancement_cues": [
+        {
+          "type": "stat_card",
+          "description": "41℃ 이하 / 10분 이내 / 욕실 먼저 데우기 — 세 줄이 차례로 등장"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "label": "마무리",
+      "text": "자세한 건 설명란 링크에서 확인하세요.",
+      "start_seconds": 38,
+      "end_seconds": 42,
+      "delivery_cues": {
+        "pace": "conversational",
+        "energy": "부드럽게 마무리"
+      },
+      "enhancement_cues": [
+        {
+          "type": "overlay",
+          "description": "'설명란 링크 확인' + 작은 글씨: '이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.' / '지병이 있거나 고령이면 의사와 상담하세요.'"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "status": "approved",
+    "sources_by_section": {
+      "s1": [],
+      "s2": [
+        "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/"
+      ],
+      "s3": [
+        "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/"
+      ],
+      "s4": [
+        "https://doi.org/10.1002/jgf2.17"
+      ],
+      "s5": [
+        "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_013"
+      ],
+      "s6": []
+    },
+    "voice": "user_tts_7790 남성1",
+    "humanize": {
+      "tool": "im-not-ai humanize-korean v2.4.7",
+      "route": "light",
+      "run_id": "2026-11-22-001-4eb1",
+      "change_rate": "0.0%",
+      "note": "사용자 선택으로 3·4번 줄 끝맺음만 문장 단위로 수정"
+    }
+  }
+}

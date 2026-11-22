@@ -1,0 +1,19 @@
+{
+ "version": "1.0",
+ "assets": [
+  {
+   "id": "narration",
+   "type": "narration",
+   "path": "/home/user/openmontage-work/OpenMontage/projects/winter-hot-bath-shorts/assets/audio/narration_norm.wav",
+   "source_tool": "user_tts_7790 (사용자 업로드, 남성1) + ffmpeg 무음 단축 + loudnorm -16 LUFS",
+   "scene_id": "all"
+  },
+  {
+   "id": "music",
+   "type": "music",
+   "path": "/home/user/openmontage-work/OpenMontage/projects/winter-hot-bath-shorts/assets/music/bgm.mp3",
+   "source_tool": "pixabay_music (Ambient Piano / leberch, Pixabay Content License)",
+   "scene_id": "all"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+# reels 작업 폴더 규칙
+
+이 폴더(`~/Downloads/reels`)는 네이버 쇼핑 커넥트용 쇼츠·릴스 전용 작업 폴더다. 2026-11-22 사용자가 고정했다.
+
+- 릴스 작업은 이 폴더 안에서만 한다. 다른 폴더에 결과물을 만들지 않는다.
+- 제작은 `reels` 스킬(`.claude/skills/reels/SKILL.md`)을 따른다. 사용자가 주제만 말하면 이 스킬로 진행한다.
+- OpenMontage는 이 폴더 안 `OpenMontage/`에 설치해 쓴다. 영상 하나가 끝나면 결과를 `videos/YYYY-MM-DD_<주제>/`에 정리한다 (mp4, script.txt, sources.md, audio/, artifacts/).
+- 음성은 이 컴퓨터(맥미니)의 `localhost:7790` 음성 서버, "남성1"(M1) 목소리로 직접 만든다. 사용자에게 음성 파일을 따로 만들어 올리라고 하지 않는다.
+- 이 폴더의 `CLAUDE.md`와 스킬은 사용자 허락 없이 고치지 않는다. 스킬을 고칠 만한 점을 발견하면 제안만 한다.
+
+## 연결된 곳 (2026-11-22 고정)
+
+- 원본: 깃허브 `kst104/reels` (이 저장소)
+- 노션 "릴스": https://app.notion.com/p/420cac3237508175b737c2f68ae4e034
+- 아티팩트 "릴스": https://claude.ai/artifact/CUs4fAxQX4zuLcb3CznmK2 (원본 파일 `docs/reels-hub.html`)
+- 슬랙 `#reels` (채널 ID C0CKTUB04FP): 다른 에이전트와 의견 모으기
+
+## 과정을 바꿀 때 (사용자가 말로 요청하면)
+
+1. 이 저장소의 원본(`.claude/skills/reels/SKILL.md`, `CLAUDE.md`)을 고쳐 커밋한다.
+2. `docs/reels-hub.html`을 같은 내용으로 고치고 아티팩트 "릴스"를 같은 URL로 다시 게시한다.
+3. 노션 "릴스" 페이지를 같은 내용으로 갱신한다.
+4. 슬랙 `#reels`에 바뀐 점과 링크를 올리고 의견을 요청한다.
+5. 영상을 새로 만들면 노션·아티팩트의 영상 목록에 추가하고 슬랙에 알린다.
+
+- Pixabay 음악 원본 파일은 저장소에 넣지 않는다(공개 저장소에서 음악만 따로 재배포하지 않기 위해). 출처만 `sources.md`에 적는다.

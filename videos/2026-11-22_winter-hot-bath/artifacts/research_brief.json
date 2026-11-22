@@ -1,0 +1,292 @@
+{
+  "version": "1.0",
+  "topic": "겨울철 뜨거운 물에 오래 목욕하면 안 되는 이유",
+  "research_date": "2026-11-22",
+  "research_summary": "기존 한국어 쇼츠는 대부분 '히트쇼크(온도 차로 쓰러짐)' 하나만 다룬다. 1차 출처(일본 소비자청, 도쿄도 감찰의무원 논문)는 온도 차뿐 아니라 '뜨거운 탕에 오래 있어 체온이 올라 생기는 의식장애'와 '탕에서 나올 때의 저혈압 실신'을 함께 원인으로 꼽고, 권장 기준은 '41도 이하, 10분 이내'다. 2026년 일본 리뷰는 히트쇼크가 과대 강조됐고 고체온 역할이 더 클 수 있다고 본다. 즉 '오래·뜨겁게'가 핵심이라는 점이 기존 영상의 빈틈이다. 피부 쪽은 서울아산병원과 미국피부과학회가 뜨거운 물과 긴 목욕을 겨울 피부건조의 악화 요인으로 든다. 한국 공식 통계와 질병관리청 원문은 확보하지 못했다.",
+  "landscape": {
+    "existing_content": [
+      {
+        "title": "겨울 목욕 중 쓰러지는 이유 8가지 #히트쇼크",
+        "url": "https://www.youtube.com/shorts/Dey_FfYH5ts",
+        "source": "YouTube Shorts",
+        "angle": "히트쇼크 원인 나열",
+        "what_it_covers": "급격한 온도 차이로 인한 욕실 사고",
+        "what_it_misses": "탕에 오래 있을 때의 고체온·의식장애, 피부 건조"
+      },
+      {
+        "title": "[초겨울 건강 2편] 의사들이 강력 경고하는 겨울철 목욕탕",
+        "url": "https://www.youtube.com/shorts/-680pg0UDdY",
+        "source": "YouTube Shorts",
+        "angle": "목욕탕 안전 수칙 5가지",
+        "what_it_covers": "심근경색·뇌졸중 예방 수칙",
+        "what_it_misses": "구체 수치(41도, 10분)의 출처, 피부"
+      },
+      {
+        "title": "#히트쇼크 해시태그 쇼츠 묶음",
+        "url": "https://www.youtube.com/hashtag/%ED%9E%88%ED%8A%B8%EC%87%BC%ED%81%AC",
+        "source": "YouTube",
+        "angle": "히트쇼크 경고",
+        "what_it_covers": "고혈압·심근경색·뇌졸중 주의",
+        "what_it_misses": "장시간 입욕, 나올 때 실신, 피부 관점"
+      },
+      {
+        "title": "'뜨거운 물 샤워' 겨울철 진리인데…피부·머리숱엔 치명타",
+        "url": "https://www.hani.co.kr/arti/hanihealth/healthlife/1172184.html",
+        "source": "한겨레",
+        "angle": "피부·모발",
+        "what_it_covers": "뜨거운 물과 피부 건조",
+        "what_it_misses": "심혈관·실신 위험"
+      }
+    ],
+    "saturated_angles": [
+      "히트쇼크 단독 경고",
+      "고혈압 노인 주의"
+    ],
+    "underserved_gaps": [
+      "'뜨겁게'보다 '오래'가 문제라는 점(체온 상승→의식장애, 나올 때 저혈압 실신)",
+      "몸 안(혈관)과 몸 밖(피부)을 한 번에 다루는 영상",
+      "권장 수치(41도 이하·10분 이내)의 공식 출처 제시"
+    ]
+  },
+  "trending": {
+    "recent_developments": [
+      {
+        "headline": "일본 소비자청 겨울 입욕 사고 주의 발표: 2024년 욕조 익사 7,776명, 65세 이상 약 95%",
+        "url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/",
+        "date": "2025-12-23",
+        "relevance": "가장 최근 공식 통계"
+      },
+      {
+        "headline": "[뉴컬매뉴얼] 수축한 혈관이 부른 심정지… 겨울 욕실 '히트쇼크' 주의보",
+        "url": "https://www.nc.press/news/articleView.html?idxno=630919",
+        "date": "2026-11",
+        "relevance": "이번 겨울 국내 보도(2차 출처)"
+      }
+    ],
+    "timeliness_window": "seasonal: 12~1월에 사고가 집중되므로 초겨울 게시가 적기"
+  },
+  "data_points": [
+    {
+      "claim": "2024년 일본 욕조 익사 7,776명, 이 중 65세 이상 7,363명(약 95%)",
+      "source_url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/",
+      "source_name": "일본 소비자청(후생노동성 인구동태통계 인용) 2025-12-23",
+      "credibility": "primary_source",
+      "surprise_factor": "surprising",
+      "usable_as": "stat_card"
+    },
+    {
+      "claim": "2023년 일본 65세 이상 욕조 사망 6,541명으로 같은 연령대 교통사고 사망 2,116명의 약 3배, 12·1월에 특히 많음",
+      "source_url": "https://www.caa.go.jp/policies/policy/consumer_safety/child/project_001/mail/20241219/",
+      "source_name": "일본 소비자청 칼럼 Vol.12",
+      "credibility": "primary_source",
+      "surprise_factor": "counterintuitive",
+      "usable_as": "hook"
+    },
+    {
+      "claim": "겨울 입욕 사고 원인: 실내와 추운 탈의실·욕실의 온도 차로 인한 급격한 혈압 변동, 뜨거운 탕에 오래 있어 체온이 올라 생기는 의식장애",
+      "source_url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/",
+      "source_name": "일본 소비자청 2025-12-23",
+      "credibility": "primary_source",
+      "surprise_factor": "notable",
+      "usable_as": "script_anchor"
+    },
+    {
+      "claim": "입욕 몇 분 뒤 혈압·맥박이 떨어져 실신→익사할 수 있고, 탕에서 나올 때도 기립성 저혈압으로 실신 위험",
+      "source_url": "https://doi.org/10.1002/jgf2.17",
+      "source_name": "Suzuki et al., J Gen Fam Med 2017",
+      "credibility": "primary_source",
+      "surprise_factor": "surprising",
+      "usable_as": "script_anchor"
+    },
+    {
+      "claim": "권장: 입욕 전 탈의실·욕실 데우기, 물 41도 이하, 탕에 있는 시간 10분까지",
+      "source_url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_013",
+      "source_name": "일본 소비자청(2019-12 갱신), Suzuki 2017 동일 권고",
+      "credibility": "primary_source",
+      "surprise_factor": "expected",
+      "usable_as": "closing_punch"
+    },
+    {
+      "claim": "식사 직후·음주 후·약 복용 후 입욕은 피하고, 입욕 전에 물을 마실 것",
+      "source_url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/",
+      "source_name": "일본 소비자청 2025-12-23",
+      "credibility": "primary_source",
+      "surprise_factor": "expected",
+      "usable_as": "script_anchor"
+    },
+    {
+      "claim": "피부 건조증 환자는 수분 손실을 유발하는 뜨거운 목욕이나 사우나를 해서는 안 되며, 목욕 후 즉시 보습제를 바른다",
+      "source_url": "https://www.amc.seoul.kr/asan/healthinfo/disease/diseaseDetail.do?contentId=32470",
+      "source_name": "서울아산병원 질환백과",
+      "credibility": "primary_source",
+      "surprise_factor": "notable",
+      "usable_as": "script_anchor"
+    },
+    {
+      "claim": "뜨거운 물은 피부의 천연 유분을 없애 건조를 키운다; 목욕 후 두드려 말리고 바로 보습제",
+      "source_url": "https://www.aad.org/public/everyday-care/skin-care-basics/dry/dermatologists-tips-relieve-dry-skin",
+      "source_name": "미국피부과학회(AAD)",
+      "credibility": "primary_source",
+      "surprise_factor": "expected",
+      "usable_as": "script_anchor"
+    },
+    {
+      "claim": "반론: 심근경색·뇌졸중은 입욕 사망의 절반 미만이며 히트쇼크는 과대 강조됐을 수 있다(고체온 역할이 클 수 있음)",
+      "source_url": "https://doi.org/10.1265/jjh.25012",
+      "source_name": "Tai et al., Nihon Eiseigaku Zasshi 2026",
+      "credibility": "primary_source",
+      "surprise_factor": "counterintuitive",
+      "usable_as": "script_anchor"
+    }
+  ],
+  "audience_insights": {
+    "common_questions": [
+      "뜨거운 물에 오래 있으면 피로가 풀리지 않나?",
+      "몇 도, 몇 분이 안전한가?",
+      "왜 겨울에만 특히 위험한가?",
+      "목욕 후 몸이 가려운 이유는?"
+    ],
+    "misconceptions": [
+      {
+        "myth": "뜨겁게 오래 담글수록 혈액순환·피로회복에 좋다",
+        "reality": "뜨거운 탕에 오래 있으면 체온이 올라 의식장애가 오고, 나올 때 혈압이 떨어져 실신할 수 있다. 권장은 41도 이하·10분 이내",
+        "source": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/"
+      },
+      {
+        "myth": "욕실 사고는 대부분 심장마비·뇌졸중 때문이다",
+        "reality": "2026년 일본 리뷰는 이런 질환이 입욕 사망의 절반 미만이라고 본다",
+        "source": "https://doi.org/10.1265/jjh.25012"
+      }
+    ],
+    "knowledge_level": "일반 대중: '히트쇼크'라는 말은 들어봤지만 '오래 담그는 것'의 위험과 구체 수치는 모름",
+    "pain_points": [
+      "겨울 피부 가려움·건조",
+      "부모님 목욕 안전 걱정"
+    ]
+  },
+  "expert_voices": [
+    {
+      "name": "김준엽",
+      "title_or_affiliation": "분당서울대병원 신경과 교수",
+      "position": "혈관·심뇌혈관 질환자, 일어날 때 어지럼증을 자주 느끼는 어르신은 특히 조심해야 한다",
+      "source_url": "https://www.yna.co.kr/view/AKR20230215068200797"
+    }
+  ],
+  "angles_discovered": [
+    {
+      "name": "뜨거운 게 아니라 '오래'가 문제",
+      "hook": "겨울 목욕, 온도보다 무서운 건 시간입니다.",
+      "type": "contrarian",
+      "why_now": "기존 쇼츠는 온도 차(히트쇼크)만 다루지만 소비자청은 장시간 입욕의 체온 상승도 원인으로 꼽고, 2026 리뷰는 히트쇼크 과대 강조를 지적",
+      "grounded_in": [
+        "소비자청 2025-12-23 원인 설명",
+        "Tai 2026",
+        "Suzuki 2017"
+      ]
+    },
+    {
+      "name": "욕조가 교통사고보다 위험한 계절",
+      "hook": "일본 노인은 길보다 욕조에서 3배 더 많이 숨집니다.",
+      "type": "data_driven",
+      "why_now": "2023년 65세 이상 욕조 사망 6,541명 vs 교통사고 2,116명, 12·1월 집중",
+      "grounded_in": [
+        "소비자청 칼럼 Vol.12",
+        "소비자청 2025-12-23"
+      ]
+    },
+    {
+      "name": "몸 안은 혈관, 몸 밖은 피부",
+      "hook": "뜨거운 물에 오래 있으면 두 군데가 동시에 망가집니다.",
+      "type": "evergreen",
+      "why_now": "혈관(실신)과 피부(건조)를 함께 다룬 국내 쇼츠가 드묾",
+      "grounded_in": [
+        "Suzuki 2017",
+        "서울아산병원 질환백과",
+        "AAD"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_084/",
+      "title": "일본 소비자청 겨울 입욕 사고 주의(2025-12-23)",
+      "used_for": "통계·원인·수칙",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_013",
+      "title": "일본 소비자청 입욕 수칙(41도·10분)",
+      "used_for": "권장 수치",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.caa.go.jp/policies/policy/consumer_safety/child/project_001/mail/20241219/",
+      "title": "일본 소비자청 칼럼 Vol.12",
+      "used_for": "교통사고 비교 통계",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://doi.org/10.1002/jgf2.17",
+      "title": "Suzuki et al. 2017, J Gen Fam Med",
+      "used_for": "저혈압 실신 기전",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://doi.org/10.1265/jjh.25012",
+      "title": "Tai et al. 2026, Nihon Eiseigaku Zasshi",
+      "used_for": "히트쇼크 과대 강조 반론",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.amc.seoul.kr/asan/healthinfo/disease/diseaseDetail.do?contentId=32470",
+      "title": "서울아산병원 질환백과 피부건조증",
+      "used_for": "피부 건조·보습",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.amc.seoul.kr/asan/depts/fm/K/bbsDetail.do?menuId=378&contentId=215985",
+      "title": "서울아산병원 가정의학과 소식지(2012)",
+      "used_for": "겨울 피부 악화 요인(오래된 자료)",
+      "reliability": "secondary"
+    },
+    {
+      "url": "https://www.aad.org/public/everyday-care/skin-care-basics/dry/dermatologists-tips-relieve-dry-skin",
+      "title": "AAD Dermatologists' tips to relieve dry skin",
+      "used_for": "보습 방법",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.aad.org/public/everyday-care/skin-care-basics/care/skin-care-in-your-60s-and-70s",
+      "title": "AAD Skin care in your 60s and 70s",
+      "used_for": "뜨거운 물과 유분",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.tmig.or.jp/news/nid00000662.html",
+      "title": "도쿄도 건강장수의료센터 입욕 사망 추계",
+      "used_for": "겨울 집중(추계, 기준 다름)",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.city.edogawa.tokyo.jp/e052/kenko/kenko/kenkodukuri/sonota/heat-shcok.html",
+      "title": "도쿄 에도가와구 히트쇼크 안내",
+      "used_for": "히트쇼크 정의",
+      "reliability": "primary"
+    },
+    {
+      "url": "https://www.yna.co.kr/view/AKR20230215068200797",
+      "title": "연합뉴스 2023-02-19 히트쇼크 기사",
+      "used_for": "국내 전문의 발언",
+      "reliability": "secondary"
+    }
+  ],
+  "metadata": {
+    "unverified": [
+      "한국 입욕 관련 사망 통계",
+      "질병관리청·국내 학회 원문(사이트 접속 불가)",
+      "38~40도 권장의 1차 출처",
+      "목욕 후 물 마시기",
+      "보습제 3분 이내"
+    ]
+  }
+}

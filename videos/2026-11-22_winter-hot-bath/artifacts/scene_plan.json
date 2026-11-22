@@ -1,0 +1,85 @@
+{
+ "version": "1.0",
+ "scenes": [
+  {
+   "id": "c1",
+   "type": "text_card",
+   "description": "Remotion hero_title: 온도보다 무서운 건 시간",
+   "start_seconds": 0.0,
+   "end_seconds": 3.25,
+   "script_section_id": "s1"
+  },
+  {
+   "id": "c2",
+   "type": "text_card",
+   "description": "Remotion callout: 뜨거운 물에 오래 담가야 피로가 풀린다?",
+   "start_seconds": 3.25,
+   "end_seconds": 7.2,
+   "script_section_id": "s2"
+  },
+  {
+   "id": "c3",
+   "type": "text_card",
+   "description": "Remotion callout: 뜨거운 탕에 오래 있는 것, 겨울 욕조 사고의 원인",
+   "start_seconds": 7.2,
+   "end_seconds": 10.2,
+   "script_section_id": "s2"
+  },
+  {
+   "id": "c4",
+   "type": "text_card",
+   "description": "Remotion stat_card: 7,776명",
+   "start_seconds": 10.2,
+   "end_seconds": 13.1,
+   "script_section_id": "s2"
+  },
+  {
+   "id": "c5",
+   "type": "animation",
+   "description": "Remotion progress_bar: 오래 있을수록",
+   "start_seconds": 13.1,
+   "end_seconds": 16.8,
+   "script_section_id": "s3"
+  },
+  {
+   "id": "c6",
+   "type": "text_card",
+   "description": "Remotion callout: 혈압이 뚝 떨어져 쓰러질 수 있습니다",
+   "start_seconds": 16.8,
+   "end_seconds": 21.2,
+   "script_section_id": "s4"
+  },
+  {
+   "id": "c7",
+   "type": "text_card",
+   "description": "Remotion stat_card: 41℃ 이하",
+   "start_seconds": 21.2,
+   "end_seconds": 24.6,
+   "script_section_id": "s5"
+  },
+  {
+   "id": "c8",
+   "type": "text_card",
+   "description": "Remotion stat_card: 10분 이내",
+   "start_seconds": 24.6,
+   "end_seconds": 26.6,
+   "script_section_id": "s5"
+  },
+  {
+   "id": "c9",
+   "type": "text_card",
+   "description": "Remotion text_card: 들어가기 전, 욕실부터 데우기",
+   "start_seconds": 26.6,
+   "end_seconds": 29.0,
+   "script_section_id": "s5"
+  },
+  {
+   "id": "c10",
+   "type": "text_card",
+   "description": "Remotion text_card: 자세한 건 설명란 링크에서",
+   "start_seconds": 29.0,
+   "end_seconds": 34.5,
+   "script_section_id": "s6"
+  }
+ ]
+}
