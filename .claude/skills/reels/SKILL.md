@@ -29,6 +29,8 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 - **대본 형식:** 아래 "A형식" 고정. 콘셉트 3안을 제안하지 않는다.
 - **사용자 확인을 받는 곳:** ① 대본 초안 ② 윤문 결과 ③ 완성 영상 ④ 추천 상품 ⑤ 게시 캡션. 그 밖의 OpenMontage 승인 단계(제안서·장면 계획 등)는 위 기본값으로 사용자가 미리 승인한 것으로 기록한다.
 
+릴스 3곳 흐름(2026-11-23 사용자 지정): 제작전분석소(`~/Downloads/reels-analysis`) → 이 스킬(릴스제작소) → 제작후분석소(`~/Downloads/reels/post`) → 피드백 → 제작전분석소. 주제는 제작전분석소의 `reports/`와 `제작연결.md` 브리프에서 받는다. 시장·경쟁 분석과 게시 후 성과 분석은 하지 않는다. `post/` 폴더에는 쓰지 않는다. 자세한 경계는 `CLAUDE.md`와 `post/PIPELINE.md`.
+
 받아야 하는 입력은 **주제**, **프레임 번호(1번/2번)**, **화면 방식(글자/움직임/사진)**이다. 붙일 상품이 정해져 있으면 함께 받고, 없으면 영상 끝은 "프로필 링크 확인"으로 둔다.
 
 ## A형식 (고정)
@@ -166,7 +168,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 
 - `ffprobe`로 1080x1920·길이를 확인하고, `volumedetect` 평균이 -24dB보다 작으면 음량을 다시 맞춘다.
 - 장면마다 프레임을 한 장씩 뽑아 직접 본다: 한글 깨짐, 글자 크기, 광고 표기 노출 여부.
-- `REELS/videos/YYYY-MM-DD_<주제>/`에 정리(프레임과 상관없이 같은 이름): `<주제>_final.mp4`, `script.txt`, `sources.md`(문장별 출처·미확인·음악 라이선스), `audio/`(원본·편집 음성, 음악, timings), `artifacts/`(json 전부, 2번이면 `artifacts/hyperframes/`에 index.html과 composition_hf.json). `sources.md`에 쓴 프레임(1번/2번)과 화면 방식을 적는다. 사진 방식이면 사진을 `artifacts/images/`에 두고, `sources.md`에 AI로 만든 사진이라는 것과 도구·seed를 적는다. 2번의 글꼴 파일은 저장소에 넣지 않는다.
+- `REELS/videos/YYYY-MM-DD_<주제>/`에 정리(프레임과 상관없이 같은 이름): `<주제>_final.mp4`, `script.txt`, `sources.md`(문장별 출처·미확인·음악 라이선스), `audio/`(원본·편집 음성, 음악, timings), `artifacts/`(json 전부, 2번이면 `artifacts/hyperframes/`에 index.html과 composition_hf.json). `sources.md`에 쓴 프레임(1번/2번)과 화면 방식, **근거가 된 제작전분석소 보고서 링크**(예: `reels-analysis/reports/<파일>.md`, `제작연결.md`의 해당 줄)와 **제작 요청 프롬프트**(사용자의 주제 요청 원문, 마지막에 확정한 것까지)를 적는다. 사진 방식이면 사진을 `artifacts/images/`에 두고, `sources.md`에 AI로 만든 사진이라는 것과 도구·seed를 적는다. 2번의 글꼴 파일은 저장소에 넣지 않는다.
 - 사용자에게 mp4와 출처를 보여주고 확인받는다.
 - OpenMontage 저장소에 변경이 남지 않았는지 `git status`로 확인한다(`projects/`는 git에서 무시된다).
 
@@ -189,7 +191,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 - 캡션 틀: 첫 문장 → 원인 2줄 → 수칙 → "<용도> <상품 호칭>: <링크>" → 바로 아래 광고 표기 "이 포스팅은 네이버 쇼핑커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다."(글자 그대로, 2026-11-23 사용자 지정) → 출처 → 의료 안내 → 해시태그(사용자가 더 넣으면 따른다).
 - 사용자가 캡션을 확인하면 Windsor.ai `instagram` 커넥터의 `create_video_post`로 게시한다(계정 kst1_04, `thumb_offset: 1500`, `share_to_feed: true`).
 - 게시 뒤 `get_data`(fields: media_id, media_permalink, media_product_type, timestamp, date_preset `last_1dT`)로 주소를 확인한다. Windsor.ai 체험(TRIAL) 요금제에서는 `force_refresh`를 쓸 수 없다.
-- 영상 폴더에 `caption.md`(게시 주소, 상품 링크, 추천 근거, 캡션)를 남기고, 노션·아티팩트 영상 목록에 게시 링크를 적고, 슬랙 `#reels`에 알린다.
+- 영상 폴더에 `caption.md`(게시 주소, 상품 링크, 추천 근거, 캡션, **실제 게시한 해시태그 그대로**)를 남기고, 노션·아티팩트 영상 목록에 게시 링크를 적고, 슬랙 `#reels`에 알린다.
 
 ## 연결된 곳과 갱신 규칙
 
