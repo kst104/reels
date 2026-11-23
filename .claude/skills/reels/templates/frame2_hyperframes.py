@@ -87,6 +87,20 @@ def photo_dest(cid: str, src: str) -> str:
     return f"assets/photos/{cid}{Path(src).suffix.lower() or '.jpg'}"
 
 
+AD_KEYWORD = "수수료"  # 광고 표기 문장을 알아보는 낱말
+
+
+def split_ad_notice(text: str) -> tuple[str, str]:
+    """끝 화면 text를 (가운데 상자에 둘 안내, 오른쪽 아래에 작게 둘 광고 표기)로 나눈다.
+
+    광고 표기 = '수수료'가 들어간 문장(2026-11-23 사용자 지정: 작게 우하단). 문장은 마침표·물음표·느낌표 뒤 공백으로 자른다.
+    """
+    sentences = [s for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s]
+    ad = " ".join(s for s in sentences if AD_KEYWORD in s)
+    notice = " ".join(s for s in sentences if AD_KEYWORD not in s)
+    return notice, ad
+
+
 def seeded(i: int, mul: int, add: int = 0) -> float:
     """렌더마다 같은 값이 나오는 0~1 사이 수(Math.random 대신)."""
     return ((i * mul + add) % 100) / 100
@@ -349,15 +363,21 @@ class Builder:
         cid = c["id"]
         title = c.get("title") or c.get("text", "")
         text = c.get("text", "") if c.get("title") else c.get("subtitle", "")
-        if "수수료" not in text:
+        notice, ad = split_ad_notice(text)
+        if not ad:
             print("경고: 마지막 컷 text에 광고 표기(수수료 문구)가 없습니다.", file=sys.stderr)
+        box = f'<p class="disclosure" id="{cid}-disc">{esc(notice)}</p>' if notice else ""
+        corner = f'<p class="ad-note" id="{cid}-ad">{esc(ad)}</p>' if ad else ""
         s, e = self.scene(c, f'<div class="stage endcard"><p class="end-title" id="{cid}-title">{esc(title)}</p>'
                              f'<div class="end-arrow" id="{cid}-arrow"><svg viewBox="0 0 100 100" width="120" height="120">'
                              f'<polyline points="20,35 50,65 80,35" fill="none" stroke="{ACCENT}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
-                             f'<p class="disclosure" id="{cid}-disc">{esc(text)}</p></div>', photo=False)
+                             f'{box}</div>{corner}', photo=False)
         bounces = max(1, int((e - s - 1.0) // 0.9) - 1)
         self.tw(f'tl.from("#{cid}-title", {{y: 50, opacity: 0, duration: 0.5, ease: "power3.out"}}, {f(s + 0.05)});')
-        self.tw(f'tl.from("#{cid}-disc", {{opacity: 0, duration: 0.6, ease: "power1.out"}}, {f(s + 0.4)});')
+        if box:
+            self.tw(f'tl.from("#{cid}-disc", {{opacity: 0, duration: 0.6, ease: "power1.out"}}, {f(s + 0.4)});')
+        if corner:
+            self.tw(f'tl.from("#{cid}-ad", {{opacity: 0, duration: 0.6, ease: "power1.out"}}, {f(s + 0.3)});')
         self.tw(f'tl.fromTo("#{cid}-arrow", {{y: 0}}, {{y: 26, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: {max(1, bounces * 2 - 1)}}}, {f(s + 0.6)});')
 
     # ------------------------------------------------------------ captions
@@ -508,6 +528,7 @@ body {{ margin:0; background:var(--bg); color:var(--fg); font-family:"HF KR",san
 .big-line.accent {{ color:var(--accent); }}
 .end-title {{ margin:0; font-size:84px; font-weight:900; line-height:1.3; max-width:880px; }}
 .end-arrow {{ margin:40px 0 60px; }}
+.ad-note {{ position:absolute; right:56px; bottom:110px; margin:0; max-width:620px; text-align:right; font-size:30px; font-weight:400; line-height:1.45; color:rgba(244,247,250,0.82); word-break:keep-all; }}
 .disclosure {{ margin:0; padding:36px 44px; border-radius:24px; background:rgba(244,247,250,0.08); font-size:42px; font-weight:400; line-height:1.55; max-width:900px; color:var(--fg); }}
 .photo {{ position:absolute; inset:0; overflow:hidden; }}
 .photo img {{ display:block; width:100%; height:100%; object-fit:cover; }}
