@@ -140,6 +140,25 @@ def test_copy_photos_stops_with_list_of_missing_files(tmp_path: Path) -> None:
         hf.copy_photos(comp, tmp_path, tmp_path / "ws")
 
 
+@pytest.mark.unit
+def test_split_ad_notice_moves_commission_sentence_out_of_the_box() -> None:
+    notice, ad = hf.split_ad_notice(
+        "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 지병이 있으면 의사와 상담하세요.")
+
+    assert ad == "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다."
+    assert notice == "지병이 있으면 의사와 상담하세요."
+
+
+@pytest.mark.unit
+def test_endcard_puts_ad_notice_small_in_bottom_right_corner_outside_stage() -> None:
+    html = _build("text")
+
+    corner = re.search(r'</div><p class="ad-note" id="c4-ad">([^<]+)</p></section>', html)
+    assert corner and "수수료" in corner.group(1)
+    assert 'id="c4-disc"' not in html  # 안내 문장이 없으면 가운데 상자도 없다
+    assert re.search(r"\.ad-note \{ position:absolute; right:56px; bottom:110px;[^}]*font-size:30px", html)
+
+
 @pytest.mark.integration
 def test_builder_writes_per_word_scale_into_caption_tweens() -> None:
     comp = json.loads((VIDEO / "artifacts/composition_hf.json").read_text(encoding="utf-8"))
