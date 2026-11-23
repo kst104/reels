@@ -1,0 +1,464 @@
+{
+ "renderer_family": "explainer-teacher",
+ "cuts": [
+  {
+   "id": "c1",
+   "type": "hero_title",
+   "source": "",
+   "text": "가습기에 넣을 물, 더 안전한 건 정수기 물?",
+   "heroSubtitle": "겨울 가습기",
+   "hf": {
+    "emphasis": "정수기 물?",
+    "photo": "assets/images/c1.png",
+    "photo_focus": "50% 45%"
+   },
+   "in_seconds": 0.0,
+   "out_seconds": 2.981
+  },
+  {
+   "id": "c2",
+   "type": "callout",
+   "callout_type": "info",
+   "source": "",
+   "title": "흔한 고민",
+   "text": "수돗물이냐, 정수기 물이냐",
+   "hf": {
+    "photo": "assets/images/c2.png",
+    "photo_focus": "50% 50%"
+   },
+   "in_seconds": 2.981,
+   "out_seconds": 6.627
+  },
+  {
+   "id": "c3",
+   "type": "callout",
+   "callout_type": "info",
+   "source": "",
+   "title": "미국 환경보호청(EPA)",
+   "text": "오히려 증류수를 권합니다",
+   "hf": {
+    "photo": "assets/images/c3.png",
+    "photo_focus": "50% 50%"
+   },
+   "in_seconds": 6.627,
+   "out_seconds": 9.788
+  },
+  {
+   "id": "c4",
+   "type": "callout",
+   "callout_type": "warning",
+   "source": "",
+   "title": "국내 연구 (2019)",
+   "text": "초음파식은 수돗물에서 미세입자가 가장 많이 나옴",
+   "hf": {
+    "fx": "arrow_down",
+    "photo": "assets/images/c4.png",
+    "photo_focus": "50% 40%"
+   },
+   "in_seconds": 9.788,
+   "out_seconds": 15.441
+  },
+  {
+   "id": "c5",
+   "type": "stat_card",
+   "source": "",
+   "stat": "하루",
+   "subtitle": "지난 물은 버리고 새 물로 · 질병관리본부 권고",
+   "hf": {
+    "tag": "기억하세요 ①",
+    "photo": "assets/images/c5.png",
+    "photo_focus": "50% 50%"
+   },
+   "in_seconds": 15.441,
+   "out_seconds": 21.675
+  },
+  {
+   "id": "c6",
+   "type": "stat_card",
+   "source": "",
+   "stat": "2일",
+   "subtitle": "마다 물통 닦기 · 일주일에 한 번 중성세제, 세 번 헹굼",
+   "hf": {
+    "tag": "기억하세요 ②",
+    "photo": "assets/images/c6.png",
+    "photo_focus": "50% 50%"
+   },
+   "in_seconds": 21.675,
+   "out_seconds": 27.124
+  },
+  {
+   "id": "c7",
+   "type": "callout",
+   "callout_type": "warning",
+   "source": "",
+   "title": "주의",
+   "text": "살균제는 절대 넣지 마세요",
+   "hf": {
+    "photo": "assets/images/c6.png",
+    "photo_focus": "30% 70%"
+   },
+   "in_seconds": 27.124,
+   "out_seconds": 29.484
+  },
+  {
+   "id": "c8",
+   "type": "stat_card",
+   "source": "",
+   "stat": "40~50%",
+   "subtitle": "적정 실내 습도 · 질병관리청",
+   "hf": {
+    "tag": "기억하세요 ③",
+    "photo": "assets/images/c7.png",
+    "photo_focus": "50% 50%"
+   },
+   "in_seconds": 29.484,
+   "out_seconds": 32.142
+  },
+  {
+   "id": "c9",
+   "type": "callout",
+   "callout_type": "info",
+   "source": "",
+   "title": "자세한 건 설명란 링크에서",
+   "text": "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 지병이 있거나 영유아가 있으면 의사와 상담하세요.",
+   "fontSize": 40,
+   "titleFontSize": 56,
+   "in_seconds": 32.142,
+   "out_seconds": 38.507
+  }
+ ],
+ "captions": [
+  {
+   "word": "가습기에",
+   "startMs": 300,
+   "endMs": 801
+  },
+  {
+   "word": "정수기",
+   "startMs": 801,
+   "endMs": 1177
+  },
+  {
+   "word": "물을",
+   "startMs": 1177,
+   "endMs": 1428
+  },
+  {
+   "word": "넣으면",
+   "startMs": 1428,
+   "endMs": 1804
+  },
+  {
+   "word": "더",
+   "startMs": 1804,
+   "endMs": 1929
+  },
+  {
+   "word": "안전할까요?",
+   "startMs": 1929,
+   "endMs": 2681
+  },
+  {
+   "word": "많이들",
+   "startMs": 3281,
+   "endMs": 3678
+  },
+  {
+   "word": "수돗물이냐",
+   "startMs": 3678,
+   "endMs": 4340
+  },
+  {
+   "word": "정수기",
+   "startMs": 4340,
+   "endMs": 4738
+  },
+  {
+   "word": "물이냐를",
+   "startMs": 4738,
+   "endMs": 5268
+  },
+  {
+   "word": "두고",
+   "startMs": 5268,
+   "endMs": 5532
+  },
+  {
+   "word": "고민합니다.",
+   "startMs": 5532,
+   "endMs": 6327
+  },
+  {
+   "word": "미국",
+   "startMs": 6927,
+   "endMs": 7183
+  },
+  {
+   "word": "환경보호청은",
+   "startMs": 7183,
+   "endMs": 7951
+  },
+  {
+   "word": "오히려",
+   "startMs": 7951,
+   "endMs": 8336
+  },
+  {
+   "word": "증류수를",
+   "startMs": 8336,
+   "endMs": 8848
+  },
+  {
+   "word": "권합니다.",
+   "startMs": 8848,
+   "endMs": 9488
+  },
+  {
+   "word": "초음파식은",
+   "startMs": 10088,
+   "endMs": 10854
+  },
+  {
+   "word": "수돗물에서",
+   "startMs": 10854,
+   "endMs": 11619
+  },
+  {
+   "word": "미세입자가",
+   "startMs": 11619,
+   "endMs": 12385
+  },
+  {
+   "word": "가장",
+   "startMs": 12385,
+   "endMs": 12691
+  },
+  {
+   "word": "많이",
+   "startMs": 12691,
+   "endMs": 12997
+  },
+  {
+   "word": "나왔다는",
+   "startMs": 12997,
+   "endMs": 13610
+  },
+  {
+   "word": "국내",
+   "startMs": 13610,
+   "endMs": 13916
+  },
+  {
+   "word": "연구도",
+   "startMs": 13916,
+   "endMs": 14375
+  },
+  {
+   "word": "있습니다.",
+   "startMs": 14375,
+   "endMs": 15141
+  },
+  {
+   "word": "하지만",
+   "startMs": 15741,
+   "endMs": 16224
+  },
+  {
+   "word": "정부",
+   "startMs": 16224,
+   "endMs": 16546
+  },
+  {
+   "word": "권고는",
+   "startMs": 16546,
+   "endMs": 17029
+  },
+  {
+   "word": "한목소리로,",
+   "startMs": 17029,
+   "endMs": 17995
+  },
+  {
+   "word": "하루",
+   "startMs": 17995,
+   "endMs": 18317
+  },
+  {
+   "word": "지난",
+   "startMs": 18317,
+   "endMs": 18638
+  },
+  {
+   "word": "물은",
+   "startMs": 18638,
+   "endMs": 18960
+  },
+  {
+   "word": "버리고",
+   "startMs": 18960,
+   "endMs": 19443
+  },
+  {
+   "word": "새",
+   "startMs": 19443,
+   "endMs": 19604
+  },
+  {
+   "word": "물로",
+   "startMs": 19604,
+   "endMs": 19926
+  },
+  {
+   "word": "바꾸라고",
+   "startMs": 19926,
+   "endMs": 20570
+  },
+  {
+   "word": "말합니다.",
+   "startMs": 20570,
+   "endMs": 21375
+  },
+  {
+   "word": "물통은",
+   "startMs": 21975,
+   "endMs": 22502
+  },
+  {
+   "word": "이틀마다",
+   "startMs": 22502,
+   "endMs": 23206
+  },
+  {
+   "word": "닦고",
+   "startMs": 23206,
+   "endMs": 23557
+  },
+  {
+   "word": "일주일에",
+   "startMs": 23557,
+   "endMs": 24261
+  },
+  {
+   "word": "한",
+   "startMs": 24261,
+   "endMs": 24437
+  },
+  {
+   "word": "번",
+   "startMs": 24437,
+   "endMs": 24612
+  },
+  {
+   "word": "중성세제로",
+   "startMs": 24612,
+   "endMs": 25492
+  },
+  {
+   "word": "씻어",
+   "startMs": 25492,
+   "endMs": 25843
+  },
+  {
+   "word": "세",
+   "startMs": 25843,
+   "endMs": 26019
+  },
+  {
+   "word": "번",
+   "startMs": 26019,
+   "endMs": 26195
+  },
+  {
+   "word": "헹구세요.",
+   "startMs": 26195,
+   "endMs": 27074
+  },
+  {
+   "word": "살균제는",
+   "startMs": 27074,
+   "endMs": 27777
+  },
+  {
+   "word": "절대",
+   "startMs": 27777,
+   "endMs": 28129
+  },
+  {
+   "word": "넣지",
+   "startMs": 28129,
+   "endMs": 28481
+  },
+  {
+   "word": "마세요.",
+   "startMs": 28481,
+   "endMs": 29184
+  },
+  {
+   "word": "실내",
+   "startMs": 29784,
+   "endMs": 30092
+  },
+  {
+   "word": "습도는",
+   "startMs": 30092,
+   "endMs": 30553
+  },
+  {
+   "word": "40에서",
+   "startMs": 30553,
+   "endMs": 31169
+  },
+  {
+   "word": "50퍼센트,",
+   "startMs": 31169,
+   "endMs": 32092
+  },
+  {
+   "word": "자세한",
+   "startMs": 32092,
+   "endMs": 32553
+  },
+  {
+   "word": "건",
+   "startMs": 32553,
+   "endMs": 32707
+  },
+  {
+   "word": "설명란",
+   "startMs": 32707,
+   "endMs": 33169
+  },
+  {
+   "word": "링크에서",
+   "startMs": 33169,
+   "endMs": 33784
+  },
+  {
+   "word": "확인하세요.",
+   "startMs": 33784,
+   "endMs": 34707
+  }
+ ],
+ "captionStyle": {
+  "wordsPerPage": 3,
+  "fontSize": 64,
+  "bottomOffset": 260
+ },
+ "captionProps": {
+  "fontFamily": "Noto Sans CJK KR, Apple SD Gothic Neo, sans-serif",
+  "wordSeparator": " "
+ },
+ "audio": {
+  "narration": {
+   "src": "~/Downloads/reels/OpenMontage/projects/humidifier-water-shorts/assets/audio/narration_norm.wav",
+   "volume": 1.0
+  },
+  "music": {
+   "src": "~/Downloads/reels/OpenMontage/projects/humidifier-water-shorts/assets/music/bgm.mp3",
+   "volume": 0.07,
+   "fadeInSeconds": 1.5,
+   "fadeOutSeconds": 2.5
+  }
+ },
+ "hf_style": "photo"
+}

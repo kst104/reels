@@ -1,0 +1,24 @@
+{
+ "audio": {"music": {"volume": 0.07, "fadeInSeconds": 1.5, "fadeOutSeconds": 2.5}},
+ "captionStyle": {"wordsPerPage": 3, "fontSize": 64, "bottomOffset": 260},
+ "cuts": [
+  {"id": "c1", "sentence": 1, "type": "hero_title", "source": "", "text": "가습기에 넣을 물, 더 안전한 건 정수기 물?", "heroSubtitle": "겨울 가습기",
+   "hf": {"emphasis": "정수기 물?", "photo": "assets/images/c1.png", "photo_focus": "50% 45%"}},
+  {"id": "c2", "sentence": 2, "type": "callout", "callout_type": "info", "source": "", "title": "흔한 고민", "text": "수돗물이냐, 정수기 물이냐",
+   "hf": {"photo": "assets/images/c2.png", "photo_focus": "50% 50%"}},
+  {"id": "c3", "sentence": 3, "type": "callout", "callout_type": "info", "source": "", "title": "미국 환경보호청(EPA)", "text": "오히려 증류수를 권합니다",
+   "hf": {"photo": "assets/images/c3.png", "photo_focus": "50% 50%"}},
+  {"id": "c4", "sentence": 4, "type": "callout", "callout_type": "warning", "source": "", "title": "국내 연구 (2019)", "text": "초음파식은 수돗물에서 미세입자가 가장 많이 나옴",
+   "hf": {"fx": "arrow_down", "photo": "assets/images/c4.png", "photo_focus": "50% 40%"}},
+  {"id": "c5", "sentence": 5, "type": "stat_card", "source": "", "stat": "하루", "subtitle": "지난 물은 버리고 새 물로 · 질병관리본부 권고",
+   "hf": {"tag": "기억하세요 ①", "photo": "assets/images/c5.png", "photo_focus": "50% 50%"}},
+  {"id": "c6", "sentence": 6, "split_after": "헹구세요.", "type": "stat_card", "source": "", "stat": "2일", "subtitle": "마다 물통 닦기 · 일주일에 한 번 중성세제, 세 번 헹굼",
+   "hf": {"tag": "기억하세요 ②", "photo": "assets/images/c6.png", "photo_focus": "50% 50%"}},
+  {"id": "c7", "sentence": 6, "type": "callout", "callout_type": "warning", "source": "", "title": "주의", "text": "살균제는 절대 넣지 마세요",
+   "hf": {"photo": "assets/images/c6.png", "photo_focus": "30% 70%"}},
+  {"id": "c8", "sentence": 7, "split_after": "50퍼센트,", "type": "stat_card", "source": "", "stat": "40~50%", "subtitle": "적정 실내 습도 · 질병관리청",
+   "hf": {"tag": "기억하세요 ③", "photo": "assets/images/c7.png", "photo_focus": "50% 50%"}},
+  {"id": "c9", "sentence": 7, "type": "callout", "callout_type": "info", "source": "", "title": "자세한 건 설명란 링크에서",
+   "text": "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다. 지병이 있거나 영유아가 있으면 의사와 상담하세요.", "fontSize": 40, "titleFontSize": 56}
+ ]
+}
