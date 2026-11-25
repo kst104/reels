@@ -9,11 +9,11 @@ SRC = HERE / "assets/images/src"
 TPL = Path("/Users/seungtaepc/Downloads/reels/.claude/skills/reels/templates/frame2_hyperframes.py")
 TITLE = "아이폰18 프로, 뭐가 달라졌나?"
 CHANNEL = "아이폰18"
-MENT = "프로필 링크에서 확인하세요"
+MENT = "겅태상점으로 오세요"
 END_TAIL = 0.5  # 마지막 말 끝 + 0.5초에서 끊는다(제작후분석소 검수 ①-2)
 CONTAIN = {"w06"}  # 넓게 잘라 위아래를 검게 둔다(섬과 상태 표시줄이 함께 보이게)
 CROPS = {"w05": (0.0, 0.18, 1.0, 1.0), "w06": (0.16, 0.02, 0.84, 0.40)}  # (왼, 위, 오른, 아래) 비율. ①-4 글자 잘림, ①-5 일본어 위젯
-POPS = {4: ("가변 조리개", 0.9), 5: ("최대 40%", 2.6), 6: ("1199달러", 1.6)}  # 장면: (강조 글자, 장면 시작 뒤 초) ①-6
+POPS = {4: ("가변 조리개", 0.9), 5: ("최대 40%", 2.6), 6: ("1199달러", 0.9), 7: ("역대 최고 카메라", 1.2)}  # 장면: (강조 글자, 장면 시작 뒤 초) ①-6
 SPLIT = {7: ("w01", "50% 50%", "Olgierd Rudak")}  # 장면: 뒤 절반에 쓸 두 번째 사진 (제작후분석소 3-4)
 PUNCH_MIN = 3.5  # 이보다 긴 장면은 가운데서 한 번 더 다가간다 ①-7
 
@@ -23,9 +23,9 @@ SCENES = [  # (사진, 초점, 작가, 자막 두 줄, 이동 방향)
     ("w06", "40% 30%", "Kyu3a", ("다이내믹 아일랜드가", "처음으로 작아졌다"), 1),
     ("w05", "45% 45%", "Kyu3a", ("아이폰 최초로 조리개를", "바꾸는 카메라가 들어갔다"), -1),
     ("w03", "50% 30%", "Farragutful", ("칩은 A20 프로, 애플은 전작보다", "최대 40% 빠르다고 한다"), 1),
-    ("w10", "50% 45%", "Olgierd Rudak", ("대신 미국 가격은 1199달러로", "100달러 올랐다"), -1),
-    ("w09", "55% 75%", "Olgierd Rudak", ("리뷰는 카메라를 칭찬했지만, 17 프로에서", "바꿀 이유는 약하다는 평도 있다"), 1),
-    ("w07", "50% 50%", "Kyu3a", ("과연 올해", "갈아탈 만한 아이폰일까?"), -1),
+    ("w10", "50% 45%", "Olgierd Rudak", ("미국 가격은", "1199달러부터 시작한다"), -1),
+    ("w09", "55% 75%", "Olgierd Rudak", ("리뷰에서는 역대 아이폰 중", "최고의 카메라라는 평이 나왔다"), 1),
+    ("w07", "50% 50%", "Kyu3a", ("작아진 아일랜드, 가변 조리개, 빨라진 칩", "올해 갈아탈 이유로 충분하지 않을까?"), -1),
 ]
 
 
@@ -107,17 +107,18 @@ def html(b):
     <style>
       @font-face {{ font-family: "KR"; src: url("assets/fonts/KR-Regular.woff2") format("woff2"); font-weight: 400; }}
       @font-face {{ font-family: "KR"; src: url("assets/fonts/KR-Bold.woff2") format("woff2"); font-weight: 700 900; }}
+      @font-face {{ font-family: "Soft"; src: url("assets/fonts/Jua.woff2") format("woff2"); font-weight: 400; }}
       :root {{ --ground: #ffffff; --ink: #111111; --bar: #ff7a1a; --muted: #8a8a8a; }}
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
       html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }}
       #root {{ position: relative; width: 1080px; height: 1920px; background: var(--ground); font-family: "KR", sans-serif; color: var(--ink); word-break: keep-all; }}
       #bar {{ position: absolute; left: 0; top: 0; width: 1080px; height: 120px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 84px; font-weight: 900; letter-spacing: -0.02em; }}
-      #title {{ position: absolute; left: 40px; right: 40px; top: 120px; height: 357px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 66px; font-weight: 900; letter-spacing: -0.03em; }}
+      #title {{ position: absolute; left: 40px; right: 40px; top: 120px; height: 357px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 74px; font-weight: 400; letter-spacing: -0.03em; }}
       #rule {{ position: absolute; left: 0; width: 1080px; top: 477px; height: 3px; background: #d8d8d8; }}
       .panel {{ position: absolute; left: 0; top: 480px; width: 1080px; height: 960px; overflow: hidden; background: #000; }}
       .panel img {{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }}
       .credit {{ position: absolute; right: 20px; top: 1398px; z-index: 4; font-size: 24px; font-weight: 400; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.9); }}
-      .cap {{ position: absolute; left: 50px; right: 50px; top: 1440px; height: 360px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 60px; font-weight: 700; line-height: 1.5; }}
+      .cap {{ position: absolute; left: 50px; right: 50px; top: 1440px; height: 360px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 60px; font-weight: 400; line-height: 1.5; }}
       .hl {{ position: absolute; left: 50px; top: 1250px; z-index: 5; }}
       .hl span {{ display: inline-block; padding: 14px 34px; border-radius: 16px; background: #1e63ff; color: #fff; font-size: 64px; font-weight: 900; box-shadow: 0 8px 24px rgba(0,0,0,.35); }}
       #ment {{ position: absolute; left: 0; top: 1800px; width: 1080px; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--bar); color: #fff; font-size: 54px; font-weight: 900; }}
@@ -154,6 +155,11 @@ def main():
     f2 = importlib.util.module_from_spec(spec); spec.loader.exec_module(f2)
     (HF / "assets/fonts").mkdir(parents=True, exist_ok=True)
     f2.subset_fonts(page, HF / "assets/fonts", None, None)
+    from fontTools import subset  # 부드러운 글꼴 Jua(OFL, Google Fonts): 쓰인 글자만 남긴다
+    opts = subset.Options(); opts.flavor = "woff2"
+    font = subset.load_font(str(HERE / "assets/fonts/Jua-Regular.ttf"), opts)
+    sub = subset.Subsetter(opts); sub.populate(text=page); sub.subset(font)
+    subset.save_font(font, str(HF / "assets/fonts/Jua.woff2"), opts)
     print("scenes", b)
 
 

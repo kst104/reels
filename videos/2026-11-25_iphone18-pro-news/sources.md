@@ -4,6 +4,8 @@
 - 형식 참고(원본): 유튜브 쇼츠 https://youtube.com/shorts/-R_rAQt8vrc. 폰무위키 채널의 「삼성이 만드는 베젤리스 스마트폰」(23초, 2026-11-24 게시)을 rea-video로 장면별로 분석했다. 틀만 따랐고 원본의 영상·이미지·채널 이름·로고는 쓰지 않았다.
 - 틀: HyperFrames를 직접 짰다(뉴스 카드형. 위 초록 띠 "IT 소식", 고정 제목, 가운데 사진, 아래 두 줄 자막). 스킬의 1번·2번 틀은 쓰지 않았다.
 - 음성: 타입캐스트 "영규"(tc_61130cd072f7b1a0c044b7f5, ssfm-v31). 배경 음악은 없다(원본도 없음). 장면이 바뀔 때 짧은 효과음을 넣었다(ffmpeg으로 만든 1400Hz 0.07초 소리).
+- 글꼴: 제목과 자막은 Jua(Google Fonts, SIL OFL 1.1, `artifacts/fonts/Jua-OFL.txt`), 띠는 Apple SD Gothic Neo.
+- 아래 띠: "겅태상점으로 오세요"(인스타 프로필 링크 https://cshop.naver.com/geongtae_shop).
 - 쇼핑 커넥트 상품: 없음. 광고 표기도 넣지 않았다.
 
 ## 문장별 근거
@@ -15,8 +17,9 @@
 | 3 다이내믹 아일랜드 축소 | "smaller 'Dynamic Island' cutout than the iPhone 17 Pro models" |
 | 4 가변 조리개 | "first iPhones to … use variable-aperture cameras" |
 | 5 A20 Pro 최대 40% | 애플 발표 기준이며, 문장에도 "애플은 ~라고 한다"로 썼다 |
-| 6 1199달러, 100달러 인상 | 미국 시작 가격 기준이다. 한국 가격은 확인하지 않았다 |
-| 7 리뷰 평가 | Engadget·Tom's Guide·PetaPixel은 카메라를 호평했고, MacRumors는 17 프로에서 바꿀 이유가 약하다고 평했다 |
+| 6 1199달러부터 | 미국 시작 가격 기준이다. 한국 가격은 확인하지 않았다 |
+| 7 역대 최고 카메라 평 | Engadget: "camera performance as the best of any iPhone" (위키백과 Reception 절) |
+| 8 장점 다시 묻기 | 3·4·5줄 내용을 다시 모은 것 |
 
 ## 사진 (위키미디어 공용, 모두 CC BY-SA 4.0)
 장면마다 잘라 쓰고, 대비와 채도를 살짝 올리고, 천천히 확대·이동시켰다. 고친 사진도 같은 CC BY-SA 4.0 조건을 따른다. 게시 캡션에도 작가와 라이선스를 적는다.
