@@ -1,0 +1,143 @@
+{
+ "bar": "아이폰18",
+ "title": "아이폰18 프로, 산 사람들의 진짜 이유",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/w01.jpg",
+   "author": "Olgierd Rudak",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "아이폰18 프로,",
+    "산 사람들은 왜 바꿨을까?"
+   ],
+   "video": "assets/video/s1.mp4"
+  },
+  {
+   "photo": "assets/images/src/w10.jpg",
+   "author": "Olgierd Rudak",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "바꾼 이유 1위는",
+    "오래 쓴 폰의 배터리와 발열"
+   ],
+   "video": "assets/video/s2.mp4",
+   "pop": {
+    "text": "배터리·발열",
+    "at": 1.6
+   }
+  },
+  {
+   "photo": "assets/images/src/w09.jpg",
+   "author": "Olgierd Rudak",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "써 본 사람들은",
+    "퇴근할 때까지 배터리가 넉넉하다고"
+   ],
+   "video": "assets/video/s3.mp4"
+  },
+  {
+   "photo": "assets/images/src/w06.jpg",
+   "author": "Kyu3a",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "공식 기준 동영상은",
+    "최대 34시간 재생"
+   ],
+   "video": "assets/video/s4.mp4",
+   "pop": {
+    "text": "최대 34시간",
+    "at": 1.8
+   }
+  },
+  {
+   "photo": "assets/images/src/w05.jpg",
+   "author": "Kyu3a",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "두 번째 만족 포인트,",
+    "아이폰 최초 가변 조리개 카메라"
+   ],
+   "video": "assets/video/s5.mp4",
+   "pop": {
+    "text": "가변 조리개",
+    "at": 2.2
+   }
+  },
+  {
+   "photo": "assets/images/src/w05.jpg",
+   "author": "힉스필드 AI",
+   "source": "AI 생성 영상",
+   "license": "실제 촬영 아님",
+   "lines": [
+    "버튼 하나로 빛이 별처럼",
+    "갈라지는 사진이 나온다는 후기"
+   ],
+   "video": "assets/video/s6.mp4"
+  },
+  {
+   "photo": "assets/images/src/w03.jpg",
+   "author": "Farragutful",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "세 번째는 충전,",
+    "15분이면 최대 50% (60W 이상 어댑터·별매)"
+   ],
+   "video": "assets/video/s7.mp4",
+   "pop": {
+    "text": "15분 50%",
+    "at": 2.0
+   }
+  },
+  {
+   "photo": "assets/images/src/w01.jpg",
+   "author": "Olgierd Rudak",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "배터리, 카메라, 충전",
+    "세 가지가 다 마음에 든다는 반응"
+   ],
+   "video": "assets/video/s8.mp4"
+  },
+  {
+   "photo": "assets/images/src/w08.jpg",
+   "author": "Olgierd Rudak",
+   "source": "Wikimedia Commons · 힉스필드 AI 움직임",
+   "lines": [
+    "바꿀 때가 된 내 폰,",
+    "이번엔 아이폰18 프로 어떠세요?"
+   ],
+   "video": "assets/video/s9.mp4"
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/w06.jpg",
+   "author": "Kyu3a",
+   "focus": "40% 30%",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/w05.jpg",
+   "author": "Kyu3a",
+   "crop": [
+    0.0,
+    0.18,
+    1.0,
+    1.0
+   ],
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/w03.jpg",
+   "author": "Farragutful",
+   "focus": "50% 30%",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}
