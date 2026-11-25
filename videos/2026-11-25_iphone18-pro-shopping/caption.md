@@ -5,7 +5,7 @@
 - 게시한 해시태그: #아이폰18프로 #아이폰18 #아이폰후기 #애플 #스마트폰추천
 - 영상 주소(커밋 고정): https://raw.githubusercontent.com/kst104/reels/0211d8ac17ecb5b32cc1f181f93c1271f0171337/videos/2026-11-25_iphone18-pro-shopping/iphone18-pro-shopping_final.mp4
 - 기존 릴스 DgJUysrq2HN 삭제: 실패 — Windsor 인스타 연결에 instagram_manage_contents 권한 없음. 사용자 처리 대기
-- 유튜브 쇼츠: 대기 — Windsor에 유튜브 채널 미연결
+- 유튜브 쇼츠: 2026-11-26 다음 쇼츠 올릴 때 함께 올림(사용자 지정 "이건 내일 쇼츠올릴때 같이 올려"). 11-25 업로드 2회는 YouTube 속도 제한으로 실패. 채널 "잘못된 의료 정보 바로잡기(잘.의.정.바)", Windsor 계정 122664
 쇼핑 커넥트 상품: 없음(상점 안내만, 앞 아이폰18 릴스와 같음)
 
 ## 인스타그램 릴스 캡션
