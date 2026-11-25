@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "KR"; src: url("assets/fonts/KR-Regular.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "KR"; src: url("assets/fonts/KR-Bold.woff2") format("woff2"); font-weight: 700 900; }
+      :root { --ground: #ffffff; --ink: #111111; --bar: #1f8f72; --muted: #8a8a8a; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; background: var(--ground); font-family: "KR", sans-serif; color: var(--ink); word-break: keep-all; }
+      #bar { position: absolute; left: 0; top: 0; width: 1080px; height: 112px; background: var(--bar); display: flex; align-items: center; justify-content: center; gap: 16px; color: #fff; font-size: 44px; font-weight: 700; }
+      #bar .dot { width: 46px; height: 46px; border-radius: 50%; border: 6px solid #fff; }
+      #title { position: absolute; left: 54px; right: 54px; top: 150px; text-align: center; font-size: 62px; font-weight: 900; letter-spacing: -0.03em; }
+      #rule { position: absolute; left: 0; width: 1080px; top: 268px; height: 3px; background: #d8d8d8; }
+      .panel { position: absolute; left: 0; top: 300px; width: 1080px; height: 720px; overflow: hidden; background: #000; }
+      .panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .credit { position: absolute; right: 30px; top: 1030px; font-size: 24px; font-weight: 400; color: var(--muted); }
+      .cap { position: absolute; left: 60px; right: 60px; top: 1110px; text-align: center; font-size: 52px; font-weight: 700; line-height: 1.55; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="31.973" data-width="1080" data-height="1920" data-composition-variables='[{"id":"channel","type":"string","label":"채널 이름","default":"IT 소식"},{"id":"title","type":"string","label":"제목","default":"아이폰18 프로, 뭐가 달라졌나?"}]'>
+      <div id="bar" class="clip" data-start="0" data-duration="31.973" data-track-index="0"><span class="dot"></span><span data-var-text="channel">IT 소식</span></div>
+      <h1 id="title" class="clip" data-start="0" data-duration="31.973" data-track-index="0" data-var-text="title">아이폰18 프로, 뭐가 달라졌나?</h1>
+      <div id="rule" class="clip" data-start="0" data-duration="31.973" data-track-index="0"></div>
+      <div id="img1" class="clip panel" data-start="0.0" data-duration="3.979" data-track-index="1">
+        <img id="ph1" src="assets/img/w11.jpg" style="object-position:50% 40%" alt="" />
+      </div>
+      <p id="cr1" class="clip credit" data-start="0.0" data-duration="3.979" data-track-index="2">사진: 茅野ふたば · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img2" class="clip panel" data-start="3.979" data-duration="2.783" data-track-index="1">
+        <img id="ph2" src="assets/img/w08.jpg" style="object-position:50% 50%" alt="" />
+      </div>
+      <p id="cr2" class="clip credit" data-start="3.979" data-duration="2.783" data-track-index="2">사진: Olgierd Rudak · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img3" class="clip panel" data-start="6.762" data-duration="2.523" data-track-index="1">
+        <img id="ph3" src="assets/img/w06.jpg" style="object-position:40% 30%" alt="" />
+      </div>
+      <p id="cr3" class="clip credit" data-start="6.762" data-duration="2.523" data-track-index="2">사진: Kyu3a · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img4" class="clip panel" data-start="9.285" data-duration="3.545" data-track-index="1">
+        <img id="ph4" src="assets/img/w05.jpg" style="object-position:45% 45%" alt="" />
+      </div>
+      <p id="cr4" class="clip credit" data-start="9.285" data-duration="3.545" data-track-index="2">사진: Kyu3a · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img5" class="clip panel" data-start="12.83" data-duration="5.108" data-track-index="1">
+        <img id="ph5" src="assets/img/w03.jpg" style="object-position:50% 30%" alt="" />
+      </div>
+      <p id="cr5" class="clip credit" data-start="12.83" data-duration="5.108" data-track-index="2">사진: Farragutful · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img6" class="clip panel" data-start="17.938" data-duration="4.203" data-track-index="1">
+        <img id="ph6" src="assets/img/w10.jpg" style="object-position:50% 45%" alt="" />
+      </div>
+      <p id="cr6" class="clip credit" data-start="17.938" data-duration="4.203" data-track-index="2">사진: Olgierd Rudak · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img7" class="clip panel" data-start="22.141" data-duration="5.659" data-track-index="1">
+        <img id="ph7" src="assets/img/w09.jpg" style="object-position:55% 75%" alt="" />
+      </div>
+      <p id="cr7" class="clip credit" data-start="22.141" data-duration="5.659" data-track-index="2">사진: Olgierd Rudak · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="img8" class="clip panel" data-start="27.8" data-duration="4.173" data-track-index="1">
+        <img id="ph8" src="assets/img/w07.jpg" style="object-position:50% 50%" alt="" />
+      </div>
+      <p id="cr8" class="clip credit" data-start="27.8" data-duration="4.173" data-track-index="2">사진: Kyu3a · Wikimedia Commons · CC BY-SA 4.0</p>
+      <div id="cap1" class="clip cap" data-start="0.0" data-duration="3.979" data-track-index="3"><div id="capin1"><p>아이폰18 프로가</p><p>일반 아이폰18 없이 먼저 나왔다</p></div></div>
+      <div id="cap2" class="clip cap" data-start="3.979" data-duration="2.783" data-track-index="3"><div id="capin2"><p>애플 발표와 리뷰를</p><p>짧게 정리하면 이렇다</p></div></div>
+      <div id="cap3" class="clip cap" data-start="6.762" data-duration="2.523" data-track-index="3"><div id="capin3"><p>다이내믹 아일랜드가</p><p>처음으로 작아졌다</p></div></div>
+      <div id="cap4" class="clip cap" data-start="9.285" data-duration="3.545" data-track-index="3"><div id="capin4"><p>아이폰 최초로 조리개를</p><p>바꾸는 카메라가 들어갔다</p></div></div>
+      <div id="cap5" class="clip cap" data-start="12.83" data-duration="5.108" data-track-index="3"><div id="capin5"><p>칩은 A20 프로, 애플은 전작보다</p><p>최대 40% 빠르다고 한다</p></div></div>
+      <div id="cap6" class="clip cap" data-start="17.938" data-duration="4.203" data-track-index="3"><div id="capin6"><p>대신 미국 가격은 1199달러로</p><p>100달러 올랐다</p></div></div>
+      <div id="cap7" class="clip cap" data-start="22.141" data-duration="5.659" data-track-index="3"><div id="capin7"><p>리뷰는 카메라를 칭찬했지만, 17 프로에서</p><p>바꿀 이유는 약하다는 평도 있다</p></div></div>
+      <div id="cap8" class="clip cap" data-start="27.8" data-duration="4.173" data-track-index="3"><div id="capin8"><p>과연 올해</p><p>갈아탈 만한 아이폰일까?</p></div></div>
+      <audio id="narration" class="clip" src="assets/audio/narration.wav" data-start="0" data-duration="31.973" data-track-index="4"></audio>
+      <audio id="pop2" class="clip" src="assets/audio/pop.wav" data-start="3.979" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop3" class="clip" src="assets/audio/pop.wav" data-start="6.762" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop4" class="clip" src="assets/audio/pop.wav" data-start="9.285" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop5" class="clip" src="assets/audio/pop.wav" data-start="12.83" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop6" class="clip" src="assets/audio/pop.wav" data-start="17.938" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop7" class="clip" src="assets/audio/pop.wav" data-start="22.141" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop8" class="clip" src="assets/audio/pop.wav" data-start="27.8" data-duration="0.1" data-track-index="5"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#ph1", {scale: 1.0, xPercent: -1.5}, {scale: 1.09, xPercent: 1.5, duration: 3.979, ease: "none"}, 0.0);
+      tl.fromTo("#ph2", {scale: 1.0, xPercent: 1.5}, {scale: 1.09, xPercent: -1.5, duration: 2.783, ease: "none"}, 3.979);
+      tl.fromTo("#ph3", {scale: 1.0, xPercent: -1.5}, {scale: 1.09, xPercent: 1.5, duration: 2.523, ease: "none"}, 6.762);
+      tl.fromTo("#ph4", {scale: 1.0, xPercent: 1.5}, {scale: 1.09, xPercent: -1.5, duration: 3.545, ease: "none"}, 9.285);
+      tl.fromTo("#ph5", {scale: 1.0, xPercent: -1.5}, {scale: 1.09, xPercent: 1.5, duration: 5.108, ease: "none"}, 12.83);
+      tl.fromTo("#ph6", {scale: 1.0, xPercent: 1.5}, {scale: 1.09, xPercent: -1.5, duration: 4.203, ease: "none"}, 17.938);
+      tl.fromTo("#ph7", {scale: 1.0, xPercent: -1.5}, {scale: 1.09, xPercent: 1.5, duration: 5.659, ease: "none"}, 22.141);
+      tl.fromTo("#ph8", {scale: 1.0, xPercent: 1.5}, {scale: 1.09, xPercent: -1.5, duration: 4.173, ease: "none"}, 27.8);
+      tl.fromTo("#capin1", {scale: 0.86, opacity: 0}, {scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)"}, 0);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
