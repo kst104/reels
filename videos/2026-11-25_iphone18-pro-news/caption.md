@@ -1,6 +1,10 @@
-# 캡션 (게시 전, 사용자 확인 대기)
+# 캡션 (게시함)
 
-영상 주소(공개 저장소): https://raw.githubusercontent.com/kst104/reels/claude/reels-daily-auto/videos/2026-11-25_iphone18-pro-news/iphone18-pro-news_final.mp4
+- 게시: 2026-11-25 10:14 (한국 시각), 인스타그램 kst1_04 릴스 https://www.instagram.com/reel/DgJUysrq2HN/ (media_id 18059528219802742), Windsor.ai create_video_post, thumb_offset 1500, share_to_feed true
+- 사용자 확인: 캡션을 보여 준 뒤 "이대로 게시", 7차 영상(아래 여백 수정)을 보여 준 뒤 "게시해"
+- 게시한 해시태그: #아이폰18 #아이폰18프로 #애플 #IT뉴스 #스마트폰
+
+영상 주소(공개 저장소, 커밋 고정): https://raw.githubusercontent.com/kst104/reels/70c4884dc013438c035198a7901154ab4276640c/videos/2026-11-25_iphone18-pro-news/iphone18-pro-news_final.mp4
 쇼핑 커넥트 상품: 없음(상점 안내만)
 
 ## 캡션
