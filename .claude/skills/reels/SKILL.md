@@ -4,7 +4,7 @@ description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일
 argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] (선택: 붙일 상품)"
 ---
 
-# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v11, 2026-11-25: 초안은 제작전분석소, 제작은 여기, 검수는 제작후분석소)
+# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v12, 2026-11-25: "기본1 형식" 뉴스 카드 틀 저장)
 
 ## 이미 확정된 것 (매번 다시 묻지 않는다)
 
@@ -55,6 +55,29 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 
 참고 예시: `REELS/videos/2026-11-22_winter-hot-bath/` (script.txt, sources.md, artifacts/composition.json)
 
+## 기본1 형식 (v12, 2026-11-25 사용자 지정)
+
+사용자 원문: "지금 형식을 기본1 형식의 스킬로 저장하고, 다음부터 기본1형식으로 해줘 하면 이 형식으로 해줘."
+
+사용자가 "기본1 형식으로 해줘"라고 하면 이 틀로 만든다. 1번·2번 틀과 화면 방식(글자·움직임·사진)은 따로 묻지 않는다.
+
+- 화면(1080×1920):
+  - 위 1/4: 주황 띠(주제 낱말, 예 "아이폰18")와 고정 제목을 높이 1:3으로 나눈다.
+  - 가운데: 장면 사진(960px). 잘라 쓰고 대비·채도를 살짝 올리고 천천히 확대·이동한다. 3.5초 넘는 장면은 가운데서 한 번 더 다가가거나 사진 2장으로 나눈다. 오른쪽 아래에 작가와 라이선스를 적는다.
+  - 아래 1/4: 두 줄 자막과 주황 띠 "겅태상점으로 오세요"를 3:1로 나눈다.
+- 글꼴: 제목과 자막은 부드러운 Jua(Google Fonts, OFL, 처음 실행 때 `~/.cache/reels-fonts`로 내려받는다), 띠는 Apple SD Gothic Neo. 이모지는 글꼴에 없어 쓰지 않는다.
+- 소리: 음성은 타입캐스트 "영규"다. 0초부터 첫 자막을 보이고, 마지막 말 끝 + 0.5초에서 끊는다. 장면이 바뀔 때와 강조 글자가 나올 때 짧은 팝 효과음을 넣는다. 배경 음악은 넣지 않는다. 최종 음량은 -16 LUFS로 맞춘다.
+- 강조: 핵심 숫자나 낱말 2~4개를 기울어진 파란 글자로 튀어나오게 한다. 리뷰 평가처럼 단정하기 어려운 말은 "리뷰 평 · …"처럼 출처가 드러나게 쓴다.
+- 마지막 장면: 앞에서 말한 장점 사진을 0.8초씩 다시 보여 주고 끝낸다. 오른쪽 아래에 광고 표기 "이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다."를 작게 넣는다(아래 띠가 수수료가 나는 상점으로 안내하므로).
+- 대본 방향: 긍정적으로 쓰고, 마지막 줄은 앞의 장점을 다시 모아 묻는 형태로 쓴다(2026-11-25 사용자: "기존의 장점을 맨 마지막에는 한번 더 강조해서 묻는 형태로 바꿔줘").
+- 만드는 법(OpenMontage 폴더에서):
+  1. `make_narration.py projects/<id> --script <script.txt> --engine typecast --voice tc_61130cd072f7b1a0c044b7f5`
+  2. `projects/<id>/basic1.json`을 쓴다. 예시는 `videos/2026-11-25_iphone18-pro-news/artifacts/hyperframes/basic1.json`. 장면마다 photo, focus, author, lines(두 줄)를 넣고, 필요하면 crop, contain, pop, split, dir을 더한다. 마지막 장면에 쓸 recap과, ad_note(기본 true)도 여기서 정한다.
+  3. `.venv/bin/python ../.claude/skills/reels/templates/basic1_hyperframes.py projects/<id>` → `projects/<id>/hf/`
+  4. `hf`에서 `hyperframes check`(오류 0) → `snapshot`으로 장면마다 직접 본다 → `render --fps 30 --quality high`
+  5. ffmpeg로 `-crf 23`과 `-af loudnorm=I=-16:TP=-1.5:LRA=11`을 적용한다.
+- 첫 편: `videos/2026-11-25_iphone18-pro-news/`(30.4초). 틀 테스트: `python -m pytest tests/test_basic1_hyperframes.py`.
+
 ## 초안 폴더로 만들기 (v11, 2026-11-25)
 
 사용자가 제작전분석소에서 초안을 지시하면, 그 결과 `~/Downloads/reels-analysis/drafts/YYYY-MM-DD_<주제>/`를 받아 아래 순서로 만든다. 이때 1절 조사와 3절 대본 쓰기는 하지 않는다. 대본은 초안 그대로 쓴다.
@@ -62,7 +85,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 1. 초안 폴더를 읽는다(대본, 자막 나눔, 제목, 출처, `images/`와 이미지 출처표, 참고 영상 주소). 빠진 것이 있으면 제작전분석소에 요청하고 멈춘다.
 2. 참고 영상이 있으면 `yt-dlp`로 받아 `rea-video survey` → `rea-video decompose --lang en --ocr-lang ko`로 장면별로 분석한다. 그림을 직접 보고 틀(띠·제목·이미지 칸·자막 위치), 장면 길이, 효과음, 음악 유무를 정리한다. 원본의 채널 이름·로고·영상·이미지는 쓰지 않는다.
 3. 음성: 4절(타입캐스트 "영규").
-4. 화면: HyperFrames로 참고 틀을 따라 짠다. 예시는 `videos/2026-11-25_iphone18-pro-news/artifacts/hyperframes/`(`build_hf.py`가 장면 경계를 음성 timings로 잡고, 사진 변형·폰트 서브셋·index.html을 만든다). 이미지는 잘라 쓰고 대비·채도 보정과 천천히 확대·이동으로 변형한다. CC BY 계열 사진은 장면마다 작가·라이선스를 화면에 작게 적는다. `hyperframes check`(오류 0) → `snapshot`으로 장면마다 직접 본다 → `render` → ffmpeg로 CRF 23 압축.
+4. 화면: HyperFrames로 참고 틀을 따라 짠다. 기본1 형식이면 `templates/basic1_hyperframes.py`(설정 `basic1.json`)를 쓴다. 이미지는 잘라 쓰고 대비·채도 보정과 천천히 확대·이동으로 변형한다. CC BY 계열 사진은 장면마다 작가·라이선스를 화면에 작게 적는다. `hyperframes check`(오류 0) → `snapshot`으로 장면마다 직접 본다 → `render` → ffmpeg로 CRF 23 압축.
 5. `videos/YYYY-MM-DD_<주제>/`에 정리(6절과 같다). `sources.md`에 초안 폴더 경로와 참고 영상을 적는다. `handoff.md`에는 참고 영상, rea-video 분석 결과 위치, 렌더 설정, 스스로 본 걱정거리를 적는다.
 6. 제작후분석소 세션에 검수를 요청한다(영상 폴더 경로, 참고 영상 주소). 요청할 것: 어색한 장면·고칠 부분, 최근 유행 쇼츠 형식과 비교, 원본 폼과 비교. 보고가 오면 고칠 것을 고쳐 다시 넘기고, 사용자에게 알린다.
 
