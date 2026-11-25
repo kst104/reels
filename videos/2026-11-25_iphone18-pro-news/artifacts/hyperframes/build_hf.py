@@ -10,7 +10,11 @@ TPL = Path("/Users/seungtaepc/Downloads/reels/.claude/skills/reels/templates/fra
 TITLE = "아이폰18 프로, 뭐가 달라졌나?"
 CHANNEL = "아이폰18"
 MENT = "프로필 링크에서 확인하세요"
-END_HOLD = 1.4
+END_TAIL = 0.5  # 마지막 말 끝 + 0.5초에서 끊는다(제작후분석소 검수 ①-2)
+CONTAIN = {"w06"}  # 넓게 잘라 위아래를 검게 둔다(섬과 상태 표시줄이 함께 보이게)
+CROPS = {"w05": (0.0, 0.18, 1.0, 1.0), "w06": (0.16, 0.02, 0.84, 0.40)}  # (왼, 위, 오른, 아래) 비율. ①-4 글자 잘림, ①-5 일본어 위젯
+POPS = {4: ("가변 조리개", 0.9), 5: ("최대 40%", 2.6), 6: ("1199달러", 1.6)}  # 장면: (강조 글자, 장면 시작 뒤 초) ①-6
+PUNCH_MIN = 3.5  # 이보다 긴 장면은 가운데서 한 번 더 다가간다 ①-7
 
 SCENES = [  # (사진, 초점, 작가, 자막 두 줄, 이동 방향)
     ("w11", "50% 40%", "茅野ふたば", ("아이폰18 프로가", "일반 아이폰18 없이 먼저 나왔다"), 1),
@@ -27,7 +31,7 @@ SCENES = [  # (사진, 초점, 작가, 자막 두 줄, 이동 방향)
 def boundaries():
     t = json.loads((HERE / "assets/audio/narration_timings.json").read_text())
     starts = [0.0] + [round(s["start"] - 0.3, 3) for s in t["sections"][1:]]
-    return starts + [round(t["total"] + END_HOLD, 3)]
+    return starts + [round(t["sections"][-1]["end"] + END_TAIL, 3)]
 
 
 def prepare_media():
@@ -35,6 +39,9 @@ def prepare_media():
     (HF / "assets/audio").mkdir(parents=True, exist_ok=True)
     for name, *_ in SCENES:  # 변형: 긴 변 1600으로 줄이고 대비·채도를 살짝 올린다
         im = Image.open(SRC / f"{name}.jpg").convert("RGB")
+        if name in CROPS:
+            l, t, r, b = CROPS[name]
+            im = im.crop((int(l * im.width), int(t * im.height), int(r * im.width), int(b * im.height)))
         im.thumbnail((1600, 1600))
         im = ImageEnhance.Contrast(im).enhance(1.08)
         im = ImageEnhance.Color(im).enhance(1.12)
@@ -51,14 +58,26 @@ def html(b):
         s, e = b[i - 1], b[i]
         dur = round(e - s, 3)
         scenes.append(f'''      <div id="img{i}" class="clip panel" data-start="{s}" data-duration="{dur}" data-track-index="1">
-        <img id="ph{i}" src="assets/img/{name}.jpg" style="object-position:{focus}" alt="" />
+        <img id="ph{i}" src="assets/img/{name}.jpg" style="object-position:{focus};object-fit:{'contain' if name in CONTAIN else 'cover'}" alt="" />
       </div>
       <p id="cr{i}" class="clip credit" data-start="{s}" data-duration="{dur}" data-track-index="2">사진: {author} · Wikimedia Commons · CC BY-SA 4.0</p>''')
         caps.append(f'''      <div id="cap{i}" class="clip cap" data-start="{s}" data-duration="{dur}" data-track-index="3"><div id="capin{i}"><p>{l1}</p><p>{l2}</p></div></div>''')
         if i > 1:
             pops.append(f'      <audio id="pop{i}" class="clip" src="assets/audio/pop.wav" data-start="{s}" data-duration="0.1" data-track-index="5"></audio>')
-        tweens.append(f'tl.fromTo("#ph{i}", {{scale: 1.0, xPercent: {-1.5 * d}}}, {{scale: 1.09, xPercent: {1.5 * d}, duration: {dur}, ease: "none"}}, {s});')
-    tweens.append('tl.fromTo("#capin1", {scale: 0.86, opacity: 0}, {scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)"}, 0);')
+        if dur > PUNCH_MIN:
+            half = round(dur / 2, 3)
+            tweens.append(f'tl.fromTo("#ph{i}", {{scale: 1.0, xPercent: {-1.5 * d}, yPercent: 0}}, {{scale: 1.05, xPercent: 0, duration: {half}, ease: "none"}}, {s});')
+            tweens.append(f'tl.to("#ph{i}", {{scale: 1.16, xPercent: {2 * d}, yPercent: -3, duration: 0.3, ease: "power2.out"}}, {round(s + half, 3)});')
+            tweens.append(f'tl.to("#ph{i}", {{scale: 1.2, duration: {round(dur - half - 0.3, 3)}, ease: "none"}}, {round(s + half + 0.3, 3)});')
+        else:
+            tweens.append(f'tl.fromTo("#ph{i}", {{scale: 1.0, xPercent: {-1.5 * d}}}, {{scale: 1.09, xPercent: {1.5 * d}, duration: {dur}, ease: "none"}}, {s});')
+        if i in POPS:
+            word, at = POPS[i]
+            t0 = round(s + at, 3)
+            scenes.append(f'      <div id="hl{i}" class="clip hl" data-start="{t0}" data-duration="{round(e - t0, 3)}" data-track-index="6"><span id="hlin{i}">{word}</span></div>')
+            pops.append(f'      <audio id="hpop{i}" class="clip" src="assets/audio/pop.wav" data-start="{t0}" data-duration="0.1" data-track-index="7"></audio>')
+            tweens.append(f'tl.fromTo("#hlin{i}", {{scale: 0.3, rotation: -14}}, {{scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2.4)"}}, {t0});')
+    tweens.append('tl.fromTo("#capin1", {scale: 0.94}, {scale: 1, duration: 0.25, ease: "back.out(2)"}, 0);')  # 0초부터 보인다(①-1)
     total = b[-1]
     return f'''<!doctype html>
 <html lang="ko" data-resolution="portrait">
@@ -73,14 +92,16 @@ def html(b):
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
       html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }}
       #root {{ position: relative; width: 1080px; height: 1920px; background: var(--ground); font-family: "KR", sans-serif; color: var(--ink); word-break: keep-all; }}
-      #bar {{ position: absolute; left: 0; top: 0; width: 1080px; height: 330px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 132px; font-weight: 900; letter-spacing: -0.02em; }}
-      #title {{ position: absolute; left: 40px; right: 40px; top: 330px; height: 307px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 66px; font-weight: 900; letter-spacing: -0.03em; }}
-      #rule {{ position: absolute; left: 0; width: 1080px; top: 637px; height: 3px; background: #d8d8d8; }}
-      .panel {{ position: absolute; left: 0; top: 640px; width: 1080px; height: 640px; overflow: hidden; background: #000; }}
+      #bar {{ position: absolute; left: 0; top: 0; width: 1080px; height: 120px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 84px; font-weight: 900; letter-spacing: -0.02em; }}
+      #title {{ position: absolute; left: 40px; right: 40px; top: 120px; height: 357px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 66px; font-weight: 900; letter-spacing: -0.03em; }}
+      #rule {{ position: absolute; left: 0; width: 1080px; top: 477px; height: 3px; background: #d8d8d8; }}
+      .panel {{ position: absolute; left: 0; top: 480px; width: 1080px; height: 960px; overflow: hidden; background: #000; }}
       .panel img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
-      .credit {{ position: absolute; right: 24px; top: 1290px; font-size: 24px; font-weight: 400; color: var(--muted); }}
-      .cap {{ position: absolute; left: 50px; right: 50px; top: 1340px; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 60px; font-weight: 700; line-height: 1.5; }}
-      #ment {{ position: absolute; left: 50%; top: 1680px; transform: translateX(-50%); white-space: nowrap; padding: 22px 54px; border-radius: 999px; background: var(--bar); color: #fff; font-size: 50px; font-weight: 900; }}
+      .credit {{ position: absolute; right: 20px; top: 1398px; z-index: 4; font-size: 24px; font-weight: 400; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.9); }}
+      .cap {{ position: absolute; left: 50px; right: 50px; top: 1440px; height: 360px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 60px; font-weight: 700; line-height: 1.5; }}
+      .hl {{ position: absolute; left: 50px; top: 1250px; z-index: 5; }}
+      .hl span {{ display: inline-block; padding: 14px 34px; border-radius: 16px; background: #1e63ff; color: #fff; font-size: 64px; font-weight: 900; box-shadow: 0 8px 24px rgba(0,0,0,.35); }}
+      #ment {{ position: absolute; left: 0; top: 1800px; width: 1080px; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--bar); color: #fff; font-size: 54px; font-weight: 900; }}
     </style>
   </head>
   <body>
