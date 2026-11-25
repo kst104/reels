@@ -1,0 +1,176 @@
+{
+ "bar": "아이폰18",
+ "title": "아이폰18 프로, 뭐가 달라졌나?",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/w12.jpg",
+   "focus": "50% 40%",
+   "author": "Farragutful",
+   "lines": [
+    "아이폰 최초 기능이",
+    "들어갔다"
+   ],
+   "dir": 1
+  },
+  {
+   "photo": "assets/images/src/w08.jpg",
+   "focus": "50% 50%",
+   "author": "Olgierd Rudak",
+   "dir": -1,
+   "pop": {
+    "text": "바뀐 3가지",
+    "at": 0.8
+   },
+   "lines": [
+    "아이폰18 프로에서",
+    "바뀐 3가지"
+   ]
+  },
+  {
+   "photo": "assets/images/src/w11.jpg",
+   "focus": "50% 40%",
+   "author": "茅野ふたば",
+   "dir": 1,
+   "lines": [
+    "아이폰18 프로가",
+    "일반 모델 없이 먼저 나왔다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/w06.jpg",
+   "focus": "40% 30%",
+   "author": "Kyu3a",
+   "crop": [
+    0.16,
+    0.02,
+    0.84,
+    0.4
+   ],
+   "contain": true,
+   "dir": -1,
+   "lines": [
+    "다이내믹 아일랜드가",
+    "처음으로 작아졌다"
+   ],
+   "pop": {
+    "text": "① 작아진 아일랜드",
+    "at": 0.6
+   }
+  },
+  {
+   "photo": "assets/images/src/w05.jpg",
+   "focus": "45% 45%",
+   "author": "Kyu3a",
+   "crop": [
+    0.0,
+    0.18,
+    1.0,
+    1.0
+   ],
+   "dir": 1,
+   "pop": {
+    "text": "② 가변 조리개",
+    "at": 0.9
+   },
+   "lines": [
+    "아이폰 최초로",
+    "조리개를 바꾸는 카메라"
+   ]
+  },
+  {
+   "photo": "assets/images/src/w03.jpg",
+   "focus": "50% 30%",
+   "author": "Farragutful",
+   "dir": -1,
+   "pop": {
+    "text": "③ 최대 40% 빨라진 칩",
+    "at": 2.2
+   },
+   "lines": [
+    "칩은 A20 프로",
+    "애플 \"전작보다 최대 40% 빠르다\""
+   ]
+  },
+  {
+   "photo": "assets/images/src/w10.jpg",
+   "focus": "50% 45%",
+   "author": "Olgierd Rudak",
+   "dir": 1,
+   "pop": {
+    "text": "1199달러",
+    "at": 0.9
+   },
+   "lines": [
+    "미국 가격은",
+    "1199달러부터"
+   ]
+  },
+  {
+   "photo": "assets/images/src/w09.jpg",
+   "focus": "55% 75%",
+   "author": "Olgierd Rudak",
+   "dir": -1,
+   "pop": {
+    "text": "리뷰 평 · 역대 최고 카메라",
+    "at": 1.2
+   },
+   "split": {
+    "photo": "assets/images/src/w01.jpg",
+    "focus": "50% 50%",
+    "author": "Olgierd Rudak"
+   },
+   "lines": [
+    "리뷰 평가",
+    "\"역대 아이폰 최고의 카메라\""
+   ]
+  },
+  {
+   "photo": "assets/images/src/w02.jpg",
+   "focus": "50% 20%",
+   "author": "Olgierd Rudak",
+   "lines": [
+    "작아진 아일랜드, 가변 조리개, 빨라진 칩",
+    "올해 갈아탈 이유로 충분하지 않을까?"
+   ],
+   "dir": 1
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/w06.jpg",
+   "focus": "40% 30%",
+   "author": "Kyu3a",
+   "crop": [
+    0.16,
+    0.02,
+    0.84,
+    0.4
+   ],
+   "contain": true,
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/w05.jpg",
+   "focus": "45% 45%",
+   "author": "Kyu3a",
+   "crop": [
+    0.0,
+    0.18,
+    1.0,
+    1.0
+   ],
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/w03.jpg",
+   "focus": "50% 30%",
+   "author": "Farragutful",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}

@@ -2,10 +2,10 @@
 
 화면(1080x1920). 맨 아래 320px는 인스타·유튜브의 아이디·캡션·음악 줄 자리라 비워 둔다(2026-11-25 사용자: "겹치지않게 글씨위치 조정해줘").
 쓰는 높이 1600px를 기준으로:
-- 위 1/4(400px): 주황 띠(100px, 주제 낱말) : 고정 제목(300px) = 1:3
-- 가운데(800px): 장면 사진. 잘라 쓰고 대비·채도를 살짝 올리고 천천히 확대·이동한다. 작가·라이선스·광고 표기는 왼쪽 아래
+- 위(256px): 주황 띠(64px, 주제 낱말) : 고정 제목(192px) = 1:3
+- 가운데(1088px): 장면 사진. 잘라 쓰고 대비·채도를 살짝 올리고 천천히 확대·이동한다. 작가·라이선스·광고 표기는 왼쪽 아래
   (오른쪽 세로 버튼 줄과 겹치지 않게)
-- 아래 1/4(400px): 자막(300px) : 주황 띠 "겅태상점으로 오세요"(100px) = 3:1. 자막은 양옆 120px 여백
+- 아래(256px): 자막(192px) : 주황 띠 "겅태상점으로 오세요"(64px) = 3:1. 위아래 띠는 2026-11-25에 400px → 320px → 256px로 두 번 20%씩 줄였다("가운데 영상이 너무 좁아", "좀더 20%줄여줘"). 자막은 양옆 120px 여백
 - 제목·자막 글꼴은 부드러운 Jua(Google Fonts, OFL), 띠 글꼴은 Apple SD Gothic Neo(또는 Noto Sans CJK)
 - 파란 강조 글자(기울어져 튀어나옴) + 팝 효과음, 장면이 바뀔 때도 팝 효과음
 - 마지막 장면: 앞에서 말한 장점 사진을 다시 짧게 보여 주고(recap), 오른쪽 아래에 광고 표기
@@ -200,20 +200,20 @@ CSS = """      @font-face { font-family: "KR"; src: url("assets/fonts/KR-Regular
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
       #root { position: relative; width: 1080px; height: 1920px; background: var(--ground); font-family: "KR", sans-serif; color: var(--ink); word-break: keep-all; }
-      #bar { position: absolute; left: 0; top: 0; width: 1080px; height: 100px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 72px; font-weight: 900; letter-spacing: -0.02em; }
-      #title { position: absolute; left: 40px; right: 40px; top: 100px; height: 297px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 68px; font-weight: 400; letter-spacing: -0.03em; }
-      #rule { position: absolute; left: 0; width: 1080px; top: 397px; height: 3px; background: #d8d8d8; }
-      .panel { position: absolute; left: 0; top: 400px; width: 1080px; height: 800px; overflow: hidden; background: #000; }
+      #bar { position: absolute; left: 0; top: 0; width: 1080px; height: 64px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 50px; font-weight: 900; letter-spacing: -0.02em; }
+      #title { position: absolute; left: 40px; right: 40px; top: 64px; height: 189px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 54px; font-weight: 400; letter-spacing: -0.03em; }
+      #rule { position: absolute; left: 0; width: 1080px; top: 253px; height: 3px; background: #d8d8d8; }
+      .panel { position: absolute; left: 0; top: 256px; width: 1080px; height: 1088px; overflow: hidden; background: #000; }
       .panel img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-      .credit { position: absolute; left: 20px; top: 1162px; z-index: 4; font-size: 24px; font-weight: 400; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
-      .cap { position: absolute; left: 120px; right: 120px; top: 1200px; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 54px; font-weight: 400; line-height: 1.42; }
+      .credit { position: absolute; left: 20px; top: 1306px; z-index: 4; font-size: 24px; font-weight: 400; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
+      .cap { position: absolute; left: 120px; right: 120px; top: 1344px; height: 192px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 42px; font-weight: 400; line-height: 1.35; }
       .recap { z-index: 3; }
       .recap-cr { z-index: 6; }
-      .ad { position: absolute; left: 20px; top: 1092px; z-index: 7; max-width: 640px; text-align: left; font-size: 22px; font-weight: 400; line-height: 1.4; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.95); }
-      .hl { position: absolute; left: 40px; top: 1010px; z-index: 5; }
+      .ad { position: absolute; left: 20px; top: 1216px; z-index: 7; max-width: 640px; text-align: left; font-size: 22px; font-weight: 400; line-height: 1.4; color: #fff; padding: 6px 12px; border-radius: 8px; background: rgba(0,0,0,.62); }
+      .hl { position: absolute; left: 40px; top: 1154px; z-index: 5; }
       .hl span { display: inline-block; padding: 14px 34px; border-radius: 16px; background: var(--pop); color: #fff; font-size: 64px; font-weight: 900; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
       #safe { position: absolute; left: 0; top: 1600px; width: 1080px; height: 320px; background: var(--ground); }
-      #ment { position: absolute; left: 0; top: 1500px; width: 1080px; height: 100px; display: flex; align-items: center; justify-content: center; background: var(--bar); color: #fff; font-size: 50px; font-weight: 900; }"""
+      #ment { position: absolute; left: 0; top: 1536px; width: 1080px; height: 64px; display: flex; align-items: center; justify-content: center; background: var(--bar); color: #fff; font-size: 36px; font-weight: 900; }"""
 
 
 def build_html(cfg: dict, b: list[float]) -> str:
