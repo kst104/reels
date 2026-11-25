@@ -1,5 +1,11 @@
-# 캡션 (사용자 확인: "이대로 게시·삭제")
+# 캡션 (게시함)
 
+- 게시: 2026-11-25 17:40 (한국 시각), 인스타그램 kst1_04 릴스 https://www.instagram.com/reel/DgKHySWBAoP/ (media_id 18106283714419533), Windsor.ai create_video_post, thumb_offset 1500, share_to_feed true
+- 사용자 확인: 캡션을 보여 준 뒤 "이대로 게시·삭제"
+- 게시한 해시태그: #아이폰18프로 #아이폰18 #아이폰후기 #애플 #스마트폰추천
+- 영상 주소(커밋 고정): https://raw.githubusercontent.com/kst104/reels/0211d8ac17ecb5b32cc1f181f93c1271f0171337/videos/2026-11-25_iphone18-pro-shopping/iphone18-pro-shopping_final.mp4
+- 기존 릴스 DgJUysrq2HN 삭제: 실패 — Windsor 인스타 연결에 instagram_manage_contents 권한 없음. 사용자 처리 대기
+- 유튜브 쇼츠: 대기 — Windsor에 유튜브 채널 미연결
 쇼핑 커넥트 상품: 없음(상점 안내만, 앞 아이폰18 릴스와 같음)
 
 ## 인스타그램 릴스 캡션
