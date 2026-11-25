@@ -95,7 +95,7 @@ tbody tr:last-child td { border-bottom: 0; }
 
 <div class="wrap">
   <header style="display:flex;flex-direction:column;gap:12px">
-    <span class="label">reels 스킬 v7 · 2026-11-23</span>
+    <span class="label">reels 스킬 v11 · 2026-11-25</span>
     <h1>릴스</h1>
     <p class="lede">네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스를 주제 하나로 만드는 방식입니다. 원본은 깃허브에 있고, 이 페이지와 노션 문서는 원본이 바뀔 때 함께 갱신됩니다.</p>
   </header>
@@ -148,7 +148,7 @@ tbody tr:last-child td { border-bottom: 0; }
       <dt>3.3 – 13.1초</dt><dd>사람들이 흔히 믿는 것과, 그게 틀렸다는 공식 출처</dd>
       <dt>13.1 – 21.2초</dt><dd>왜 위험한지. 출처 있는 사실 1~2개, 문장마다 마침표로 끝낸다</dd>
       <dt>21.2 – 29.0초</dt><dd>숫자로 된 수칙 2~3개 (예: 41도 이하, 10분 이내)</dd>
-      <dt>29.0 – 35.6초</dt><dd>"소개한 제품은 프로필 링크에서 확인하세요." + 끝 화면(광고 표기는 오른쪽 아래 작게)</dd>
+      <dt>29.0 – 35.6초</dt><dd>제품 안내 "겅태상점으로 오세요"(2026-11-25 변경, 화면 아래 띠로 계속) + 끝 화면(광고 표기는 오른쪽 아래 작게)</dd>
     </dl>
   </section>
 
@@ -185,12 +185,45 @@ tbody tr:last-child td { border-bottom: 0; }
       <li><span class="n">2</span><span class="what">조사</span><span class="how">한국 정부 → 학회·대학병원 → 해외 공식 기관·논문 순. 확인 안 되면 넣지 않거나 "미확인"</span></li>
       <li><span class="n">3</span><span class="what">대본 <span class="check">확인 ①</span></span><span class="how">A형식으로 쓰고 문장마다 출처를 붙여 보여줌. 1번·2번 틀과 화면 방식(글자·움직임·사진) 지정이 없으면 이때 물음</span></li>
       <li><span class="n">4</span><span class="what">윤문 <span class="check">확인 ②</span></span><span class="how">im-not-ai(humanize-korean). 내용·숫자·출처 표기는 그대로</span></li>
-      <li><span class="n">5</span><span class="what">음성</span><span class="how">저장소의 음성 스크립트(make_narration.py)로 "남성1"(M1) 직접 생성. 맥미니 음성 프로그램과 같은 Supertonic 3라서 맥미니·클라우드 어디서나 한 세션에 끝냄. 문장 사이 0.6초, 음량 -16 LUFS</span></li>
+      <li><span class="n">5</span><span class="what">음성</span><span class="how">저장소의 음성 스크립트(make_narration.py)로 타입캐스트 "영규" 목소리 직접 생성(2026-11-25 사용자 선택). 앞뒤 문장을 함께 보내 문맥에 맞는 억양. 키가 없거나 실패하면 Supertonic 3 "남성1"로 만들고 알림. 문장 사이 0.6초, 음량 -16 LUFS</span></li>
       <li><span class="n">6</span><span class="what">장면·렌더</span><span class="how">지정한 틀과 화면 방식으로 렌더(1번 Remotion / 2번 HyperFrames, 글자·움직임·사진), 1080×1920, 한글 자막, Pixabay 음악. 마지막 화면은 광고 표기 카드</span></li>
       <li><span class="n">7</span><span class="what">정리 <span class="check">확인 ③</span></span><span class="how">videos/날짜_주제/에 mp4, 대본, 출처, 음성, 자료 저장</span></li>
       <li><span class="n">8</span><span class="what">상품 추천 <span class="check">확인 ④</span></span><span class="how">네이버+ 스토어 주간 구매 순위에서 영상 내용과 맞는 상품 중 최상위를 근거와 함께 추천</span></li>
       <li><span class="n">9</span><span class="what">쇼핑 커넥트 링크</span><span class="how">브랜드 커넥트에서 직접 발급해 붙여 주기(네이버 로그인 필요). 게시 전에 그 상품을 크리에이터샵 겅태의 상점에 먼저 등록</span></li>
       <li><span class="n">10</span><span class="what">인스타그램 게시 <span class="check">확인 ⑤</span></span><span class="how">캡션 확인 후 Windsor.ai로 kst1_04 계정에 릴스 게시, 게시 주소 확인 후 네 곳에 기록</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-auto">
+    <h2 id="h-auto">매일 자동 제작</h2>
+    <p class="quote">"아침9시에 자동으로 제작전 제작소에서 시작하고, 제작및 컨펌까지 알아서 진행해줘" — 2026-11-24 사용자 지정. 영상 완성까지 자동, 게시만 사용자 확인. 2번 틀 + 사진 방식, 매일 1편.</p>
+    <ol class="steps">
+      <li><span class="n">09:00</span><span class="what">제작전 브리프</span><span class="how">제작전분석소가 피드백과 최근 분석으로 오늘 주제 1개를 골라 reels-analysis/briefs/날짜.md에 씀</span></li>
+      <li><span class="n">10:30</span><span class="what">자동 제작</span><span class="how">릴스제작소가 브리프로 조사 → 대본 → 윤문 → 음성 → 렌더 → 상품 추천 → 캡션 초안까지. 확인 ①~④는 스스로 점검해 기록</span></li>
+      <li><span class="n">알림</span><span class="what">슬랙 #reels</span><span class="how">영상·대본·상품 후보와 사용자가 할 일(상점 등록, 커넥트 링크 발급, "게시해줘")</span></li>
+      <li><span class="n">게시</span><span class="what">사용자 확인 <span class="check">확인 ⑤</span></span><span class="how">캡션을 확인하면 그때 깃허브에 올리고 인스타에 게시</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-split">
+    <h2 id="h-split">초안 · 제작 · 검수 나누기</h2>
+    <p class="quote">"초안짜는건 릴스제작전분석소에게 역할을 맡기고, 나도 거기서 지시할께 … 제작후 분석소에서 분석해 보고하고, 최근 유행하는 폼과의 비교나 원본폼팩터와 비교분석해줘" — 2026-11-25 사용자 지정</p>
+    <ol class="steps">
+      <li><span class="n">초안</span><span class="what">제작전분석소</span><span class="how">사용자가 여기서 지시. 참고 영상, 대본 초안, 사실 출처, 위키미디어 이미지(작가·라이선스)를 reels-analysis/drafts/날짜_주제/에</span></li>
+      <li><span class="n">제작</span><span class="what">릴스제작소</span><span class="how">rea-video로 참고 영상 장면별 분석 → 타입캐스트 "영규" 음성 → HyperFrames로 같은 틀 렌더 → ffmpeg 압축 → videos/에 정리하고 handoff.md</span></li>
+      <li><span class="n">검수</span><span class="what">제작후분석소</span><span class="how">어색한 장면·고칠 부분, 최근 유행 형식과 비교, 원본 폼과 비교를 보고. 제작소가 고치고, 초안 문제는 제작전분석소가 고침</span></li>
+      <li><span class="n">게시</span><span class="what">사용자 확인</span><span class="how">지금처럼 사용자가 확인한 뒤 게시</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-basic1">
+    <h2 id="h-basic1">기본1 형식 (뉴스 카드형)</h2>
+    <p class="quote">"지금 형식을 기본1 형식의 스킬로 저장하고, 다음부터 기본1형식으로 해줘 하면 이 형식으로 해줘." — 2026-11-25 사용자 지정</p>
+    <ol class="steps">
+      <li><span class="n">위</span><span class="what">주황 띠 : 제목 = 1:3</span><span class="how">쓰는 높이 1600px의 1/4(400px). 띠에는 주제 낱말(예 "아이폰18")</span></li>
+      <li><span class="n">가운데</span><span class="what">사진 800px</span><span class="how">잘라 쓰고 색 보정, 천천히 확대·이동, 파란 강조 글자와 팝 소리, 작가·광고 표기는 왼쪽 아래</span></li>
+      <li><span class="n">아래</span><span class="what">자막 : "겅태상점으로 오세요" 띠 = 3:1</span><span class="how">400px. 맨 아래 320px는 인스타·유튜브 화면 글자 자리라 비움</span></li>
+      <li><span class="n">소리·글꼴</span><span class="what">영규 목소리, Jua 글꼴</span><span class="how">0초부터 자막, 마지막 말 + 0.5초에서 끝, -16 LUFS. 대본은 긍정적으로, 끝은 장점을 다시 묻기</span></li>
     </ol>
   </section>
 
@@ -210,7 +243,7 @@ tbody tr:last-child td { border-bottom: 0; }
       <li>상점 상품은 릴스·유튜브·블로그 모든 콘텐츠와 맞춘다. 콘텐츠가 지워지면 그 상품도 뺀다. 대응표는 깃허브 docs/shop-sync.md이고, 상점에 넣고 빼는 일은 사용자가 한다.</li>
       <li>쇼핑 커넥트 링크는 상품마다, 게시물마다 따로 발급해 쓰고 shop-sync.md 링크 표와 caption.md에 적는다. 한 링크를 여러 게시물에 같이 쓰지 않는다.</li>
       <li>상점 컬렉션은 블로그·유튜브·릴스 주제별로 나누고, 릴스에서 소개한 상품은 반드시 컬렉션 하나에 넣는다(shop-sync.md 0-1절).</li>
-      <li>인스타그램 프로필 링크는 크리에이터샵 <a href="https://cshop.naver.com/geongtae_shop">겅태의 상점</a>으로 고정한다. 영상 끝 멘트는 "소개한 제품은 프로필 링크에서 확인하세요."이다. 소개할 쇼핑 커넥트 상품은 상점에 먼저 등록한 뒤 게시한다.</li>
+      <li>인스타그램 프로필 링크는 크리에이터샵 <a href="https://cshop.naver.com/geongtae_shop">겅태의 상점</a>으로 고정한다. 제품 안내 멘트는 "겅태상점으로 오세요"이고, 화면 아래 띠로 영상 내내 보여 준다(2026-11-25 변경). 소개할 쇼핑 커넥트 상품은 상점에 먼저 등록한 뒤 게시한다.</li>
       <li>릴스 3곳은 전 → 제작 → 후 순서로 일하고, 후의 피드백이 다시 전으로 간다: 제작전분석소(남의 쇼츠 분석, 주제 브리프) → 릴스제작소(이 과정) → 제작후분석소(우리 채널 성과 분석, 매일 08:00). 서로의 파일은 읽기만 한다.</li>
       <li>영상마다 sources.md에 근거가 된 전 분석 보고서 링크와 제작 요청 프롬프트를 적고, caption.md에 실제 게시한 해시태그를 남긴다.</li>
       <li>릴스 작업은 ~/Downloads/reels 폴더에서만 한다.</li>
@@ -232,6 +265,7 @@ tbody tr:last-child td { border-bottom: 0; }
       <table>
         <thead><tr><th scope="col">날짜</th><th scope="col">제목</th><th scope="col">틀</th><th scope="col">길이</th><th scope="col">자료</th><th scope="col">인스타그램</th></tr></thead>
         <tbody>
+          <tr><td class="num">2026-11-25</td><td>아이폰18 프로, 뭐가 달라졌나 (기본1 형식)</td><td class="num">기본1</td><td class="num">30.4초</td><td><a href="https://github.com/kst104/reels/tree/claude/reels-daily-auto/videos/2026-11-25_iphone18-pro-news">videos/2026-11-25_iphone18-pro-news</a></td><td><a href="https://www.instagram.com/reel/DgJUysrq2HN/">게시됨</a></td></tr>
           <tr><td class="num">2026-11-22</td><td>겨울 대추차, 효능보다 먼저 볼 건 설탕</td><td class="num">2번</td><td class="num">40.6초</td><td><a href="https://github.com/kst104/reels/tree/main/videos/2026-11-22_jujube-tea-sugar">videos/2026-11-22_jujube-tea-sugar</a></td><td><a href="https://www.instagram.com/reel/DgC5KzrD83D/">게시됨</a></td></tr>
           <tr><td class="num">2026-11-23</td><td>가습기 물, 정수기 물이 더 안전할까</td><td class="num">2번 · 사진</td><td class="num">38.6초</td><td><a href="https://github.com/kst104/reels/tree/main/videos/2026-11-23_humidifier-water">videos/2026-11-23_humidifier-water</a></td><td><a href="https://www.instagram.com/reel/DgEHCcBj2JQ/">게시됨</a></td></tr>
           <tr><td class="num">2026-11-23</td><td>겨울 대추차 (사진 방식 시험본)</td><td class="num">2번</td><td class="num">40.6초</td><td><a href="https://github.com/kst104/reels/blob/main/videos/2026-11-22_jujube-tea-sugar/jujube-tea-sugar_photo.mp4">jujube-tea-sugar_photo.mp4</a></td><td>미게시 (시험용)</td></tr>
