@@ -1,7 +1,7 @@
 """아이폰18 프로 쇼츠: 원본(뉴스 카드형) 틀로 HyperFrames index.html을 만든다."""
 import importlib.util, json, shutil, subprocess
 from pathlib import Path
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageFilter
 
 HERE = Path(__file__).parent
 HF = HERE / "hf"
@@ -14,6 +14,7 @@ END_TAIL = 0.5  # 마지막 말 끝 + 0.5초에서 끊는다(제작후분석소 
 CONTAIN = {"w06"}  # 넓게 잘라 위아래를 검게 둔다(섬과 상태 표시줄이 함께 보이게)
 CROPS = {"w05": (0.0, 0.18, 1.0, 1.0), "w06": (0.16, 0.02, 0.84, 0.40)}  # (왼, 위, 오른, 아래) 비율. ①-4 글자 잘림, ①-5 일본어 위젯
 POPS = {4: ("가변 조리개", 0.9), 5: ("최대 40%", 2.6), 6: ("1199달러", 1.6)}  # 장면: (강조 글자, 장면 시작 뒤 초) ①-6
+SPLIT = {7: ("w01", "50% 50%", "Olgierd Rudak")}  # 장면: 뒤 절반에 쓸 두 번째 사진 (제작후분석소 3-4)
 PUNCH_MIN = 3.5  # 이보다 긴 장면은 가운데서 한 번 더 다가간다 ①-7
 
 SCENES = [  # (사진, 초점, 작가, 자막 두 줄, 이동 방향)
@@ -37,7 +38,8 @@ def boundaries():
 def prepare_media():
     (HF / "assets/img").mkdir(parents=True, exist_ok=True)
     (HF / "assets/audio").mkdir(parents=True, exist_ok=True)
-    for name, *_ in SCENES:  # 변형: 긴 변 1600으로 줄이고 대비·채도를 살짝 올린다
+    names = [n for n, *_ in SCENES] + [v[0] for v in SPLIT.values()]
+    for name in names:  # 변형: 긴 변 1600으로 줄이고 대비·채도를 살짝 올린다
         im = Image.open(SRC / f"{name}.jpg").convert("RGB")
         if name in CROPS:
             l, t, r, b = CROPS[name]
@@ -46,6 +48,9 @@ def prepare_media():
         im = ImageEnhance.Contrast(im).enhance(1.08)
         im = ImageEnhance.Color(im).enhance(1.12)
         im.save(HF / f"assets/img/{name}.jpg", quality=90)
+        if name in CONTAIN:
+            bg = im.resize((540, int(540 * im.height / im.width))).filter(ImageFilter.GaussianBlur(18))
+            ImageEnhance.Brightness(bg).enhance(0.55).save(HF / f"assets/img/{name}_bg.jpg", quality=85)
     shutil.copyfile(HERE / "assets/audio/narration_norm.wav", HF / "assets/audio/narration.wav")
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i",
                     "sine=frequency=1400:duration=0.07", "-af",
@@ -57,14 +62,28 @@ def html(b):
     for i, (name, focus, author, (l1, l2), d) in enumerate(SCENES, 1):
         s, e = b[i - 1], b[i]
         dur = round(e - s, 3)
-        scenes.append(f'''      <div id="img{i}" class="clip panel" data-start="{s}" data-duration="{dur}" data-track-index="1">
-        <img id="ph{i}" src="assets/img/{name}.jpg" style="object-position:{focus};object-fit:{'contain' if name in CONTAIN else 'cover'}" alt="" />
+        parts = [(name, focus, author, s, e, "")]
+        if i in SPLIT:
+            mid = round(s + dur / 2, 3)
+            n2, f2, a2 = SPLIT[i]
+            parts = [(name, focus, author, s, mid, ""), (n2, f2, a2, mid, e, "b")]
+        for pn, pf, pa, ps, pe, sfx in parts:
+            pd = round(pe - ps, 3)
+            bg = f'<img id="bg{i}{sfx}" class="bg" src="assets/img/{pn}_bg.jpg" alt="" />' if pn in CONTAIN else ""
+            fit = "contain" if pn in CONTAIN else "cover"
+            scenes.append(f'''      <div id="img{i}{sfx}" class="clip panel" data-start="{ps}" data-duration="{pd}" data-track-index="1">
+        {bg}<img id="ph{i}{sfx}" src="assets/img/{pn}.jpg" style="object-position:{pf};object-fit:{fit}" alt="" />
       </div>
-      <p id="cr{i}" class="clip credit" data-start="{s}" data-duration="{dur}" data-track-index="2">사진: {author} · Wikimedia Commons · CC BY-SA 4.0</p>''')
+      <p id="cr{i}{sfx}" class="clip credit" data-start="{ps}" data-duration="{pd}" data-track-index="2">사진: {pa} · Wikimedia Commons · CC BY-SA 4.0</p>''')
+            if sfx:
+                pops.append(f'      <audio id="pop{i}b" class="clip" src="assets/audio/pop.wav" data-start="{ps}" data-duration="0.1" data-track-index="5"></audio>')
+                tweens.append(f'tl.fromTo("#ph{i}b", {{scale: 1.0, xPercent: {1.5 * d}}}, {{scale: 1.09, xPercent: {-1.5 * d}, duration: {pd}, ease: "none"}}, {ps});')
         caps.append(f'''      <div id="cap{i}" class="clip cap" data-start="{s}" data-duration="{dur}" data-track-index="3"><div id="capin{i}"><p>{l1}</p><p>{l2}</p></div></div>''')
         if i > 1:
             pops.append(f'      <audio id="pop{i}" class="clip" src="assets/audio/pop.wav" data-start="{s}" data-duration="0.1" data-track-index="5"></audio>')
-        if dur > PUNCH_MIN:
+        if i in SPLIT:
+            tweens.append(f'tl.fromTo("#ph{i}", {{scale: 1.0, xPercent: {-1.5 * d}}}, {{scale: 1.09, xPercent: {1.5 * d}, duration: {round(dur / 2, 3)}, ease: "none"}}, {s});')
+        elif dur > PUNCH_MIN:
             half = round(dur / 2, 3)
             tweens.append(f'tl.fromTo("#ph{i}", {{scale: 1.0, xPercent: {-1.5 * d}, yPercent: 0}}, {{scale: 1.05, xPercent: 0, duration: {half}, ease: "none"}}, {s});')
             tweens.append(f'tl.to("#ph{i}", {{scale: 1.16, xPercent: {2 * d}, yPercent: -3, duration: 0.3, ease: "power2.out"}}, {round(s + half, 3)});')
@@ -96,7 +115,7 @@ def html(b):
       #title {{ position: absolute; left: 40px; right: 40px; top: 120px; height: 357px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 66px; font-weight: 900; letter-spacing: -0.03em; }}
       #rule {{ position: absolute; left: 0; width: 1080px; top: 477px; height: 3px; background: #d8d8d8; }}
       .panel {{ position: absolute; left: 0; top: 480px; width: 1080px; height: 960px; overflow: hidden; background: #000; }}
-      .panel img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
+      .panel img {{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }}
       .credit {{ position: absolute; right: 20px; top: 1398px; z-index: 4; font-size: 24px; font-weight: 400; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.9); }}
       .cap {{ position: absolute; left: 50px; right: 50px; top: 1440px; height: 360px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 60px; font-weight: 700; line-height: 1.5; }}
       .hl {{ position: absolute; left: 50px; top: 1250px; z-index: 5; }}

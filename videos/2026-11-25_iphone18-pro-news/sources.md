@@ -29,7 +29,7 @@
 | 4 | File:Back Camera of iPhone 18 Pro Max.jpg | Kyu3a |
 | 5 | File:IPhone 18 Pro - black 01.jpg | Farragutful |
 | 6 | File:Apple iPhone 18 Pro & Apple iPhone 17 Pro (2026-11-13).jpg | Olgierd Rudak |
-| 7 | File:IPhone 18 Pro photography Ostrów Tumski Wrocław Poland (2026-11-15) 1.jpg | Olgierd Rudak |
+| 7 | File:IPhone 18 Pro photography Ostrów Tumski Wrocław Poland (2026-11-15) 1.jpg (앞 절반), File:Silver Apple iPhone 18 Pro (2026-11-13).jpg (뒤 절반) | Olgierd Rudak |
 | 8 | File:IPhone 18 Pro Max and iPhone Air.jpg | Kyu3a |
 
 주소: https://commons.wikimedia.org/wiki/<파일 이름>. 라이선스: https://creativecommons.org/licenses/by-sa/4.0/
