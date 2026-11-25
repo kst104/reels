@@ -1,0 +1,155 @@
+{
+ "bar": "욕실 온풍기",
+ "title": "추운 겨울 욕실, 9.5cm 온풍기 하나로",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/ai_coldbath.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성",
+   "source": "Z-Image Turbo",
+   "license": "AI 사진",
+   "lines": [
+    "겨울 아침 욕실,",
+    "들어가기 싫으신가요?"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_main.jpg",
+   "focus": "50% 50%",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "한일 욕실 온풍기 THE슬림은",
+    "두께 9.5센티 벽걸이형 온풍기"
+   ],
+   "pop": {
+    "text": "9.5센티",
+    "at": 2.9
+   },
+   "split": {
+    "photo": "assets/images/src/p_q22.jpg",
+    "contain": true,
+    "author": "한일",
+    "source": "신세계쇼핑 판매 페이지",
+    "license": "제품 사진"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_feet.jpg",
+   "focus": "50% 60%",
+   "author": "AI 생성",
+   "source": "Z-Image Turbo",
+   "license": "AI 사진",
+   "lines": [
+    "산 이유는 추워서",
+    "씻기가 자꾸 망설여졌다는 것"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_babybath.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성",
+   "source": "Z-Image Turbo",
+   "license": "AI 사진",
+   "lines": [
+    "아이 목욕시킬 때",
+    "추위 걱정을 덜고 싶다는 후기도"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_q18.jpg",
+   "contain": true,
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "벽에 구멍 없이 붙이거나",
+    "수건걸이에 걸어 쓸 수 있습니다"
+   ],
+   "pop": {
+    "text": "구멍 없이",
+    "at": 0.6
+   },
+   "split": {
+    "photo": "assets/images/src/p_q20.jpg",
+    "contain": true,
+    "author": "한일",
+    "source": "신세계쇼핑 판매 페이지",
+    "license": "제품 사진"
+   }
+  },
+  {
+   "photo": "assets/images/src/p_q16.jpg",
+   "focus": "50% 40%",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "써 본 사람들은",
+    "켜자마자 바로 따뜻해진다고"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_q3.jpg",
+   "focus": "60% 50%",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "샤워 전에 미리 데워 두면",
+    "거울에 김도 덜 서렸다는 반응"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_q24.jpg",
+   "contain": true,
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "생활 방수 IPX4에, 세기는",
+    "500, 800, 1200와트 세 단계"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_q9.jpg",
+   "focus": "50% 100%",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "올겨울 아침 샤워,",
+    "조금 덜 춥지 않을까요?"
+   ]
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/p_main.jpg",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/p_q19.jpg",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/p_q16.jpg",
+   "author": "한일",
+   "source": "신세계쇼핑 판매 페이지",
+   "license": "제품 사진",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}

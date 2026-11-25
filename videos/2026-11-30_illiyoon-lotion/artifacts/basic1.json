@@ -1,0 +1,159 @@
+{
+ "bar": "보습 로션",
+ "title": "끈적임 싫은 겨울, 순한 대용량 로션",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/ai_hands_window.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "겨울 로션, 끈적여서",
+    "손이 잘 안 가시나요?"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_shop.jpg",
+   "focus": "50% 50%",
+   "author": "아모레퍼시픽 일리윤",
+   "source": "겅태상점 상품 사진",
+   "license": "제품 사진",
+   "lines": [
+    "일리윤 세라마이드 아토 로션은",
+    "얼굴과 몸에 같이 쓰는 350ml 대용량"
+   ],
+   "pop": {
+    "text": "350ml",
+    "at": 4.0
+   },
+   "split": {
+    "photo": "assets/images/src/p_old_front.jpg",
+    "focus": "50% 45%",
+    "author": "아모레퍼시픽 일리윤",
+    "source": "아모레몰 판매 페이지",
+    "license": "제품 사진"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_forearm_towel.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "산 이유는 예민해진 피부에 쓸",
+    "순한 로션을 찾아서였습니다"
+   ],
+   "split": {
+    "photo": "assets/images/src/ai_night_arm.jpg",
+    "focus": "50% 55%",
+    "author": "AI 생성 이미지",
+    "source": "힉스필드",
+    "license": "gpt_image_2_6"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_arm_dry.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "겨울마다 팔다리가 건조해서",
+    "샀다는 후기도 많습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_swatch.jpg",
+   "focus": "50% 50%",
+   "author": "아모레퍼시픽 일리윤",
+   "source": "아모레몰 판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "만족 포인트 1위는",
+    "끈적임 없이 흡수된다는 점입니다"
+   ],
+   "pop": {
+    "text": "끈적임 없이",
+    "at": 1.6
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_sweater.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "바르고 바로 옷을 입어도",
+    "묻어나지 않았다는 반응입니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_fingertip.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "향이 없는 무향이라 다른 제품 향과",
+    "섞이지 않는다고 합니다"
+   ],
+   "pop": {
+    "text": "무향",
+    "at": 1.1
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_hand_cream.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "아주 건조한 날엔 크림을",
+    "덧바르면 좋다는 말도 있습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_family.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "이번 겨울 온 가족 로션,",
+    "이걸로 바꿔 볼까요?"
+   ]
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/p_old_recap.jpg",
+   "author": "아모레퍼시픽 일리윤",
+   "source": "아모레몰 판매 페이지",
+   "license": "제품 사진",
+   "from": 0.9,
+   "to": 1.6
+  },
+  {
+   "photo": "assets/images/src/p_swatch.jpg",
+   "author": "아모레퍼시픽 일리윤",
+   "source": "아모레몰 판매 페이지",
+   "license": "제품 사진",
+   "from": 1.6,
+   "to": 2.3
+  },
+  {
+   "photo": "assets/images/src/ai_sweater.jpg",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "from": 2.3,
+   "to": 3.0
+  }
+ ]
+}

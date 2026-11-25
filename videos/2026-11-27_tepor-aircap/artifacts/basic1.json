@@ -1,0 +1,159 @@
+{
+ "bar": "뽁뽁이",
+ "title": "단창 찬바람, 국내산 뽁뽁이로",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/p_main.jpg",
+   "focus": "50% 50%",
+   "author": "테포르",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "창문 뽁뽁이,",
+    "붙이는 데 5분이면 될까요?"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_korea.jpg",
+   "focus": "50% 45%",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "lines": [
+    "테포르 에어캡은 국내산 원료로",
+    "국내에서 만든 두꺼운 뽁뽁이"
+   ],
+   "pop": {
+    "text": "국내산",
+    "at": 1.3
+   },
+   "split": {
+    "photo": "assets/images/src/p_pellet.jpg",
+    "focus": "35% 50%",
+    "author": "테포르",
+    "source": "판매사 블로그",
+    "license": "제품 사진"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_coldwindow.jpg",
+   "focus": "35% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "산 이유는 단창이라",
+    "창가로 들어오는 찬바람 때문"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_wrap.jpg",
+   "focus": "60% 50%",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "lines": [
+    "택배 포장에도 쓰고 창문에도 붙이는",
+    "겸용이라 골랐다는 말도 있습니다"
+   ],
+   "split": {
+    "photo": "assets/images/src/p_window.jpg",
+    "focus": "35% 50%",
+    "author": "테포르",
+    "source": "판매사 블로그",
+    "license": "제품 사진"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_spray.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "붙이는 법은 유리에 물을 뿌리고",
+    "평평한 면을 대면 끝"
+   ],
+   "pop": {
+    "text": "물을 뿌리고",
+    "at": 1.1
+   }
+  },
+  {
+   "photo": "assets/images/src/p_bubble.jpg",
+   "focus": "55% 50%",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "lines": [
+    "써 본 사람들은 알이 짱짱하고",
+    "흐물거리지 않는다고 말합니다"
+   ],
+   "pop": {
+    "text": "짱짱",
+    "at": 1.5
+   }
+  },
+  {
+   "photo": "assets/images/src/p_hand.jpg",
+   "focus": "50% 40%",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "lines": [
+    "투명해서 바깥이 어느 정도 보여",
+    "답답하지 않다는 반응"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_morning.jpg",
+   "focus": "45% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "아침 창가 공기가",
+    "덜 차갑다는 후기도 있습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_box30.jpg",
+   "focus": "50% 50%",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "lines": [
+    "올겨울 창가 자리,",
+    "다시 쓸 만해지지 않을까요?"
+   ]
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/p_pellet.jpg",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/p_bubble.jpg",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/p_window.jpg",
+   "author": "테포르",
+   "source": "판매사 블로그",
+   "license": "제품 사진",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}

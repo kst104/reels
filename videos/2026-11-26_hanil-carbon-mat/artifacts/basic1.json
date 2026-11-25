@@ -1,0 +1,165 @@
+{
+ "bar": "온열매트",
+ "title": "온열매트, 사기 전에 이것부터",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/w_tape2.jpg",
+   "focus": "50% 50%",
+   "author": "Asurnipal",
+   "source": "위키미디어 공용",
+   "license": "CC BY-SA 4.0",
+   "dir": 1,
+   "lines": [
+    "온열매트 사기 전에,",
+    "내 침대 가로부터 재 보셨나요?"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_main.jpg",
+   "focus": "50% 50%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "dir": -1,
+   "lines": [
+    "한일 탄소 온열매트 프리즘은",
+    "1인용 싱글, 6만 9천 원입니다"
+   ],
+   "pop": {
+    "text": "6만 9천 원",
+    "at": 2.6
+   }
+  },
+  {
+   "photo": "assets/images/src/w_boiler.jpg",
+   "focus": "25% 40%",
+   "author": "Turbojet",
+   "source": "위키미디어 공용",
+   "license": "CC BY-SA 4.0",
+   "dir": 1,
+   "split": {
+    "photo": "assets/images/src/w_frost.jpg",
+    "focus": "50% 50%",
+    "author": "Tony Webster",
+    "source": "위키미디어 공용",
+    "license": "CC BY-SA 2.0"
+   },
+   "lines": [
+    "산 이유로는 보일러를 마음껏 돌리기",
+    "부담스러워서라는 말이 많았습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_ctrl.jpg",
+   "focus": "50% 50%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "dir": -1,
+   "lines": [
+    "자다가 깜빡해도 15시간 뒤",
+    "저절로 꺼진다는 점도 고른 이유입니다"
+   ],
+   "pop": {
+    "text": "15시간",
+    "at": 1.2
+   }
+  },
+  {
+   "photo": "assets/images/src/p_bedcorner.jpg",
+   "focus": "50% 50%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "dir": 1,
+   "lines": [
+    "써 본 사람들은 첫날부터",
+    "금방 따뜻해진다고 말합니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_bed.jpg",
+   "focus": "50% 60%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "dir": -1,
+   "lines": [
+    "1단만 켜도 충분히 따뜻하다는",
+    "후기도 있습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_wash.jpg",
+   "focus": "50% 45%",
+   "contain": true,
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "dir": 1,
+   "lines": [
+    "세탁망에 넣어 울 코스로 빨고,",
+    "접어서 보관할 수 있습니다"
+   ],
+   "pop": {
+    "text": "울 코스",
+    "at": 0.9
+   }
+  },
+  {
+   "photo": "assets/images/src/w_foam.jpg",
+   "focus": "55% 50%",
+   "author": "Johan",
+   "source": "위키미디어 공용",
+   "license": "CC BY-SA 3.0",
+   "dir": -1,
+   "lines": [
+    "메모리폼이나 라텍스 매트리스 위에서는",
+    "쓰지 말라는 점은 꼭 챙기세요"
+   ]
+  },
+  {
+   "photo": "assets/images/src/w_bed.jpg",
+   "focus": "55% 55%",
+   "author": "Liz Lawley",
+   "source": "위키미디어 공용",
+   "license": "CC BY-SA 2.0",
+   "dir": 1,
+   "lines": [
+    "크기만 맞춰도 올겨울",
+    "이불 속이 달라지지 않을까요?"
+   ]
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/p_main_recap.jpg",
+   "focus": "60% 50%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/p_bedcorner.jpg",
+   "focus": "50% 50%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/p_bed.jpg",
+   "focus": "50% 60%",
+   "author": "한일의료기",
+   "source": "판매 페이지",
+   "license": "제품 사진",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}

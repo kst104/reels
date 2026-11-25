@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "KR"; src: url("assets/fonts/KR-Regular.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "KR"; src: url("assets/fonts/KR-Bold.woff2") format("woff2"); font-weight: 700 900; }
+      @font-face { font-family: "Soft"; src: url("assets/fonts/Jua.woff2") format("woff2"); font-weight: 400; }
+      :root { --ground: #ffffff; --ink: #111111; --bar: #ff7a1a; --pop: #1e63ff; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; background: var(--ground); font-family: "KR", sans-serif; color: var(--ink); word-break: keep-all; }
+      #bar { position: absolute; left: 0; top: 0; width: 1080px; height: 64px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 50px; font-weight: 900; letter-spacing: -0.02em; }
+      #title { position: absolute; left: 40px; right: 40px; top: 64px; height: 189px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 54px; font-weight: 400; letter-spacing: -0.03em; }
+      #rule { position: absolute; left: 0; width: 1080px; top: 253px; height: 3px; background: #d8d8d8; }
+      .panel { position: absolute; left: 0; top: 256px; width: 1080px; height: 1088px; overflow: hidden; background: #000; }
+      .panel img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      .credit { position: absolute; left: 20px; top: 1306px; z-index: 4; font-size: 24px; font-weight: 400; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
+      .cap { position: absolute; left: 120px; right: 120px; top: 1344px; height: 192px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: "Soft", "KR", sans-serif; font-size: 42px; font-weight: 400; line-height: 1.35; }
+      .recap { z-index: 3; }
+      .recap-cr { z-index: 6; }
+      .ad { position: absolute; left: 20px; top: 1216px; z-index: 7; max-width: 640px; text-align: left; font-size: 22px; font-weight: 400; line-height: 1.4; color: #fff; padding: 6px 12px; border-radius: 8px; background: rgba(0,0,0,.62); }
+      .hl { position: absolute; left: 40px; top: 1154px; z-index: 5; }
+      .hl span { display: inline-block; padding: 14px 34px; border-radius: 16px; background: var(--pop); color: #fff; font-size: 64px; font-weight: 900; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+      #safe { position: absolute; left: 0; top: 1600px; width: 1080px; height: 320px; background: var(--ground); }
+      #ment { position: absolute; left: 0; top: 1536px; width: 1080px; height: 64px; display: flex; align-items: center; justify-content: center; background: var(--bar); color: #fff; font-size: 36px; font-weight: 900; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="37.248" data-width="1080" data-height="1920" data-composition-variables='[{&quot;id&quot;: &quot;channel&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;위 띠&quot;, &quot;default&quot;: &quot;온열매트&quot;}, {&quot;id&quot;: &quot;title&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;제목&quot;, &quot;default&quot;: &quot;온열매트, 사기 전에 이것부터&quot;}, {&quot;id&quot;: &quot;ment&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;아래 띠&quot;, &quot;default&quot;: &quot;겅태상점으로 오세요&quot;}]'>
+      <div id="bar" class="clip" data-start="0" data-duration="37.248" data-track-index="0"><span data-var-text="channel">온열매트</span></div>
+      <h1 id="title" class="clip" data-start="0" data-duration="37.248" data-track-index="0" data-var-text="title">온열매트, 사기 전에 이것부터</h1>
+      <div id="rule" class="clip" data-start="0" data-duration="37.248" data-track-index="0"></div>
+      <p id="ment" class="clip" data-start="0" data-duration="37.248" data-track-index="0" data-var-text="ment">겅태상점으로 오세요</p>
+      <div id="img1" class="clip panel" data-start="0.0" data-duration="3.647" data-track-index="1">
+        <img id="img1ph" src="assets/img/w_tape2.jpg" style="object-position:50% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr1" class="clip credit" data-start="0.0" data-duration="3.647" data-track-index="2">사진: Asurnipal · 위키미디어 공용 · CC BY-SA 4.0</p>
+      <div id="cap1" class="clip cap" data-start="0.0" data-duration="3.647" data-track-index="3"><div id="capin1"><p>온열매트 사기 전에,</p><p>내 침대 가로부터 재 보셨나요?</p></div></div>
+      <div id="img2" class="clip panel" data-start="3.647" data-duration="4.478" data-track-index="1">
+        <img id="img2ph" src="assets/img/p_main.jpg" style="object-position:50% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr2" class="clip credit" data-start="3.647" data-duration="4.478" data-track-index="2">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="cap2" class="clip cap" data-start="3.647" data-duration="4.478" data-track-index="3"><div id="capin2"><p>한일 탄소 온열매트 프리즘은</p><p>1인용 싱글, 6만 9천 원입니다</p></div></div>
+      <div id="hl2" class="clip hl" data-start="6.247" data-duration="1.878" data-track-index="6"><span id="hlin2">6만 9천 원</span></div>
+      <div id="img3" class="clip panel" data-start="8.125" data-duration="2.383" data-track-index="1">
+        <img id="img3ph" src="assets/img/w_boiler.jpg" style="object-position:25% 40%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr3" class="clip credit" data-start="8.125" data-duration="2.383" data-track-index="2">사진: Turbojet · 위키미디어 공용 · CC BY-SA 4.0</p>
+      <div id="img3b" class="clip panel" data-start="10.508" data-duration="2.382" data-track-index="1">
+        <img id="img3bph" src="assets/img/w_frost.jpg" style="object-position:50% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr3b" class="clip credit" data-start="10.508" data-duration="2.382" data-track-index="2">사진: Tony Webster · 위키미디어 공용 · CC BY-SA 2.0</p>
+      <div id="cap3" class="clip cap" data-start="8.125" data-duration="4.765" data-track-index="3"><div id="capin3"><p>산 이유로는 보일러를 마음껏 돌리기</p><p>부담스러워서라는 말이 많았습니다</p></div></div>
+      <div id="img4" class="clip panel" data-start="12.89" data-duration="4.825" data-track-index="1">
+        <img id="img4ph" src="assets/img/p_ctrl.jpg" style="object-position:50% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr4" class="clip credit" data-start="12.89" data-duration="4.825" data-track-index="2">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="cap4" class="clip cap" data-start="12.89" data-duration="4.825" data-track-index="3"><div id="capin4"><p>자다가 깜빡해도 15시간 뒤</p><p>저절로 꺼진다는 점도 고른 이유입니다</p></div></div>
+      <div id="hl4" class="clip hl" data-start="14.09" data-duration="3.625" data-track-index="6"><span id="hlin4">15시간</span></div>
+      <div id="img5" class="clip panel" data-start="17.715" data-duration="3.623" data-track-index="1">
+        <img id="img5ph" src="assets/img/p_bedcorner.jpg" style="object-position:50% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr5" class="clip credit" data-start="17.715" data-duration="3.623" data-track-index="2">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="cap5" class="clip cap" data-start="17.715" data-duration="3.623" data-track-index="3"><div id="capin5"><p>써 본 사람들은 첫날부터</p><p>금방 따뜻해진다고 말합니다</p></div></div>
+      <div id="img6" class="clip panel" data-start="21.338" data-duration="3.372" data-track-index="1">
+        <img id="img6ph" src="assets/img/p_bed.jpg" style="object-position:50% 60%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr6" class="clip credit" data-start="21.338" data-duration="3.372" data-track-index="2">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="cap6" class="clip cap" data-start="21.338" data-duration="3.372" data-track-index="3"><div id="capin6"><p>1단만 켜도 충분히 따뜻하다는</p><p>후기도 있습니다</p></div></div>
+      <div id="img7" class="clip panel" data-start="24.71" data-duration="4.102" data-track-index="1">
+        <img id="img7bg" class="bg" src="assets/img/p_wash_bg.jpg" alt="" /><img id="img7ph" src="assets/img/p_wash.jpg" style="object-position:50% 45%;object-fit:contain" alt="" />
+      </div>
+      <p id="cr7" class="clip credit" data-start="24.71" data-duration="4.102" data-track-index="2">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="cap7" class="clip cap" data-start="24.71" data-duration="4.102" data-track-index="3"><div id="capin7"><p>세탁망에 넣어 울 코스로 빨고,</p><p>접어서 보관할 수 있습니다</p></div></div>
+      <div id="hl7" class="clip hl" data-start="25.61" data-duration="3.202" data-track-index="6"><span id="hlin7">울 코스</span></div>
+      <div id="img8" class="clip panel" data-start="28.812" data-duration="4.879" data-track-index="1">
+        <img id="img8ph" src="assets/img/w_foam.jpg" style="object-position:55% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr8" class="clip credit" data-start="28.812" data-duration="4.879" data-track-index="2">사진: Johan · 위키미디어 공용 · CC BY-SA 3.0</p>
+      <div id="cap8" class="clip cap" data-start="28.812" data-duration="4.879" data-track-index="3"><div id="capin8"><p>메모리폼이나 라텍스 매트리스 위에서는</p><p>쓰지 말라는 점은 꼭 챙기세요</p></div></div>
+      <div id="img9" class="clip panel" data-start="33.691" data-duration="3.557" data-track-index="1">
+        <img id="img9ph" src="assets/img/w_bed.jpg" style="object-position:55% 55%;object-fit:cover" alt="" />
+      </div>
+      <p id="cr9" class="clip credit" data-start="36.391" data-duration="0.857" data-track-index="2">사진: Liz Lawley · 위키미디어 공용 · CC BY-SA 2.0</p>
+      <div id="cap9" class="clip cap" data-start="33.691" data-duration="3.557" data-track-index="3"><div id="capin9"><p>크기만 맞춰도 올겨울</p><p>이불 속이 달라지지 않을까요?</p></div></div>
+      <div id="rc1" class="clip panel recap" data-start="33.991" data-duration="0.8" data-track-index="8">
+        <img id="rc1ph" src="assets/img/p_main_recap.jpg" style="object-position:60% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="rcr1" class="clip credit recap-cr" data-start="33.991" data-duration="0.8" data-track-index="9">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="rc2" class="clip panel recap" data-start="34.791" data-duration="0.8" data-track-index="8">
+        <img id="rc2ph" src="assets/img/p_bedcorner.jpg" style="object-position:50% 50%;object-fit:cover" alt="" />
+      </div>
+      <p id="rcr2" class="clip credit recap-cr" data-start="34.791" data-duration="0.8" data-track-index="9">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <div id="rc3" class="clip panel recap" data-start="35.591" data-duration="0.8" data-track-index="8">
+        <img id="rc3ph" src="assets/img/p_bed.jpg" style="object-position:50% 60%;object-fit:cover" alt="" />
+      </div>
+      <p id="rcr3" class="clip credit recap-cr" data-start="35.591" data-duration="0.8" data-track-index="9">사진: 한일의료기 · 판매 페이지 · 제품 사진</p>
+      <p id="ad" class="clip ad" data-start="33.691" data-duration="3.557" data-track-index="11">이 영상은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</p>
+      <audio id="narration" class="clip" src="assets/audio/narration.wav" data-start="0" data-duration="37.248" data-track-index="4"></audio>
+      <audio id="pop2" class="clip" src="assets/audio/pop.wav" data-start="3.647" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="hpop2" class="clip" src="assets/audio/pop.wav" data-start="6.247" data-duration="0.1" data-track-index="7"></audio>
+      <audio id="pop3b" class="clip" src="assets/audio/pop.wav" data-start="10.508" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop3" class="clip" src="assets/audio/pop.wav" data-start="8.125" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop4" class="clip" src="assets/audio/pop.wav" data-start="12.89" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="hpop4" class="clip" src="assets/audio/pop.wav" data-start="14.09" data-duration="0.1" data-track-index="7"></audio>
+      <audio id="pop5" class="clip" src="assets/audio/pop.wav" data-start="17.715" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop6" class="clip" src="assets/audio/pop.wav" data-start="21.338" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop7" class="clip" src="assets/audio/pop.wav" data-start="24.71" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="hpop7" class="clip" src="assets/audio/pop.wav" data-start="25.61" data-duration="0.1" data-track-index="7"></audio>
+      <audio id="pop8" class="clip" src="assets/audio/pop.wav" data-start="28.812" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="pop9" class="clip" src="assets/audio/pop.wav" data-start="33.691" data-duration="0.1" data-track-index="5"></audio>
+      <audio id="rpop1" class="clip" src="assets/audio/pop.wav" data-start="33.991" data-duration="0.1" data-track-index="10"></audio>
+      <audio id="rpop2" class="clip" src="assets/audio/pop.wav" data-start="34.791" data-duration="0.1" data-track-index="10"></audio>
+      <audio id="rpop3" class="clip" src="assets/audio/pop.wav" data-start="35.591" data-duration="0.1" data-track-index="10"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#img1ph", {scale: 1.0, xPercent: -1.5}, {scale: 1.05, xPercent: 0, duration: 1.823, ease: "none"}, 0.0);
+      tl.to("#img1ph", {scale: 1.16, xPercent: 2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 1.823);
+      tl.to("#img1ph", {scale: 1.2, duration: 1.524, ease: "none"}, 2.123);
+      tl.fromTo("#img2ph", {scale: 1.0, xPercent: 1.5}, {scale: 1.05, xPercent: 0, duration: 2.239, ease: "none"}, 3.647);
+      tl.to("#img2ph", {scale: 1.16, xPercent: -2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 5.886);
+      tl.to("#img2ph", {scale: 1.2, duration: 1.939, ease: "none"}, 6.186);
+      tl.fromTo("#hlin2", {scale: 0.3, rotation: -14}, {scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2.4)"}, 6.247);
+      tl.fromTo("#img3bph", {scale: 1.0, xPercent: 1.5}, {scale: 1.09, xPercent: -1.5, duration: 2.382, ease: "none"}, 10.508);
+      tl.fromTo("#img3ph", {scale: 1.0, xPercent: -1.5}, {scale: 1.09, xPercent: 1.5, duration: 2.382, ease: "none"}, 8.125);
+      tl.fromTo("#img4ph", {scale: 1.0, xPercent: 1.5}, {scale: 1.05, xPercent: 0, duration: 2.413, ease: "none"}, 12.89);
+      tl.to("#img4ph", {scale: 1.16, xPercent: -2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 15.303);
+      tl.to("#img4ph", {scale: 1.2, duration: 2.112, ease: "none"}, 15.603);
+      tl.fromTo("#hlin4", {scale: 0.3, rotation: -14}, {scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2.4)"}, 14.09);
+      tl.fromTo("#img5ph", {scale: 1.0, xPercent: -1.5}, {scale: 1.05, xPercent: 0, duration: 1.812, ease: "none"}, 17.715);
+      tl.to("#img5ph", {scale: 1.16, xPercent: 2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 19.527);
+      tl.to("#img5ph", {scale: 1.2, duration: 1.511, ease: "none"}, 19.827);
+      tl.fromTo("#img6ph", {scale: 1.0, xPercent: 1.5}, {scale: 1.09, xPercent: -1.5, duration: 3.372, ease: "none"}, 21.338);
+      tl.fromTo("#img7ph", {scale: 1.0, xPercent: -1.5}, {scale: 1.05, xPercent: 0, duration: 2.051, ease: "none"}, 24.71);
+      tl.to("#img7ph", {scale: 1.16, xPercent: 2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 26.761);
+      tl.to("#img7ph", {scale: 1.2, duration: 1.751, ease: "none"}, 27.061);
+      tl.fromTo("#hlin7", {scale: 0.3, rotation: -14}, {scale: 1, rotation: -6, duration: 0.3, ease: "back.out(2.4)"}, 25.61);
+      tl.fromTo("#img8ph", {scale: 1.0, xPercent: 1.5}, {scale: 1.05, xPercent: 0, duration: 2.439, ease: "none"}, 28.812);
+      tl.to("#img8ph", {scale: 1.16, xPercent: -2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 31.251);
+      tl.to("#img8ph", {scale: 1.2, duration: 2.14, ease: "none"}, 31.551);
+      tl.fromTo("#img9ph", {scale: 1.0, xPercent: -1.5}, {scale: 1.05, xPercent: 0, duration: 1.778, ease: "none"}, 33.691);
+      tl.to("#img9ph", {scale: 1.16, xPercent: 2, yPercent: -3, duration: 0.3, ease: "power2.out"}, 35.469);
+      tl.to("#img9ph", {scale: 1.2, duration: 1.479, ease: "none"}, 35.769);
+      tl.fromTo("#rc1ph", {scale: 1.12}, {scale: 1.0, duration: 0.8, ease: "power2.out"}, 33.991);
+      tl.fromTo("#rc2ph", {scale: 1.12}, {scale: 1.0, duration: 0.8, ease: "power2.out"}, 34.791);
+      tl.fromTo("#rc3ph", {scale: 1.12}, {scale: 1.0, duration: 0.8, ease: "power2.out"}, 35.591);
+      tl.fromTo("#capin1", {scale: 0.94}, {scale: 1, duration: 0.25, ease: "back.out(2)"}, 0);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+{
+ "bar": "핫팩",
+ "title": "다들 군용 핫팩을 사는 이유",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/cut_twopack.jpg",
+   "focus": "50% 50%",
+   "contain": true,
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "네이버 스포츠·레저 1위 핫팩",
+    "왜 다들 군용을 살까요?"
+   ],
+   "dir": 1
+  },
+  {
+   "photo": "assets/images/src/cut_pattern.jpg",
+   "focus": "45% 50%",
+   "contain": true,
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "마이핫 보온대는 손바닥보다 큰",
+    "대용량 군용 핫팩입니다"
+   ],
+   "dir": -1,
+   "pop": {
+    "text": "대용량",
+    "at": 2.0
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_cold_hands.jpg",
+   "focus": "50% 50%",
+   "lines": [
+    "산 이유 1위는",
+    "다른 핫팩이 금방 식어서였습니다"
+   ],
+   "dir": 1,
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6"
+  },
+  {
+   "photo": "assets/images/src/ai_dawn_work.jpg",
+   "focus": "60% 50%",
+   "lines": [
+    "새벽 출근이나 밖에서 일하는 사람들이",
+    "많이 샀다는 후기가 이어집니다"
+   ],
+   "dir": -1,
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6"
+  },
+  {
+   "photo": "assets/images/src/cut_front.jpg",
+   "focus": "50% 50%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "만족 포인트 1위는 오래 간다는 점",
+    "제조사 표기로 최대 15시간입니다"
+   ],
+   "dir": 1,
+   "pop": {
+    "text": "15시간",
+    "at": 3.4
+   }
+  },
+  {
+   "photo": "assets/images/src/cut_pocket_hand.jpg",
+   "focus": "50% 50%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "아침 7시에 뜯었는데 퇴근하고",
+    "집에 올 때까지 따뜻했다는 반응입니다"
+   ],
+   "dir": -1
+  },
+  {
+   "photo": "assets/images/src/cut_soldiers.jpg",
+   "focus": "35% 45%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "원단이 도톰해서",
+    "쉽게 터지지 않는다는 후기도 있습니다"
+   ],
+   "dir": 1
+  },
+  {
+   "photo": "assets/images/src/cut_pocket_in.jpg",
+   "focus": "50% 50%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "lines": [
+    "다만 최고 70도까지 올라가니",
+    "맨살에 대지 말고 수건이나 옷 위로 쓰세요"
+   ],
+   "dir": -1
+  },
+  {
+   "photo": "assets/images/src/ai_commute_pocket.jpg",
+   "focus": "65% 50%",
+   "lines": [
+    "올겨울 출근길 주머니",
+    "하루 종일 따뜻해지지 않을까요?"
+   ],
+   "dir": 1,
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6"
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/cut_pocket_hand.jpg",
+   "focus": "50% 50%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/cut_front.jpg",
+   "focus": "50% 50%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/cut_soldiers.jpg",
+   "focus": "35% 45%",
+   "author": "다봉산업",
+   "source": "제조사 페이지",
+   "license": "제품 사진",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}

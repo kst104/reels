@@ -1,0 +1,180 @@
+{
+ "bar": "비타민C+D",
+ "title": "비타민C·D, 하루 두 알로 한 번에",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/ai_jars.jpg",
+   "focus": "50% 55%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "dir": 1,
+   "lines": [
+    "비타민C랑 비타민D,",
+    "한 번에 챙길 수는 없을까요?"
+   ]
+  },
+  {
+   "photo": "assets/images/src/p_danawa.jpg",
+   "focus": "50% 50%",
+   "contain": true,
+   "author": "고려은단",
+   "source": "다나와 상품 페이지",
+   "license": "제품 사진",
+   "dir": -1,
+   "split": {
+    "photo": "assets/images/src/p_hwahae.jpg",
+    "focus": "50% 50%",
+    "contain": true,
+    "author": "고려은단",
+    "source": "화해 상품 페이지",
+    "license": "제품 사진"
+   },
+   "lines": [
+    "고려은단 비타민C 이지 플러스 비타민D는",
+    "하루 두 알에 C 1000mg, D 25마이크로그램입니다"
+   ],
+   "pop": {
+    "text": "C 1000mg",
+    "at": 3.3
+   }
+  },
+  {
+   "photo": "assets/images/src/p_danawa.jpg",
+   "focus": "50% 50%",
+   "crop": [
+    0.08,
+    0.2,
+    0.92,
+    0.8
+   ],
+   "author": "고려은단",
+   "source": "다나와 상품 페이지",
+   "license": "제품 사진",
+   "dir": 1,
+   "lines": [
+    "산 이유 1위는 두 가지를",
+    "한 번에 먹을 수 있어서였습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_hand_tab.jpg",
+   "focus": "50% 40%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "dir": -1,
+   "lines": [
+    "알이 작아 목 넘김이 편하다고 해서",
+    "골랐다는 후기도 많습니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_pour.jpg",
+   "focus": "60% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "dir": 1,
+   "lines": [
+    "만족 포인트 1위도 목 넘김,",
+    "작아서 편하다는 반응입니다"
+   ],
+   "pop": {
+    "text": "목 넘김",
+    "at": 1.4
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_bag.jpg",
+   "focus": "45% 55%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "dir": -1,
+   "lines": [
+    "두 알씩 떼어지는 개별 포장이라",
+    "들고 다니기 편하다고 합니다"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_calendar.jpg",
+   "focus": "45% 55%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "dir": 1,
+   "split": {
+    "photo": "assets/images/src/p_shop.jpg",
+    "focus": "50% 50%",
+    "contain": true,
+    "author": "고려은단",
+    "source": "판매 페이지",
+    "license": "제품 사진"
+   },
+   "lines": [
+    "120정 5개 세트면",
+    "하루 두 알 기준 300일분입니다 (계산값)"
+   ],
+   "pop": {
+    "text": "300일분",
+    "at": 2.7
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_water.jpg",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "Z-Image Turbo",
+   "license": "Hugging Face",
+   "dir": -1,
+   "lines": [
+    "공복에 먹으면 속이 불편할 수 있어,",
+    "식후에 물과 함께 드세요"
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_winter.jpg",
+   "focus": "55% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "dir": 1,
+   "lines": [
+    "올겨울 우리 집 영양제,",
+    "이걸로 정해 볼까요?"
+   ]
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/p_hwahae.jpg",
+   "focus": "30% 50%",
+   "author": "고려은단",
+   "source": "화해 상품 페이지",
+   "license": "제품 사진",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/ai_hand_tab.jpg",
+   "focus": "50% 40%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/ai_bag.jpg",
+   "focus": "45% 55%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}

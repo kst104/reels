@@ -1,0 +1,218 @@
+{
+ "bar": "혈압계",
+ "title": "연말 부모님 선물, 혈압계 어때요?",
+ "ment": "겅태상점으로 오세요",
+ "ad_note": true,
+ "scenes": [
+  {
+   "photo": "assets/images/src/ai_gift.png",
+   "focus": "40% 55%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "연말 부모님 선물,",
+    "혈압계는 어떨까요?"
+   ],
+   "dir": 1,
+   "crop": [
+    0.36,
+    0.08,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_cuff.png",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "요즘은 병원에 가지 않고",
+    "집에서 혈압을 재는 분이 많습니다"
+   ],
+   "dir": -1,
+   "pop": {
+    "text": "집에서",
+    "at": 1.5
+   }
+  },
+  {
+   "photo": "assets/images/src/cas_product.jpg",
+   "focus": "50% 50%",
+   "contain": true,
+   "author": "CAS",
+   "source": "겅태상점 상품 사진",
+   "license": "제품 사진",
+   "lines": [
+    "혈압계 후기에서 가장 많이 나온 이유는",
+    "부모님 혈압 체크용, 부모님 선물"
+   ],
+   "dir": 1,
+   "split": {
+    "photo": "assets/images/src/ai_gift.png",
+    "focus": "30% 50%",
+    "author": "AI 생성 이미지",
+    "source": "힉스필드",
+    "license": "gpt_image_2_6",
+    "crop": [
+     0.36,
+     0.08,
+     1.0,
+     1.0
+    ]
+   },
+   "crop": [
+    0.0,
+    0.17,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_evening.png",
+   "focus": "40% 60%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "병원 갈 때만 재지 않고 집에서",
+    "꾸준히 재고 싶다는 말도 많습니다"
+   ],
+   "dir": -1
+  },
+  {
+   "photo": "assets/images/src/cas_product.jpg",
+   "focus": "50% 50%",
+   "contain": true,
+   "author": "CAS",
+   "source": "겅태상점 상품 사진",
+   "license": "제품 사진",
+   "lines": [
+    "팔뚝형 자동 혈압계는 팔에 커프를 감고",
+    "버튼만 누르면 됩니다"
+   ],
+   "dir": 1,
+   "pop": {
+    "text": "버튼만",
+    "at": 2.6
+   },
+   "split": {
+    "photo": "assets/images/src/ai_cuff.png",
+    "focus": "45% 50%",
+    "author": "AI 생성 이미지",
+    "source": "힉스필드",
+    "license": "gpt_image_2_6"
+   },
+   "crop": [
+    0.0,
+    0.17,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "photo": "assets/images/src/ai_morning.png",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "대한고혈압학회는 집에서",
+    "아침과 저녁에 재라고 안내합니다"
+   ],
+   "dir": -1,
+   "pop": {
+    "text": "아침과 저녁",
+    "at": 1.6
+   },
+   "split": {
+    "photo": "assets/images/src/ai_evening.png",
+    "focus": "50% 60%",
+    "author": "AI 생성 이미지",
+    "source": "힉스필드",
+    "license": "gpt_image_2_6"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_chair.png",
+   "focus": "35% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "등을 기대고 앉아 5분쯤 쉬고,",
+    "두 번씩 재서 적어 두세요"
+   ],
+   "dir": 1,
+   "split": {
+    "photo": "assets/images/src/ai_notebook.png",
+    "focus": "50% 50%",
+    "author": "AI 생성 이미지",
+    "source": "힉스필드",
+    "license": "gpt_image_2_6"
+   }
+  },
+  {
+   "photo": "assets/images/src/ai_doctor.png",
+   "focus": "50% 55%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "lines": [
+    "측정값이 걱정되면 혼자 판단하지 말고",
+    "의사와 상담하세요"
+   ],
+   "dir": -1
+  },
+  {
+   "photo": "assets/images/src/cas_product.jpg",
+   "focus": "50% 50%",
+   "contain": true,
+   "author": "CAS",
+   "source": "겅태상점 상품 사진",
+   "license": "제품 사진",
+   "lines": [
+    "올해 연말, 부모님께",
+    "이만한 선물 또 있을까요?"
+   ],
+   "dir": 1,
+   "crop": [
+    0.0,
+    0.17,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "recap": [
+  {
+   "photo": "assets/images/src/ai_cuff.png",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "from": 0.3,
+   "to": 1.1
+  },
+  {
+   "photo": "assets/images/src/ai_morning.png",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "from": 1.1,
+   "to": 1.9
+  },
+  {
+   "photo": "assets/images/src/ai_gift.png",
+   "focus": "50% 50%",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
+   "from": 1.9,
+   "to": 2.7
+  }
+ ]
+}
