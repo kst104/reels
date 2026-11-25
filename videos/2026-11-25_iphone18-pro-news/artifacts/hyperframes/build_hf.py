@@ -8,7 +8,8 @@ HF = HERE / "hf"
 SRC = HERE / "assets/images/src"
 TPL = Path("/Users/seungtaepc/Downloads/reels/.claude/skills/reels/templates/frame2_hyperframes.py")
 TITLE = "아이폰18 프로, 뭐가 달라졌나?"
-CHANNEL = "IT 소식"
+CHANNEL = "아이폰18"
+MENT = "프로필 링크에서 확인하세요"
 END_HOLD = 1.4
 
 SCENES = [  # (사진, 초점, 작가, 자막 두 줄, 이동 방향)
@@ -68,25 +69,26 @@ def html(b):
     <style>
       @font-face {{ font-family: "KR"; src: url("assets/fonts/KR-Regular.woff2") format("woff2"); font-weight: 400; }}
       @font-face {{ font-family: "KR"; src: url("assets/fonts/KR-Bold.woff2") format("woff2"); font-weight: 700 900; }}
-      :root {{ --ground: #ffffff; --ink: #111111; --bar: #1f8f72; --muted: #8a8a8a; }}
+      :root {{ --ground: #ffffff; --ink: #111111; --bar: #ff7a1a; --muted: #8a8a8a; }}
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
       html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }}
       #root {{ position: relative; width: 1080px; height: 1920px; background: var(--ground); font-family: "KR", sans-serif; color: var(--ink); word-break: keep-all; }}
-      #bar {{ position: absolute; left: 0; top: 0; width: 1080px; height: 112px; background: var(--bar); display: flex; align-items: center; justify-content: center; gap: 16px; color: #fff; font-size: 44px; font-weight: 700; }}
-      #bar .dot {{ width: 46px; height: 46px; border-radius: 50%; border: 6px solid #fff; }}
-      #title {{ position: absolute; left: 54px; right: 54px; top: 150px; text-align: center; font-size: 62px; font-weight: 900; letter-spacing: -0.03em; }}
-      #rule {{ position: absolute; left: 0; width: 1080px; top: 268px; height: 3px; background: #d8d8d8; }}
-      .panel {{ position: absolute; left: 0; top: 300px; width: 1080px; height: 720px; overflow: hidden; background: #000; }}
+      #bar {{ position: absolute; left: 0; top: 0; width: 1080px; height: 330px; background: var(--bar); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 132px; font-weight: 900; letter-spacing: -0.02em; }}
+      #title {{ position: absolute; left: 40px; right: 40px; top: 330px; height: 307px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 66px; font-weight: 900; letter-spacing: -0.03em; }}
+      #rule {{ position: absolute; left: 0; width: 1080px; top: 637px; height: 3px; background: #d8d8d8; }}
+      .panel {{ position: absolute; left: 0; top: 640px; width: 1080px; height: 640px; overflow: hidden; background: #000; }}
       .panel img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
-      .credit {{ position: absolute; right: 30px; top: 1030px; font-size: 24px; font-weight: 400; color: var(--muted); }}
-      .cap {{ position: absolute; left: 60px; right: 60px; top: 1110px; text-align: center; font-size: 52px; font-weight: 700; line-height: 1.55; }}
+      .credit {{ position: absolute; right: 24px; top: 1290px; font-size: 24px; font-weight: 400; color: var(--muted); }}
+      .cap {{ position: absolute; left: 50px; right: 50px; top: 1340px; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 60px; font-weight: 700; line-height: 1.5; }}
+      #ment {{ position: absolute; left: 50%; top: 1680px; transform: translateX(-50%); white-space: nowrap; padding: 22px 54px; border-radius: 999px; background: var(--bar); color: #fff; font-size: 50px; font-weight: 900; }}
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="1080" data-height="1920" data-composition-variables='[{{"id":"channel","type":"string","label":"채널 이름","default":"{CHANNEL}"}},{{"id":"title","type":"string","label":"제목","default":"{TITLE}"}}]'>
-      <div id="bar" class="clip" data-start="0" data-duration="{total}" data-track-index="0"><span class="dot"></span><span data-var-text="channel">{CHANNEL}</span></div>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="1080" data-height="1920" data-composition-variables='[{{"id":"channel","type":"string","label":"채널 이름","default":"{CHANNEL}"}},{{"id":"title","type":"string","label":"제목","default":"{TITLE}"}},{{"id":"ment","type":"string","label":"고정 멘트","default":"{MENT}"}}]'>
+      <div id="bar" class="clip" data-start="0" data-duration="{total}" data-track-index="0"><span data-var-text="channel">{CHANNEL}</span></div>
       <h1 id="title" class="clip" data-start="0" data-duration="{total}" data-track-index="0" data-var-text="title">{TITLE}</h1>
       <div id="rule" class="clip" data-start="0" data-duration="{total}" data-track-index="0"></div>
+      <p id="ment" class="clip" data-start="0" data-duration="{total}" data-track-index="0" data-var-text="ment">{MENT}</p>
 {chr(10).join(scenes)}
 {chr(10).join(caps)}
       <audio id="narration" class="clip" src="assets/audio/narration.wav" data-start="0" data-duration="{total}" data-track-index="4"></audio>
