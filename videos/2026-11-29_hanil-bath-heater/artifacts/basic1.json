@@ -49,11 +49,11 @@
    ]
   },
   {
-   "photo": "assets/images/src/ai_babybath.jpg",
+   "photo": "assets/images/src/ai_bathprep.jpg",
    "focus": "50% 50%",
-   "author": "AI 생성",
-   "source": "Z-Image Turbo",
-   "license": "AI 사진",
+   "author": "AI 생성 이미지",
+   "source": "힉스필드",
+   "license": "gpt_image_2_6",
    "lines": [
     "아이 목욕시킬 때",
     "추위 걱정을 덜고 싶다는 후기도"
@@ -88,7 +88,7 @@
    "source": "신세계쇼핑 판매 페이지",
    "license": "제품 사진",
    "lines": [
-    "써 본 사람들은",
+    "첫 후기에서는",
     "켜자마자 바로 따뜻해진다고"
    ]
   },

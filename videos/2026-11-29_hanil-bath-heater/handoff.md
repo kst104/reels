@@ -1,5 +1,7 @@
 # 제작후분석소 인계 — 2026-11-29 한일 욕실 온풍기 THE슬림
 
+2차(2026-11-25): 출처 표기 검은 바탕(틀 W-2), 대본 표현 수정(W-3 등) — 6번 문장 바꿔 음성 다시(타입캐스트 영규), 4번 사진 ai_babybath → ai_bathprep(힉스필드 gpt_image_2_6; basic1.json의 화면 출처 표기가 "Z-Image Turbo"로 남아 있던 것을 "AI 생성 이미지 · 힉스필드 · gpt_image_2_6"으로 바로잡음), 길이·음량 38.4초 · -15.7 LUFS (1080×1920)
+
 - 영상: `hanil-bath-heater_final.mp4` (1080×1920, 38.2초, -15.9 LUFS, CRF 23, 4.3MB)
 - 대본: 주간 대본 아티팩트 https://claude.ai/artifact/DjEPKAnSoC6BETx9CayNu1 `d1129` 9줄 그대로(문장 변경 없음)
 - 상품: 겅태상점 channelProductNo 13837616151, 커넥트 링크 사용자 발급 대기

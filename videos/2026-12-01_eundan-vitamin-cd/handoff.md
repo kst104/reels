@@ -1,5 +1,7 @@
 # 제작후분석소로 넘기는 기록 — 2026-12-01 고려은단 비타민C 1000 이지 플러스 비타민D
 
+2차(2026-11-25): 출처 표기 검은 바탕(틀 W-2), 대본 표현 수정(W-3 등) — 3·5번 문장 바꿔 음성 다시(타입캐스트 영규), 5번 강조 글자 at 1.4→1.7, 길이·음량 40.3초 · -16.0 LUFS (1080×1920)
+
 - 영상: `eundan-vitamin-cd_final.mp4` — 1080×1920, 39.0초, -15.9 LUFS, H.264 CRF 23, AAC 128k
 - 대본: `script.txt` = 주간 대본 d1201 그대로(문장 바꾸지 않음). 근거는 `sources.md`
 - 틀: 2번 HyperFrames 기본1 형식, 30fps, quality high, --strict. 설정 `artifacts/basic1.json`, 조립 결과 `artifacts/hf/index.html`. lint·validate 오류 0
