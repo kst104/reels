@@ -1,10 +1,10 @@
 ---
 name: reels
-description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 저장소 스크립트로 "남성1"(M1) 음성 직접 생성(Supertonic 3, 맥미니·클라우드 공통) → 사용자가 지정한 틀과 화면 방식으로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 화면 방식 글자·움직임·사진, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
+description: 주제 하나만 받아 네이버 쇼핑 커넥트 링크를 붙일 세로형 쇼츠·릴스(약 35초)를 OpenMontage로 만드는 스킬. 작업은 항상 ~/Downloads/reels 폴더에서 한다. 조사 → 고정 A형식 대본 → im-not-ai 윤문 → 저장소 스크립트로 타입캐스트 "영규" 음성 직접 생성(키가 없으면 Supertonic 3 "남성1") → 사용자가 지정한 틀과 화면 방식으로 렌더(1번 Remotion 기본 틀 / 2번 HyperFrames 틀, 화면 방식 글자·움직임·사진, 1080x1920, 한글 자막, Pixabay 음악) → 출처 목록과 mp4를 reels/videos/에 정리. 트리거 — "reels", "/reels", "릴스 만들어줘", "쇼츠 만들어줘", "쇼핑 커넥트 영상", "[주제]로 릴스".
 argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] (선택: 붙일 상품)"
 ---
 
-# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v9, 2026-11-24: 매일 자동 제작 — 09:00 제작전 브리프, 10:30 제작, 게시만 사용자 확인)
+# reels — 쇼핑 커넥트용 쇼츠·릴스 제작 (v10, 2026-11-25: 음성을 타입캐스트 "영규"로 바꿈, 키가 없을 때만 Supertonic)
 
 ## 이미 확정된 것 (매번 다시 묻지 않는다)
 
@@ -25,7 +25,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
   - **사진** = 움직임 + 장면마다 사진을 어둡게 깔고 천천히 확대·이동. 사진은 AI로 만든다(5-2절)
   - 움직임·사진은 2번 틀에만 있다. 1번(Remotion)을 고른 뒤 움직임·사진을 원하면 2번으로 바꿀지 묻는다.
 - **음악:** Pixabay 무료 음악 (상업 사용 가능, 출처 표기 불필요)
-- **음성:** Supertonic 3 "남성1"(파일명 접미사 `M1`). 이 스킬의 `templates/make_narration.py`로 직접 만든다. 맥미니 음성 프로그램(`localhost:7790`)과 같은 모델·목소리이고 서버 없이 돌아가므로, 맥미니든 클라우드든 한 세션에서 끝까지 만든다. 음성 때문에 맥미니로 넘기지 않는다(2026-11-22 사용자 지정). 사용자에게 따로 만들어 올리라고 하지 않는다(사용자가 불편하다고 명시함).
+- **음성:** 타입캐스트(유료 API) "영규"(`tc_61130cd072f7b1a0c044b7f5`, 모델 ssfm-v31, 파일명 접미사 `TC`). 2026-11-25 사용자가 후보 3개(영규·현준·상훈)를 들어 보고 골랐다. 이 스킬의 `templates/make_narration.py`로 직접 만든다. API 키를 찾지 못하면(클라우드 세션 등) Supertonic 3 "남성1"(`M1`)로 만들고 그 사실을 사용자·슬랙에 알린다. 어느 쪽이든 한 세션에서 끝까지 만든다. 음성 때문에 맥미니로 넘기지 않는다(2026-11-22 사용자 지정). 사용자에게 따로 만들어 올리라고 하지 않는다(사용자가 불편하다고 명시함).
 - **대본 형식:** 아래 "A형식" 고정. 콘셉트 3안을 제안하지 않는다.
 - **사용자 확인을 받는 곳:** ① 대본 초안 ② 윤문 결과 ③ 완성 영상 ④ 추천 상품 ⑤ 게시 캡션. 그 밖의 OpenMontage 승인 단계(제안서·장면 계획 등)는 위 기본값으로 사용자가 미리 승인한 것으로 기록한다.
 - **매일 자동 제작(2026-11-24 사용자 지정):** 사용자 원문 "아침9시에 자동으로 제작전 제작소에서 시작하고, 제작및 컨펌까지 알아서 진행해줘". 예약 작업 두 개로 돈다.
@@ -73,7 +73,7 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 5. 사전 점검: `.venv/bin/python -c "from tools.tool_registry import registry; import json; registry.discover(); print(json.dumps(registry.provider_menu_summary()['composition_runtimes']))"`
    - 1번이면 `remotion`이 `false`일 때 멈추고 알린다.
    - 2번이면 `hyperframes`가 `true`인지 보고, `npx hyperframes doctor --json`에서 Node.js·FFmpeg·Chrome 항목이 `ok`인지 확인한다. 글꼴 처리에 `pip install fonttools brotli`가 필요하다.
-6. 음성 준비(OpenMontage 폴더에서): `.venv/bin/python -m pip install -r ../.claude/skills/reels/templates/requirements-voice.txt`. 음성 모델(약 385MB)은 4절에서 처음 음성을 만들 때 내려받는다. 맥미니 음성 프로그램(7790)은 켜져 있지 않아도 된다.
+6. 음성 준비(OpenMontage 폴더에서): `.venv/bin/python -m pip install -r ../.claude/skills/reels/templates/requirements-voice.txt`. 타입캐스트 키가 있는지 확인한다(값은 출력하지 않는다): `security find-generic-password -s typecast-api >/dev/null && echo 있음`. 클라우드에서는 환경 변수 `TYPECAST_API_KEY`를 본다. 둘 다 없으면 4절의 Supertonic 예비 경로를 쓴다(모델 약 385MB를 처음 실행 때 내려받는다).
 7. 프로젝트 생성: `init_project('<id>', title='<한글 제목>', pipeline_type='animated-explainer')`. 중간 산출물은 `OpenMontage/projects/<id>/`, 최종 정리는 `REELS/videos/`.
 
 ### 1. 조사 (research)
@@ -99,13 +99,17 @@ argument-hint: "[영상 주제] [1번|2번 프레임] [글자|움직임|사진] 
 
 ### 4. 음성 (직접 생성)
 
-- 저장소의 스크립트 하나로 만든다. 맥미니와 클라우드에서 명령이 같다(2026-11-22 사용자 지정: 음성 때문에 맥미니로 넘기지 않는다):
+- 저장소의 스크립트 하나로 만든다. 기본은 타입캐스트 "영규"다(2026-11-25 사용자 지정):
   ```bash
   cd <REELS>/OpenMontage
-  .venv/bin/python ../.claude/skills/reels/templates/make_narration.py projects/<id> --script <확정 대본 script.txt>
+  .venv/bin/python ../.claude/skills/reels/templates/make_narration.py projects/<id> --script <확정 대본 script.txt> --engine typecast --voice tc_61130cd072f7b1a0c044b7f5
   ```
-- 대본은 한 줄에 한 문장이고, 한 줄이 음성 한 구간이 된다. 결과는 `projects/<id>/assets/audio/`에 생긴다: 줄별 원본 `s1_M1.wav`…, 간격과 음량을 맞춘 `narration_norm.wav`, 문장별 시작·끝 `narration_timings.json`(`total`, `sections[s1..]`).
-- 스크립트가 하는 일: Supertonic 3 "남성1"(M1), 속도 1.05·품질 8·줄 안 쉼 0.3초(맥미니 음성 프로그램 화면의 기본값)로 줄마다 음성을 만든다 → 말소리 앞뒤 무음을 자르고(여유 0.08초) 앞 0.3초, 문장 사이 0.6초, 끝 0.8초로 놓는다 → `loudnorm=I=-16:TP=-1.5:LRA=11`로 음량을 맞춘다.
+- 키는 환경 변수 `TYPECAST_API_KEY`, 없으면 맥 키체인 항목 `typecast-api`에서 읽는다. 키 값은 대화·로그·저장소 어디에도 남기지 않는다. 키를 새로 넣을 때는 사용자가 자기 터미널에서 `security add-generic-password -U -a "$USER" -s typecast-api -w`를 실행한다.
+- 타입캐스트는 줄마다 앞뒤 줄을 함께 보내(Smart Emotion) 문맥에 맞는 억양을 낸다. 속도는 1.0(`--speed`로 0.5~2.0). 원본은 `s1_TC.wav`….
+- 타입캐스트가 실패하면(키 없음 401·403, 크레딧 부족 402, 접속 실패) `--engine typecast --voice ...`를 빼고 같은 명령을 다시 돌려 Supertonic "남성1"로 만든다. `sources.md`에 쓴 목소리를 적고, 사용자(자동 제작이면 슬랙)에 바꾼 이유를 알린다.
+- 크레딧: 대추차 대본(공백 제외 186자) 한 편에 약 260 크레딧(2026-11-25 실측). 남은 양은 `GET https://api.typecast.ai/v1/users/me/subscription`으로 본다.
+- 대본은 한 줄에 한 문장이고, 한 줄이 음성 한 구간이 된다. 결과는 `projects/<id>/assets/audio/`에 생긴다: 줄별 원본 `s1_TC.wav`…(Supertonic이면 `s1_M1.wav`), 간격과 음량을 맞춘 `narration_norm.wav`, 문장별 시작·끝 `narration_timings.json`(`total`, `sections[s1..]`).
+- 두 엔진 공통으로 말소리 앞뒤 무음 자르기·문장 간격·음량 맞추기·timings는 같다. Supertonic 예비 경로의 설정: Supertonic 3 "남성1"(M1), 속도 1.05·품질 8·줄 안 쉼 0.3초(맥미니 음성 프로그램 화면의 기본값)로 줄마다 음성을 만든다 → 말소리 앞뒤 무음을 자르고(여유 0.08초) 앞 0.3초, 문장 사이 0.6초, 끝 0.8초로 놓는다 → `loudnorm=I=-16:TP=-1.5:LRA=11`로 음량을 맞춘다.
 - 첫 실행 때 모델(약 385MB)을 huggingface.co(`Supertone/supertonic-3`)에서 `~/.cache/supertonic3`로 내려받는다. 모델은 파일 하나가 245MB라 깃허브 저장소에 넣지 않았다. 내려받기가 막히면 스크립트가 이유를 알려 주니, 다른 목소리로 바꾸지 말고 "막혔을 때"대로 알린다.
 - 숨이 차게 들리는 줄이 있으면 대본 줄을 고쳐 스크립트를 다시 돌리고 사용자에게 알린다(전체가 10초 남짓이라 한 줄만 따로 만들 필요가 없다).
 - 맥미니 확인(2026-11-22): 같은 대본으로 맥미니 음성 프로그램(`localhost:7790`)과 줄별 길이가 샘플 수까지 같았다. 파형은 만들 때마다 조금씩 달라 똑같지는 않다. 대추차 대본 6줄에 12초, 결과 음량 -16.6 LUFS.

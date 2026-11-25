@@ -12,6 +12,8 @@
   pip install -r requirements-voice.txt          # 처음 한 번
   python make_narration.py <projects/<id>> --script <script.txt>
       [--voice M1] [--speed 1.05] [--steps 8] [--pause 0.3]
+  python make_narration.py <projects/<id>> --script <script.txt> --engine typecast \
+      --voice tc_<목소리 ID> [--speed 1.0]      # 타입캐스트 API(유료, typecast_voice.py)
 
 결과는 <project>/assets/audio/ 에 생긴다. 첫 실행 때 모델(약 385MB)을
 huggingface.co(Supertone/supertonic-3)에서 ~/.cache/supertonic3 로 내려받는다.
@@ -42,6 +44,10 @@ logger = logging.getLogger("make_narration")
 MODEL_NAME = "supertonic-3"
 MODEL_SOURCE = "huggingface.co(Supertone/supertonic-3)"
 VOICES = ("F1", "F2", "F3", "F4", "F5", "M1", "M2", "M3", "M4", "M5")
+ENGINES = ("supertonic", "typecast")
+DEFAULT_SPEED = {"supertonic": 1.05, "typecast": 1.0}
+TYPECAST_SPEED_RANGE = (0.5, 2.0)
+TYPECAST_FILE_TAG = "TC"
 SPEED_RANGE = (0.7, 2.0)
 STEPS_RANGE = (5, 12)
 PAUSE_RANGE = (0.0, 2.0)
@@ -77,13 +83,31 @@ class VoiceSettings:
     steps: int = 8
     pause: float = 0.3
     lang: str = "ko"
+    engine: str = "supertonic"
 
     def __post_init__(self) -> None:
+        if self.engine not in ENGINES:
+            raise ValueError(f"engine은 {', '.join(ENGINES)} 중 하나여야 합니다: {self.engine}")
+        if self.engine == "typecast":
+            if not self.voice.startswith(("tc_", "uc_")):
+                raise ValueError(f"타입캐스트 목소리 ID는 tc_ 또는 uc_로 시작합니다: {self.voice}")
+            _check_range("speed", self.speed, TYPECAST_SPEED_RANGE)
+            return
         if self.voice not in VOICES:
             raise ValueError(f"목소리는 {', '.join(VOICES)} 중 하나여야 합니다: {self.voice}")
         _check_range("speed", self.speed, SPEED_RANGE)
         _check_range("steps", self.steps, STEPS_RANGE)
         _check_range("pause", self.pause, PAUSE_RANGE)
+
+
+    @property
+    def file_tag(self) -> str:
+        """줄별 원본 파일 이름 꼬리(s1_M1.wav, 타입캐스트는 s1_TC.wav)."""
+        return TYPECAST_FILE_TAG if self.engine == "typecast" else self.voice
+
+    @property
+    def model_label(self) -> str:
+        return "typecast ssfm-v31" if self.engine == "typecast" else MODEL_NAME
 
 
 @dataclass(frozen=True)
@@ -247,7 +271,7 @@ def loudnorm(source: Path, target: Path, sample_rate: int) -> None:
 def timings_payload(timeline: Timeline, settings: VoiceSettings) -> dict[str, object]:
     """build_composition.py가 읽는 형식(total, sections[id, start, end])."""
     return {
-        "source": f"{MODEL_NAME} {settings.voice} (make_narration.py)",
+        "source": f"{settings.model_label} {settings.voice} (make_narration.py)",
         **asdict(settings),
         "total": timeline.total,
         "sections": [asdict(section) for section in timeline.sections],
@@ -299,7 +323,7 @@ def build_narration(
     for previous in (narration, timings):
         previous.unlink(missing_ok=True)  # 중간에 실패해도 예전 음성·구간 파일과 섞이지 않게 한다
     originals = tuple(
-        out_dir / f"s{index}_{settings.voice}.wav" for index in range(1, len(lines) + 1)
+        out_dir / f"s{index}_{settings.file_tag}.wav" for index in range(1, len(lines) + 1)
     )
     takes = []
     for index, (line, original) in enumerate(zip(lines, originals), start=1):
@@ -364,15 +388,44 @@ def load_synthesizer(settings: VoiceSettings) -> tuple[Synthesizer, int]:
     return synth, int(tts.sample_rate)
 
 
+def load_typecast_synthesizer(
+    settings: VoiceSettings, lines: Sequence[str]
+) -> tuple[Synthesizer, int]:
+    """타입캐스트 API로 줄마다 음성을 만드는 함수(typecast_voice.py)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import typecast_voice
+
+    try:
+        api_key = typecast_voice.find_api_key()
+        tc_settings = typecast_voice.TypecastSettings(voice_id=settings.voice, tempo=settings.speed)
+    except typecast_voice.NarrationError as error:
+        raise NarrationError(str(error)) from None
+    synth = typecast_voice.make_synthesizer(tc_settings, tuple(lines), api_key)
+    return synth, typecast_voice.SAMPLE_RATE
+
+
+def _voice_arg(value: str) -> str:
+    if value in VOICES or value.startswith(("tc_", "uc_")):
+        return value
+    raise argparse.ArgumentTypeError(
+        f"목소리는 {', '.join(VOICES)} 또는 타입캐스트 ID(tc_…/uc_…)여야 합니다: {value}"
+    )
+
+
 def parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
     defaults = VoiceSettings()
     parser = argparse.ArgumentParser(
-        description="대본을 Supertonic 3 음성(기본 남성1 M1)으로 만든다."
+        description="대본을 음성으로 만든다(기본 Supertonic 3 남성1 M1, --engine typecast면 타입캐스트)."
     )
     parser.add_argument("project", type=Path, help="OpenMontage/projects/<id> 폴더")
     parser.add_argument("--script", type=Path, required=True, help="한 줄에 한 문장씩 적은 대본")
-    parser.add_argument("--voice", choices=VOICES, default=defaults.voice)
-    parser.add_argument("--speed", type=float, default=defaults.speed)
+    parser.add_argument("--engine", choices=ENGINES, default=defaults.engine)
+    parser.add_argument(
+        "--voice", type=_voice_arg, default=None, help="M1 등, 타입캐스트면 tc_… 목소리 ID"
+    )
+    parser.add_argument(
+        "--speed", type=float, default=None, help="기본 Supertonic 1.05, 타입캐스트 1.0"
+    )
     parser.add_argument("--steps", type=int, default=defaults.steps)
     parser.add_argument(
         "--pause", type=float, default=defaults.pause, help="한 줄 안 문장 사이 쉼(초)"
@@ -381,11 +434,22 @@ def parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
 
 
 def run(args: argparse.Namespace) -> dict[str, object]:
-    settings = VoiceSettings(voice=args.voice, speed=args.speed, steps=args.steps, pause=args.pause)
+    if args.engine == "typecast" and args.voice is None:
+        raise NarrationError("타입캐스트는 --voice에 목소리 ID(tc_…)를 적어야 합니다.")
+    settings = VoiceSettings(
+        voice=args.voice or VoiceSettings().voice,
+        speed=DEFAULT_SPEED[args.engine] if args.speed is None else args.speed,
+        steps=args.steps,
+        pause=args.pause,
+        engine=args.engine,
+    )
     if not args.script.is_file():
         raise NarrationError(f"대본 파일이 없습니다: {args.script}")
     lines = read_script_lines(args.script.read_text(encoding="utf-8"))
-    synth, sample_rate = load_synthesizer(settings)
+    if settings.engine == "typecast":
+        synth, sample_rate = load_typecast_synthesizer(settings, lines)
+    else:
+        synth, sample_rate = load_synthesizer(settings)
     return build_narration(lines, synth, sample_rate, args.project / "assets" / "audio", settings)
 
 

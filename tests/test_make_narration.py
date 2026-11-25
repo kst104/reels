@@ -466,3 +466,49 @@ def test_build_narration_names_the_sentence_when_take_is_silent(tmp_path: Path) 
 
     with pytest.raises(mn.NarrationError, match="1번째 문장"):
         mn.build_narration(("첫 문장입니다.",), silent, AUDIO_RATE, tmp_path)
+
+
+@pytest.mark.unit
+def test_main_uses_typecast_when_engine_is_typecast(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    script = tmp_path / "script.txt"
+    script.write_text("첫 문장입니다.\n둘째 문장입니다.\n", encoding="utf-8")
+    project = tmp_path / "project"
+    seen: dict[str, object] = {}
+
+    def fake_loader(settings: object, lines: object) -> tuple[object, int]:
+        seen["settings"], seen["lines"] = settings, lines
+        return fake_synth(AUDIO_RATE), AUDIO_RATE
+
+    monkeypatch.setattr(mn, "load_typecast_synthesizer", fake_loader)
+    monkeypatch.setattr(mn, "load_synthesizer", lambda settings: pytest.fail("supertonic 호출"))
+
+    exit_code = mn.main(
+        [str(project), "--script", str(script), "--engine", "typecast", "--voice", "tc_abc"]
+    )
+
+    audio_dir = project / "assets" / "audio"
+    timings = json.loads((audio_dir / "narration_timings.json").read_text(encoding="utf-8"))
+    assert exit_code == 0
+    assert seen["lines"] == ("첫 문장입니다.", "둘째 문장입니다.")
+    assert seen["settings"].speed == 1.0
+    assert (audio_dir / "s1_TC.wav").exists()
+    assert timings["source"].startswith("typecast ssfm-v31 tc_abc")
+    assert json.loads(capsys.readouterr().out)["voice"] == "tc_abc"
+
+
+@pytest.mark.unit
+def test_main_requires_voice_id_for_typecast(tmp_path: Path) -> None:
+    script = tmp_path / "script.txt"
+    script.write_text("첫 문장입니다.\n", encoding="utf-8")
+
+    exit_code = mn.main([str(tmp_path), "--script", str(script), "--engine", "typecast"])
+
+    assert exit_code == 1
+
+
+@pytest.mark.unit
+def test_voice_settings_rejects_supertonic_name_for_typecast() -> None:
+    with pytest.raises(ValueError):
+        mn.VoiceSettings(voice="M1", speed=1.0, engine="typecast")
