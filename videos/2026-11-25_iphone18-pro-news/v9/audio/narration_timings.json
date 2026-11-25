@@ -1,0 +1,57 @@
+{
+ "source": "typecast ssfm-v31 tc_61130cd072f7b1a0c044b7f5 (make_narration.py)",
+ "voice": "tc_61130cd072f7b1a0c044b7f5",
+ "speed": 1.0,
+ "steps": 8,
+ "pause": 0.3,
+ "lang": "ko",
+ "engine": "typecast",
+ "total": 32.977,
+ "sections": [
+  {
+   "id": "s1",
+   "start": 0.3,
+   "end": 1.885
+  },
+  {
+   "id": "s2",
+   "start": 2.485,
+   "end": 4.263
+  },
+  {
+   "id": "s3",
+   "start": 4.863,
+   "end": 8.173
+  },
+  {
+   "id": "s4",
+   "start": 8.773,
+   "end": 11.003
+  },
+  {
+   "id": "s5",
+   "start": 11.603,
+   "end": 14.128
+  },
+  {
+   "id": "s6",
+   "start": 14.728,
+   "end": 19.037
+  },
+  {
+   "id": "s7",
+   "start": 19.637,
+   "end": 22.17
+  },
+  {
+   "id": "s8",
+   "start": 22.77,
+   "end": 26.296
+  },
+  {
+   "id": "s9",
+   "start": 26.896,
+   "end": 32.177
+  }
+ ]
+}
